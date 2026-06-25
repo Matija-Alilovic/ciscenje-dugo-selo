@@ -12,15 +12,26 @@ export default function LetterHoverText({
   className,
   delayStepMs = 28,
 }: LetterHoverTextProps) {
+  const words = text.split(" ").filter(Boolean);
+  let charIndex = 0;
+
   return (
     <span className={cn("letter-hover", className)}>
-      {text.split("").map((char, index) => (
-        <span
-          key={index}
-          className="letter-hover-char"
-          style={{ "--letter-delay": `${index * delayStepMs}ms` } as CSSProperties}
-        >
-          {char === " " ? "\u00a0" : char}
+      {words.map((word, wordIndex) => (
+        <span key={`${word}-${wordIndex}`} className="letter-hover-word">
+          {word.split("").map((char) => {
+            const index = charIndex;
+            charIndex += 1;
+            return (
+              <span
+                key={index}
+                className="letter-hover-char"
+                style={{ "--letter-delay": `${index * delayStepMs}ms` } as CSSProperties}
+              >
+                {char}
+              </span>
+            );
+          })}
         </span>
       ))}
     </span>

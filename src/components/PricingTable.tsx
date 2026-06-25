@@ -1,4 +1,4 @@
-import { PRICING } from "@/lib/constants";
+import { PRICING, PRICING_TRUST_NOTE } from "@/lib/constants";
 import Reveal from "./Reveal";
 
 export default function PricingTable() {
@@ -54,7 +54,10 @@ export default function PricingTable() {
           </table>
         </div>
 
-        <p className="mt-4 rounded-lg border border-gray-200 bg-surface px-4 py-3 text-sm leading-relaxed text-gray-600 sm:text-base">
+        <p className="mt-4 rounded-lg border border-brand-200 bg-brand-50 px-4 py-3 text-sm font-medium leading-relaxed text-brand-800 sm:text-base">
+          {PRICING_TRUST_NOTE}
+        </p>
+        <p className="mt-3 rounded-lg border border-gray-200 bg-surface px-4 py-3 text-sm leading-relaxed text-gray-600 sm:text-base">
           Konačna cijena ovisi o veličini prostora, stanju stana, broju
           kupaonica, kuhinji, prozorima i ostalom što dogovorimo.
         </p>

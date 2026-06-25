@@ -35,7 +35,7 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
         <Link href="/" className="group min-w-0 flex-1">
-          <span className="block truncate font-heading text-base font-bold leading-tight text-gray-900 dark:text-gray-900 sm:text-xl">
+          <span className="block font-heading text-base font-bold leading-tight text-gray-900 dark:text-gray-900 sm:text-xl">
             <LetterHoverText text={SITE.serviceHeadline} />
           </span>
           <span className="block truncate text-xs text-gray-500 transition-colors group-hover:text-brand-600 dark:text-gray-600 sm:text-sm">

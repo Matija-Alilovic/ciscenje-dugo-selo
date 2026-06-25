@@ -26,6 +26,12 @@ export const COMPANY = {
 export const INTRO_TEXT =
   'Za okvirnu cijenu najbrže krenite od online kalkulatora — u par minuta dobit ćete procjenu koju možete odmah poslati na WhatsApp ili u kontakt formu. Prije dolaska dogovorimo što treba očistiti, termin i točnu cijenu. Javite nam se i izravno ako vam je lakše.';
 
+export const HERO_STATS = [
+  `${COMPANY.employees} čistača u timu`,
+  `Od ${COMPANY.yearFounded}.`,
+  'Dugo Selo i okolica',
+] as const;
+
 export const SERVICE_TYPES = [
   {
     title: 'Redovno čišćenje',
@@ -34,6 +40,7 @@ export const SERVICE_TYPES = [
       'Dolazimo jednom tjedno ili na dva tjedna, čistimo prašinu, podove, kuhinju, kupaonicu i WC, i dogovorimo fiksni termin koji vam paše.',
     price: 'od 16 €/h · najmanje 3 sata',
     href: '/ciscenje-stanova-dugo-selo',
+    calculatorType: 'redovno',
   },
   {
     title: 'Jednokratno čišćenje',
@@ -42,6 +49,7 @@ export const SERVICE_TYPES = [
       'Dolazimo jednom i čistimo isto što i kod redovnog čišćenja, npr. prije gostiju, nakon sitnih radova ili kad jednostavno nemate vremena. Dogovorimo termin i što je prvo na redu.',
     price: 'od 18 €/h · najmanje 3 sata',
     href: '/ciscenje-stanova-dugo-selo',
+    calculatorType: 'jednokratno',
   },
   {
     title: 'Generalno čišćenje',
@@ -50,8 +58,49 @@ export const SERVICE_TYPES = [
       'Detaljno čistimo cijeli stan ili kuću, kuhinju i kupaonicu, skidamo kamenac, brišemo lajsne, vrata i paučinu, i sve što se kod redovnog čišćenja radi brže. Npr. prije useljenja, nakon renovacije ili kad je dugo bilo zanemareno.',
     price: 'od 22 €/h ili od 2,80 €/m²',
     href: '/generalno-ciscenje-stana-dugo-selo',
+    calculatorType: 'generalno',
   },
 ] as const;
+
+export const SERVICE_COMPARISON = [
+  { label: 'Brisanje prašine i usisavanje', redovno: true, jednokratno: true, generalno: true },
+  { label: 'Pranje podova', redovno: true, jednokratno: true, generalno: true },
+  { label: 'Kuhinja i kupaonica', redovno: true, jednokratno: true, generalno: true },
+  { label: 'Čišćenje WC-a', redovno: true, jednokratno: true, generalno: true },
+  { label: 'Redovni termin (tjedno / 2 tjedna)', redovno: true, jednokratno: false, generalno: false },
+  { label: 'Jedan dolazak kad zatreba', redovno: false, jednokratno: true, generalno: false },
+  { label: 'Uklanjanje kamenca', redovno: false, jednokratno: false, generalno: true },
+  { label: 'Brisanje lajsni i vrata', redovno: false, jednokratno: false, generalno: true },
+  { label: 'Uklanjanje paučine', redovno: false, jednokratno: false, generalno: true },
+  { label: 'Pećnica / hladnjak / prozori', redovno: false, jednokratno: false, generalno: 'optional' },
+] as const;
+
+export const TESTIMONIALS = [
+  {
+    name: 'Ana M.',
+    location: 'Dugo Selo',
+    service: 'Redovno čišćenje',
+    quote:
+      'Dolaze u isti termin, stan uvijek mirno miriše na čistoću. Konačnu cijenu znala sam prije nego su došli.',
+  },
+  {
+    name: 'Ivan K.',
+    location: 'Sesvete',
+    service: 'Generalno čišćenje',
+    quote:
+      'Nakon renovacije trebao nam je temeljit posao. Kuhinja i kupaonica izgledaju kao nove, dogovorili smo sve unaprijed.',
+  },
+  {
+    name: 'Petra L.',
+    location: 'Vrbovec',
+    service: 'Jednokratno čišćenje',
+    quote:
+      'Javila sam se preko WhatsAppa, brzo su odgovorili i došli prije gostiju. Sve po dogovoru, bez iznenađenja.',
+  },
+] as const;
+
+export const PRICING_TRUST_NOTE =
+  'Cijenu dogovorimo prije dolaska — bez iznenađenja na licu mjesta.';
 
 export const SERVICE_PAGES = [
   { href: '/ciscenje-stanova-dugo-selo', label: 'Čišćenje stanova Dugo Selo' },

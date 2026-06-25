@@ -207,7 +207,19 @@ body {
   @apply border-brand-200;
 }
 
+.letter-hover-word {
+  white-space: nowrap;
+}
+
+.letter-hover-word:not(:last-child) {
+  margin-inline-end: 0.3em;
+}
+
 @media (hover: hover) and (pointer: fine) {
+  .letter-hover-word {
+    display: inline-block;
+  }
+
   .letter-hover-char {
     display: inline-block;
     color: inherit;

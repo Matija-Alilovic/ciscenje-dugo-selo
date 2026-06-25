@@ -2,6 +2,7 @@ import { CTAButtons } from "./MobileStickyCTA";
 import FirstVisitOffer from "./FirstVisitOffer";
 import CalculatorHint from "./CalculatorHint";
 import LetterHoverText from "./LetterHoverText";
+import { HERO_STATS } from "@/lib/constants";
 
 type HeroProps = {
   title: string;
@@ -30,12 +31,22 @@ export default function Hero({
             <span>{area}</span>
           </p>
         )}
-        <h1 className="hero-fade hero-delay-2 group max-w-3xl text-3xl font-bold leading-tight text-gray-900 dark:text-gray-900 sm:text-5xl lg:text-[3.25rem]">
+        <h1 className="hero-fade hero-delay-2 group w-full min-w-0 max-w-3xl text-3xl font-bold leading-tight text-balance text-gray-900 dark:text-gray-900 sm:text-5xl lg:text-[3.25rem]">
           <LetterHoverText text={title} delayStepMs={32} />
         </h1>
         <p className="hero-fade hero-delay-3 mt-4 max-w-2xl text-lg leading-relaxed text-gray-600 sm:mt-5 sm:text-2xl">
           {subtitle}
         </p>
+        <ul className="hero-fade hero-delay-3 mt-5 flex flex-wrap gap-2 sm:gap-3">
+          {HERO_STATS.map((item) => (
+            <li
+              key={item}
+              className="rounded-md border border-gray-300 bg-surface px-3 py-1.5 text-sm font-medium text-gray-700"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
         <div className="hero-fade hero-delay-3 mt-8 sm:mt-10">
           <FirstVisitOffer variant="banner" />
         </div>

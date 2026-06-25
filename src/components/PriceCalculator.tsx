@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   CALCULATOR_BATHROOM_OPTIONS,
   CALCULATOR_CLEANING_TYPES,
@@ -10,11 +10,18 @@ import {
   CALCULATOR_WINDOW_OPTIONS,
   DEFAULT_CALCULATOR_INPUT,
   type CalculatorInput,
+  type CleaningType,
   buildCalculatorPrefill,
   buildCalculatorWhatsAppMessage,
   calculatePrice,
 } from "@/lib/priceCalculator";
-import { saveCalculatorPrefill, scrollToContact } from "@/lib/calculatorPrefill";
+import {
+  CALCULATOR_TYPE_EVENT,
+  clearCalculatorCleaningType,
+  readCalculatorCleaningType,
+  saveCalculatorPrefill,
+  scrollToContact,
+} from "@/lib/calculatorPrefill";
 import { cn, openWhatsApp } from "@/lib/utils";
 
 const FULL_STEPS = [
@@ -82,6 +89,32 @@ export default function PriceCalculator() {
   const steps = isWindowsOnly ? WINDOW_STEPS : FULL_STEPS;
   const estimate = useMemo(() => calculatePrice(input), [input]);
   const isLastStep = step === steps.length - 1;
+  const progress = ((step + 1) / steps.length) * 100;
+
+  useEffect(() => {
+    function applyCleaningType(type: string) {
+      const valid = CALCULATOR_CLEANING_TYPES.some((option) => option.value === type);
+      if (!valid) return;
+
+      setInput((current) => ({
+        ...current,
+        cleaningType: type as CleaningType,
+        windows: type === "prozori" ? "unutra-malo" : current.windows,
+      }));
+      setStep(0);
+      clearCalculatorCleaningType();
+    }
+
+    const stored = readCalculatorCleaningType();
+    if (stored) applyCleaningType(stored);
+
+    function onTypePrefill(event: Event) {
+      applyCleaningType((event as CustomEvent<string>).detail);
+    }
+
+    window.addEventListener(CALCULATOR_TYPE_EVENT, onTypePrefill);
+    return () => window.removeEventListener(CALCULATOR_TYPE_EVENT, onTypePrefill);
+  }, []);
 
   function updateInput(patch: Partial<CalculatorInput>) {
     setInput((current) => {
@@ -354,6 +387,9 @@ export default function PriceCalculator() {
           <p className="mt-2 text-3xl font-bold text-gray-900 sm:text-4xl">
             {estimate.min}–{estimate.max} €
           </p>
+          <p className="mt-1 text-sm text-gray-600">
+            Okvirno vrijeme: {estimate.hoursMin}–{estimate.hoursMax} h
+          </p>
           <ul className="mt-4 space-y-1 text-sm text-gray-600">
             {estimate.summary.map((line) => (
               <li key={line}>• {line}</li>
@@ -397,6 +433,19 @@ export default function PriceCalculator() {
         <p className="mt-3 text-sm font-semibold text-brand-800 sm:hidden">
           Korak {step + 1} od {steps.length}: {steps[step]}
         </p>
+        <div
+          className="mt-3 h-2 w-full overflow-hidden rounded-full bg-gray-200"
+          role="progressbar"
+          aria-valuenow={step + 1}
+          aria-valuemin={1}
+          aria-valuemax={steps.length}
+          aria-label={`Korak ${step + 1} od ${steps.length}`}
+        >
+          <div
+            className="h-full rounded-full bg-brand-600 transition-all duration-300 ease-out"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
         <div className="mt-4 hidden flex-wrap gap-2 sm:flex">
           {steps.map((label, index) => (
             <span
