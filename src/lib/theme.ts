@@ -2,6 +2,8 @@ export type Theme = "light" | "dark";
 
 export const THEME_STORAGE_KEY = "ciscenje-dugo-selo-theme";
 
+const THEME_FADE_MS = 280;
+
 export function getStoredTheme(): Theme | null {
   if (typeof window === "undefined") return null;
   const stored = localStorage.getItem(THEME_STORAGE_KEY);
@@ -20,22 +22,41 @@ export function applyTheme(theme: Theme) {
   localStorage.setItem(THEME_STORAGE_KEY, theme);
 }
 
-export function transitionTheme(theme: Theme) {
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const isTouchViewport = window.matchMedia(
-    "(max-width: 767px), (hover: none) and (pointer: coarse)",
-  ).matches;
+function overlayThemeTransition(theme: Theme, apply: () => void) {
+  const overlay = document.createElement("div");
+  overlay.className = "theme-fade-overlay";
+  overlay.style.background = theme === "dark" ? "#121614" : "#faf8f4";
+  overlay.setAttribute("aria-hidden", "true");
+  document.body.appendChild(overlay);
 
-  if (prefersReducedMotion || isTouchViewport) {
+  requestAnimationFrame(() => {
+    overlay.classList.add("is-visible");
+  });
+
+  window.setTimeout(() => {
+    apply();
+    requestAnimationFrame(() => {
+      overlay.classList.remove("is-visible");
+      window.setTimeout(() => overlay.remove(), THEME_FADE_MS);
+    });
+  }, THEME_FADE_MS);
+}
+
+export function transitionTheme(theme: Theme) {
+  if (typeof window === "undefined") return;
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) {
     applyTheme(theme);
     return;
   }
 
-  const root = document.documentElement;
-  root.classList.add("theme-switching");
-  applyTheme(theme);
+  const apply = () => applyTheme(theme);
 
-  requestAnimationFrame(() => {
-    root.classList.remove("theme-switching");
-  });
+  if (typeof document.startViewTransition === "function") {
+    document.startViewTransition(apply);
+    return;
+  }
+
+  overlayThemeTransition(theme, apply);
 }
