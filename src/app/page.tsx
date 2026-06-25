@@ -89,7 +89,7 @@ export default function HomePage() {
         <Section
           id="suradnici"
           title="Naši suradnici"
-          subtitle="Profesionalni brendovi čiju opremu koristimo — a naši klijenti mogu iskoristiti i popuste na kućnu opremu."
+          subtitle=""
           className="section-alt"
         >
           <PartnersSection />

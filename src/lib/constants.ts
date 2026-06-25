@@ -63,16 +63,56 @@ export const SERVICE_TYPES = [
 ] as const;
 
 export const SERVICE_COMPARISON = [
-  { label: 'Brisanje prašine i usisavanje', redovno: true, jednokratno: true, generalno: true },
+  {
+    label: 'Brisanje prašine i usisavanje',
+    redovno: true,
+    jednokratno: true,
+    generalno: true,
+  },
   { label: 'Pranje podova', redovno: true, jednokratno: true, generalno: true },
-  { label: 'Kuhinja i kupaonica', redovno: true, jednokratno: true, generalno: true },
+  {
+    label: 'Kuhinja i kupaonica',
+    redovno: true,
+    jednokratno: true,
+    generalno: true,
+  },
   { label: 'Čišćenje WC-a', redovno: true, jednokratno: true, generalno: true },
-  { label: 'Redovni termin (tjedno / 2 tjedna)', redovno: true, jednokratno: false, generalno: false },
-  { label: 'Jedan dolazak kad zatreba', redovno: false, jednokratno: true, generalno: false },
-  { label: 'Uklanjanje kamenca', redovno: false, jednokratno: false, generalno: true },
-  { label: 'Brisanje lajsni i vrata', redovno: false, jednokratno: false, generalno: true },
-  { label: 'Uklanjanje paučine', redovno: false, jednokratno: false, generalno: true },
-  { label: 'Pećnica / hladnjak / prozori', redovno: false, jednokratno: false, generalno: 'optional' },
+  {
+    label: 'Redovni termin (tjedno / 2 tjedna)',
+    redovno: true,
+    jednokratno: false,
+    generalno: false,
+  },
+  {
+    label: 'Jedan dolazak kad zatreba',
+    redovno: false,
+    jednokratno: true,
+    generalno: false,
+  },
+  {
+    label: 'Uklanjanje kamenca',
+    redovno: false,
+    jednokratno: false,
+    generalno: true,
+  },
+  {
+    label: 'Brisanje lajsni i vrata',
+    redovno: false,
+    jednokratno: false,
+    generalno: true,
+  },
+  {
+    label: 'Uklanjanje paučine',
+    redovno: false,
+    jednokratno: false,
+    generalno: true,
+  },
+  {
+    label: 'Pećnica / hladnjak / prozori',
+    redovno: false,
+    jednokratno: false,
+    generalno: 'optional',
+  },
 ] as const;
 
 export const TESTIMONIALS = [
@@ -141,7 +181,7 @@ export const FOOTER_LINKS = [
 
 export const ABOUT_US = {
   intro:
-    'Obrt iz Dugog Sela s timom od 6 zaposlenih. Radimo redovno od 8 do 22 h po dogovoru. Prije svakog dolaska dogovorimo što treba očistiti i koliko će to otprilike koštati.',
+    'Obrt iz Dugog Sela s timom od 6 zaposlenih. Radimo od 8 do 22 h po dogovoru. Prije svakog dolaska dogovorimo što treba očistiti i koliko će to otprilike koštati.',
   story:
     'Obrt Čišćenje Dugo Selo pokrenuli smo 2019. godine jer smo vidjeli da ljudima fali pouzdan tim koji dolazi na vrijeme, obavlja posao kvalitetno te ima dovoljno ljudi na terenu.',
   teamNote:
@@ -158,7 +198,7 @@ export const ABOUT_US = {
 
 export const PARTNERS = {
   intro:
-    'Za opremu i sredstva za čišćenje surađujemo s provjerenim profesionalnim brendovima. To nam omogućuje temeljit posao, sigurna sredstva i pouzdanu opremu u svakom stanu i kući.',
+    'Za opremu i sredstva za čišćenje surađujemo s provjerenim profesionalnim brendovima. To nam omogućuje da odradimo temeljit posao',
   clientPerk: {
     title: 'Popust na opremu za naše klijente',
     shortText:
@@ -167,8 +207,7 @@ export const PARTNERS = {
       'Klijentima koji su kod nas obavili barem jedno čišćenje šaljemo kodove za popust na odabrane proizvode Kärcher, Vileda i 3M. Korisno ako želite održavati stan između naših dolazaka.',
     eligibility:
       'Vrijedi nakon prvog obavljenog čišćenja — redovnog, jednokratnog ili generalnog.',
-    delivery:
-      'Kodove šaljemo na WhatsApp u roku od 24 sata nakon posla.',
+    delivery: 'Kodove šaljemo na WhatsApp u roku od 24 sata nakon posla.',
     validity: 'Kodovi vrijede 60 dana od datuma čišćenja.',
     note: 'Popust vrijedi na online kupnju kod ovlaštenih distributera u Hrvatskoj, na odabrane proizvode. Ne kombinira se s drugim akcijama.',
   },
@@ -178,7 +217,8 @@ export const PARTNERS = {
     description:
       'Za profesionalnu opremu surađujemo s ovlaštenim Kärcher centrom u Zagrebu. U dućanu partnera možete pogledati usisivače, paročistače i perače — a naši klijenti mogu iskoristiti partnerski popust na kućne uređaje.',
     image: '/partners/karcher-store-zagreb.jpg',
-    imageAlt: 'Kärcher centar partnera u Zagrebu — profesionalna oprema za čišćenje',
+    imageAlt:
+      'Kärcher centar partnera u Zagrebu — profesionalna oprema za čišćenje',
     address: 'Slavonska avenija 71',
     city: '10000 Zagreb (Sesvete)',
     hours: 'Pon–pet 8–16 h · Sub 8–13 h',
