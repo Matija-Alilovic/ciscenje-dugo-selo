@@ -4,8 +4,8 @@ import { getPhoneHref } from "@/lib/utils";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-gray-50">
-      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
+    <footer className="border-t border-gray-200/80 bg-surface/85 backdrop-blur-sm">
+      <div className="mx-auto max-w-5xl px-4 py-12 pb-[calc(3rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:pb-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
             <p className="font-heading text-xl font-bold text-gray-900">{SITE.name}</p>

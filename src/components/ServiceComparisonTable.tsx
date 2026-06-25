@@ -25,7 +25,7 @@ export default function ServiceComparisonTable() {
           {SERVICE_COMPARISON.map((row) => (
             <div key={row.label} className="rounded-lg border border-gray-200 p-3">
               <p className="font-medium text-gray-900">{row.label}</p>
-              <div className="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
+              <div className="mt-3 grid grid-cols-3 gap-1.5 text-center text-[11px] sm:gap-2 sm:text-xs">
                 <div>
                   <p className="mb-1 font-semibold text-brand-700">Redovno</p>
                   <CellValue value={row.redovno} />

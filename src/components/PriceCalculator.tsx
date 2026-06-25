@@ -22,7 +22,8 @@ import {
   saveCalculatorPrefill,
   scrollToContact,
 } from "@/lib/calculatorPrefill";
-import { cn, openWhatsApp } from "@/lib/utils";
+import { cn, getPhoneHref, openWhatsApp } from "@/lib/utils";
+import { CALCULATOR_DURATION_HINT } from "@/lib/constants";
 
 const FULL_STEPS = [
   "Vrsta čišćenja",
@@ -404,16 +405,22 @@ export default function PriceCalculator() {
 
         <p className="rounded-lg border border-gray-200 bg-surface px-4 py-3 text-sm leading-relaxed text-gray-600">
           Ovo je orientacijska procjena — konačna cijena ovisi o detaljima koje vidimo na
-          licu mjesta. Pošaljite upit i potvrdit ćemo cijenu prije dolaska.
+          licu mjesta. Potvrdit ćemo cijenu prije dolaska, bez iznenađenja.
         </p>
 
-        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          <button type="button" onClick={handleWhatsApp} className="btn-primary w-full sm:w-auto">
-            Pošalji procjenu na WhatsApp
-          </button>
-          <button type="button" onClick={handleContactForm} className="btn-outline w-full sm:w-auto">
-            Nastavi u kontakt formi
-          </button>
+        <div className="space-y-3">
+          <p className="text-sm font-semibold text-gray-800">Što dalje?</p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <button type="button" onClick={handleWhatsApp} className="btn-primary w-full sm:w-auto">
+              Pošalji procjenu na WhatsApp
+            </button>
+            <button type="button" onClick={handleContactForm} className="btn-outline w-full sm:w-auto">
+              Nastavi u kontakt formi
+            </button>
+            <a href={getPhoneHref()} className="btn-muted w-full text-center sm:w-auto">
+              Nazovi
+            </a>
+          </div>
         </div>
       </div>
     );
@@ -433,7 +440,8 @@ export default function PriceCalculator() {
           Kalkulator cijene
         </p>
         <p className="mt-1 text-sm text-gray-600 sm:text-base">
-          Odgovorite na nekoliko pitanja — dobit ćete okvirnu cijenu u rasponu.
+          Odgovorite na nekoliko pitanja — dobit ćete okvirnu cijenu u rasponu.{" "}
+          <span className="font-medium text-brand-700">{CALCULATOR_DURATION_HINT}</span>
         </p>
         <p className="mt-3 text-sm font-semibold text-brand-800 sm:hidden">
           Korak {step + 1} od {steps.length}: {steps[step]}

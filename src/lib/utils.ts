@@ -1,4 +1,5 @@
 import { getPhoneNumber, getWhatsAppNumber } from "./site";
+import { showToast } from "./toast";
 
 export function getPhoneHref() {
   return `tel:${getPhoneNumber().replace(/\s/g, "")}`;
@@ -17,6 +18,12 @@ export function openWhatsApp(message: string) {
   const url = getWhatsAppHref(message);
 
   if (typeof window === "undefined") return;
+
+  showToast({
+    message: "Otvara se WhatsApp…",
+    href: url,
+    hrefLabel: "Ako se ne otvori, klikni ovdje",
+  });
 
   const link = document.createElement("a");
   link.href = url;

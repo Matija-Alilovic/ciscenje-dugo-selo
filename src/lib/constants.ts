@@ -10,6 +10,8 @@ export const SITE = {
   tagline: 'Dugo Selo i okolica',
 } as const;
 
+export const CALCULATOR_DURATION_HINT = 'Procjena u ~1 min';
+
 export const COMPANY = {
   legalName: 'Obrt za usluge čišćenja Čišćenje Dugo Selo',
   name: 'Čišćenje Dugo Selo',

@@ -91,6 +91,36 @@
   }
 }
 
+@keyframes ambient-float-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(3%, 2%) scale(1.04);
+  }
+}
+
+@keyframes ambient-float-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-2%, 3%) scale(1.03);
+  }
+}
+
+@keyframes ambient-float-c {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2%, -2%);
+  }
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
@@ -146,11 +176,121 @@ h3 {
 }
 
 body {
-  @apply overflow-x-hidden bg-gray-50 text-gray-800 leading-relaxed;
+  @apply overflow-x-hidden text-gray-800 leading-relaxed;
+  min-height: 100dvh;
+  background-color: var(--color-gray-50);
   font-optical-sizing: auto;
   transition:
     background-color 0.28s ease,
     color 0.28s ease;
+}
+
+.page-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.page-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  will-change: transform;
+}
+
+.page-ambient-glow--primary {
+  top: -12%;
+  left: -8%;
+  width: min(92vw, 680px);
+  height: min(92vw, 680px);
+  background: color-mix(in srgb, var(--color-brand-200) 75%, transparent);
+  opacity: 0.55;
+}
+
+.page-ambient-glow--secondary {
+  top: 38%;
+  right: -14%;
+  width: min(72vw, 520px);
+  height: min(72vw, 520px);
+  background: color-mix(in srgb, var(--color-brand-100) 90%, var(--color-gray-100));
+  opacity: 0.45;
+}
+
+.page-ambient-glow--accent {
+  bottom: -8%;
+  left: 28%;
+  width: min(64vw, 440px);
+  height: min(64vw, 440px);
+  background: color-mix(in srgb, var(--color-brand-50) 95%, white);
+  opacity: 0.5;
+}
+
+.dark .page-ambient-glow--primary {
+  background: color-mix(in srgb, var(--color-brand-600) 35%, transparent);
+  opacity: 0.28;
+}
+
+.dark .page-ambient-glow--secondary {
+  background: color-mix(in srgb, var(--color-brand-500) 22%, transparent);
+  opacity: 0.22;
+}
+
+.dark .page-ambient-glow--accent {
+  background: color-mix(in srgb, var(--color-brand-400) 12%, transparent);
+  opacity: 0.18;
+}
+
+.page-ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--color-brand-600) 7%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-brand-600) 7%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 15%, black 15%, transparent 72%);
+  opacity: 0.32;
+}
+
+.dark .page-ambient-grid {
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--color-brand-400) 10%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-brand-400) 10%, transparent) 1px,
+      transparent 1px
+    );
+  opacity: 0.2;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .page-ambient-glow--primary {
+    animation: ambient-float-a 28s ease-in-out infinite;
+  }
+
+  .page-ambient-glow--secondary {
+    animation: ambient-float-b 34s ease-in-out infinite;
+  }
+
+  .page-ambient-glow--accent {
+    animation: ambient-float-c 22s ease-in-out infinite;
+  }
+}
+
+body > :not(.page-ambient) {
+  position: relative;
+  z-index: 1;
 }
 
 .reveal {
@@ -204,6 +344,10 @@ body {
     animation: none;
   }
 
+  .page-ambient-glow {
+    animation: none !important;
+  }
+
   .card-modern,
   .mesh-bg,
   .section-alt,
@@ -221,11 +365,43 @@ body {
 
   header {
     transition: none;
+    backdrop-filter: none;
+    @apply bg-surface/96;
+  }
+
+  .card-modern {
+    @apply bg-surface backdrop-blur-none;
+  }
+
+  .section-alt {
+    backdrop-filter: none;
+    background-color: color-mix(in srgb, var(--color-gray-100) 92%, transparent);
+  }
+
+  .section-surface {
+    @apply bg-surface/92 backdrop-blur-none;
+  }
+
+  .page-ambient-glow {
+    filter: blur(52px);
+    opacity: 0.38;
+  }
+
+  .page-ambient-grid {
+    opacity: 0.22;
+  }
+
+  .btn-primary,
+  .btn-outline,
+  .btn-muted,
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
 .card-modern {
-  @apply rounded-lg border border-gray-200 bg-surface shadow-sm;
+  @apply rounded-lg border border-gray-200/90 bg-surface/95 shadow-sm backdrop-blur-sm;
   transition:
     background-color 0.28s ease,
     border-color 0.28s ease,
@@ -309,29 +485,38 @@ details[open] .faq-body {
 }
 
 .mesh-bg {
-  background: linear-gradient(180deg, #f0f8f3 0%, #faf8f4 100%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-brand-50) 55%, transparent) 0%,
+    transparent 100%
+  );
   transition: background 0.28s ease;
 }
 
 .dark .mesh-bg {
-  background: linear-gradient(180deg, #151f1a 0%, #121614 100%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-brand-50) 50%, transparent) 0%,
+    transparent 100%
+  );
 }
 
 .section-alt {
-  background-color: #f3ede4;
+  background-color: color-mix(in srgb, var(--color-gray-100) 72%, transparent);
+  backdrop-filter: blur(10px);
   transition: background-color 0.28s ease;
 }
 
 .dark .section-alt {
-  background-color: #1a201d;
+  background-color: color-mix(in srgb, var(--color-gray-100) 55%, transparent);
 }
 
 .section-surface {
-  @apply bg-surface/60 transition-colors duration-300;
+  @apply bg-surface/75 backdrop-blur-sm transition-colors duration-300;
 }
 
 .mobile-safe-bottom {
-  padding-bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -469,5 +654,9 @@ details[open] .faq-body {
   .hero-fade {
     opacity: 1;
     animation: none;
+  }
+
+  .page-ambient-glow {
+    animation: none !important;
   }
 }

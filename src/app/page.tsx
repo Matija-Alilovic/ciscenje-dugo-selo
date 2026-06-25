@@ -79,11 +79,7 @@ export default function HomePage() {
         <Section title="Kako radimo" className="section-alt">
           <Steps />
         </Section>
-        <Section
-          id="o-nama"
-          title="O nama"
-          subtitle="Obrt iz Dugog Sela s timom koji dolazi na vrijeme i s profesionalnom opremom."
-        >
+        <Section id="o-nama" title="O nama" subtitle="">
           <AboutSection />
         </Section>
         <Section

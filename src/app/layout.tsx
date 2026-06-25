@@ -6,6 +6,9 @@ import { getSiteUrl } from "@/lib/site";
 import { SEO_KEYWORDS } from "@/lib/seo";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import CustomCursor from "@/components/CustomCursor";
+import Toast from "@/components/Toast";
+import BackToTop from "@/components/BackToTop";
+import PageBackground from "@/components/PageBackground";
 import "./globals.css";
 
 const sourceSans = Source_Sans_3({
@@ -114,8 +117,11 @@ export default function RootLayout({
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>
+        <PageBackground />
         <ThemeProvider>
           <CustomCursor />
+          <Toast />
+          <BackToTop />
           {children}
         </ThemeProvider>
       </body>
