@@ -1,0 +1,16 @@
+import { SITE } from "./constants";
+
+export function getSiteUrl(): string {
+  const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+  if (fromEnv) return fromEnv;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return SITE.url;
+}
+
+export function getPhoneNumber(): string {
+  return process.env.NEXT_PUBLIC_PHONE ?? SITE.phone;
+}
+
+export function getWhatsAppNumber(): string {
+  return (process.env.NEXT_PUBLIC_WHATSAPP ?? SITE.whatsapp).replace(/\D/g, "");
+}

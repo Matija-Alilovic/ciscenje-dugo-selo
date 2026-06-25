@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Lora, Source_Sans_3 } from "next/font/google";
 import { SITE } from "@/lib/constants";
+import { getSiteUrl } from "@/lib/site";
 import { SEO_KEYWORDS } from "@/lib/seo";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import CustomCursor from "@/components/CustomCursor";
@@ -47,7 +48,7 @@ export const viewport = {
 } as const;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: "Čišćenje stanova i kuća Dugo Selo",
     template: "%s | Čišćenje stanova i kuća Dugo Selo",
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
   description:
     "Čišćenje stanova i kuća u Dugom Selu i okolici. Redovno, jednokratno i generalno čišćenje te pranje prozora.",
   keywords: [...SEO_KEYWORDS],
-  authors: [{ name: SITE.name, url: SITE.url }],
+  authors: [{ name: SITE.name, url: getSiteUrl() }],
   creator: SITE.name,
   publisher: SITE.name,
   category: "Usluge čišćenja",
@@ -73,7 +74,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: SITE.locale,
     siteName: SITE.name,
-    url: SITE.url,
+    url: getSiteUrl(),
     title: "Čišćenje stanova i kuća Dugo Selo",
     description:
       "Čišćenje stanova i kuća u Dugom Selu i okolici. Redovno, jednokratno i generalno čišćenje te pranje prozora.",

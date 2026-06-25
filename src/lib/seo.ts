@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE } from "./constants";
+import { getSiteUrl } from "./site";
 
 export const SEO_KEYWORDS = [
   "čišćenje stanova Dugo Selo",
@@ -27,10 +28,11 @@ type PageMetadataOptions = {
 };
 
 export function absoluteUrl(path: string) {
+  const base = getSiteUrl();
   if (path === "/" || path === "") {
-    return SITE.url;
+    return base;
   }
-  return `${SITE.url}${path.startsWith("/") ? path : `/${path}`}`;
+  return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
 export function createPageMetadata({

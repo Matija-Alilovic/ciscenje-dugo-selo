@@ -186,8 +186,11 @@ export default function ContactForm() {
         />
       </div>
       <button type="submit" className="btn-primary w-full sm:w-auto">
-        Pošalji upit
+        Pošalji upit na WhatsApp
       </button>
+      <p className="text-sm text-gray-500">
+        Otvara se WhatsApp s porukom — dopunite je ili pošaljite odmah.
+      </p>
     </form>
   );
 }

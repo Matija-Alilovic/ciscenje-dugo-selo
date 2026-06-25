@@ -1,7 +1,7 @@
-import { SITE } from "./constants";
+import { getPhoneNumber, getWhatsAppNumber } from "./site";
 
 export function getPhoneHref() {
-  return `tel:${SITE.phone}`;
+  return `tel:${getPhoneNumber().replace(/\s/g, "")}`;
 }
 
 export function getWhatsAppHref(message?: string) {
@@ -10,7 +10,21 @@ export function getWhatsAppHref(message?: string) {
     : encodeURIComponent(
         "Pozdrav, zanima me čišćenje u Dugom Selu. Bio bih prvi put kod vas — imate li popust na prvi dolazak?",
       );
-  return `https://wa.me/${SITE.whatsapp.replace(/\D/g, "")}?text=${text}`;
+  return `https://wa.me/${getWhatsAppNumber()}?text=${text}`;
+}
+
+export function openWhatsApp(message: string) {
+  const url = getWhatsAppHref(message);
+
+  if (typeof window === "undefined") return;
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
 }
 
 export function buildWhatsAppInquiryMessage(data: {
@@ -40,10 +54,6 @@ export function buildWhatsAppInquiryMessage(data: {
   }
 
   return lines.join("\n");
-}
-
-export function openWhatsApp(message: string) {
-  window.open(getWhatsAppHref(message), "_blank", "noopener,noreferrer");
 }
 
 export function cn(...classes: (string | false | null | undefined)[]) {

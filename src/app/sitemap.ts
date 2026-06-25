@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE } from "@/lib/constants";
+import { getSiteUrl } from "@/lib/site";
 
 const ROUTES: {
   path: string;
@@ -15,9 +15,10 @@ const ROUTES: {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
+  const siteUrl = getSiteUrl();
 
   return ROUTES.map(({ path, changeFrequency, priority }) => ({
-    url: `${SITE.url}${path}`,
+    url: `${siteUrl}${path}`,
     lastModified,
     changeFrequency,
     priority,

@@ -6,20 +6,23 @@ import {
   SITE,
 } from "./constants";
 import { absoluteUrl } from "./seo";
+import { getPhoneNumber, getSiteUrl } from "./site";
 
-const BUSINESS_ID = `${SITE.url}/#business`;
+function businessId() {
+  return `${getSiteUrl()}/#business`;
+}
 
 export function getLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "HousekeepingService"],
-    "@id": BUSINESS_ID,
+    "@id": businessId(),
     name: COMPANY.name,
     legalName: COMPANY.legalName,
     description:
       `Profesionalno čišćenje stanova i kuća u Dugom Selu i okolici. Tim od ${COMPANY.employees} zaposlenih. Redovno, jednokratno i generalno čišćenje te pranje prozora.`,
-    url: SITE.url,
-    telephone: SITE.phone,
+    url: getSiteUrl(),
+    telephone: getPhoneNumber(),
     priceRange: "€€",
     currenciesAccepted: "EUR",
     paymentAccepted: "Cash, Bank Transfer",
@@ -69,7 +72,7 @@ export function getLocalBusinessSchema() {
           "@type": "Service",
           name: item.service,
           description: item.note ?? item.service,
-          provider: { "@id": BUSINESS_ID },
+          provider: { "@id": businessId() },
           areaServed: "Dugo Selo i okolica",
         },
       })),
@@ -87,13 +90,13 @@ export function getWebSiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": `${SITE.url}/#website`,
+    "@id": `${getSiteUrl()}/#website`,
     name: SITE.name,
-    url: SITE.url,
+    url: getSiteUrl(),
     inLanguage: "hr-HR",
     description:
       "Čišćenje stanova i kuća u Dugom Selu i okolici. Cjenik, kalkulator cijene i kontakt na jednom mjestu.",
-    publisher: { "@id": BUSINESS_ID },
+    publisher: { "@id": businessId() },
   };
 }
 
@@ -144,7 +147,7 @@ export function getServiceSchema({ name, description, path }: ServiceSchemaInput
     description,
     url: absoluteUrl(path),
     serviceType: name,
-    provider: { "@id": BUSINESS_ID },
+    provider: { "@id": businessId() },
     areaServed: {
       "@type": "GeoCircle",
       geoMidpoint: {

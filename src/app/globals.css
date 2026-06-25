@@ -207,12 +207,20 @@ body {
   @apply border-brand-200;
 }
 
+.letter-hover {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.3em;
+  row-gap: 0.05em;
+  max-width: 100%;
+}
+
 .letter-hover-word {
   white-space: nowrap;
 }
 
 .letter-hover-word:not(:last-child) {
-  margin-inline-end: 0.3em;
+  margin-inline-end: 0;
 }
 
 @media (hover: hover) and (pointer: fine) {

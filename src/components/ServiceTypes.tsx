@@ -1,8 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import { SERVICE_TYPES } from "@/lib/constants";
-import { openCalculatorWithType } from "@/lib/calculatorPrefill";
+import CalculatorTypeButton from "./CalculatorTypeButton";
 import Reveal from "./Reveal";
 
 export default function ServiceTypes() {
@@ -26,13 +24,7 @@ export default function ServiceTypes() {
                 {type.price}
               </p>
             </Link>
-            <button
-              type="button"
-              onClick={() => openCalculatorWithType(type.calculatorType)}
-              className="btn-outline mt-4 w-full"
-            >
-              Izračunaj cijenu za ovo
-            </button>
+            <CalculatorTypeButton type={type.calculatorType} />
           </article>
         </Reveal>
       ))}

@@ -198,35 +198,33 @@ export const ABOUT_US = {
 
 export const PARTNERS = {
   intro:
-    'Za opremu i sredstva za čišćenje surađujemo s provjerenim profesionalnim brendovima. To nam omogućuje da odradimo temeljit posao',
+    'Za opremu i sredstva za čišćenje surađujemo s provjerenim profesionalnim brendovima',
   clientPerk: {
     title: 'Popust na opremu za naše klijente',
     shortText:
       'Nakon obavljenog čišćenja možete iskoristiti popuste kod naših suradnika na kućnu opremu i pribor.',
     description:
-      'Klijentima koji su kod nas obavili barem jedno čišćenje šaljemo kodove za popust na odabrane proizvode Kärcher, Vileda i 3M. Korisno ako želite održavati stan između naših dolazaka.',
-    eligibility:
-      'Vrijedi nakon prvog obavljenog čišćenja — redovnog, jednokratnog ili generalnog.',
-    delivery: 'Kodove šaljemo na WhatsApp u roku od 24 sata nakon posla.',
-    validity: 'Kodovi vrijede 60 dana od datuma čišćenja.',
-    note: 'Popust vrijedi na online kupnju kod ovlaštenih distributera u Hrvatskoj, na odabrane proizvode. Ne kombinira se s drugim akcijama.',
+      'Klijentima koji su kod nas obavili barem jedno čišćenje šaljemo kod za popust na odabrane proizvode Kärcher, Vileda i 3M.',
+    eligibility: 'Vrijedi nakon prvog obavljenog čišćenja',
+    delivery: 'Kod šaljemo na WhatsApp u roku od 24 sata nakon posla.',
+    validity: 'Kod vrijedi 60 dana od datuma čišćenja.',
+    note: 'Popust vrijedi na online kupnju kod ovlaštenih distributera u Hrvatskoj, na odabrane proizvode.',
   },
   store: {
     title: 'Posjetite i dućan partnera',
-    badge: 'Partner · Kärcher centar Zagreb',
+    badge: 'Partner · Kärcher Center Zagreb',
     description:
-      'Za profesionalnu opremu surađujemo s ovlaštenim Kärcher centrom u Zagrebu. U dućanu partnera možete pogledati usisivače, paročistače i perače — a naši klijenti mogu iskoristiti partnerski popust na kućne uređaje.',
+      'Za profesionalnu opremu surađujemo s ovlaštenim Kärcher centrom. U dućanu partnera možete pogledati usisivače, paročistače i perače — a naši klijenti mogu iskoristiti partnerski popust na kućne uređaje.',
     image: '/partners/karcher-store-zagreb.jpg',
-    imageAlt:
-      'Kärcher centar partnera u Zagrebu — profesionalna oprema za čišćenje',
-    address: 'Slavonska avenija 71',
-    city: '10000 Zagreb (Sesvete)',
-    hours: 'Pon–pet 8–16 h · Sub 8–13 h',
-    href: 'https://karcher-servis-kosic.hr/',
-    cta: 'Dućan partnera',
+    imageAlt: 'Kärcher Center Zagreb — profesionalna oprema za čišćenje',
+    address: 'Samoborska cesta 169A',
+    city: '10090 Zagreb',
+    hours: 'Pon–pet 8–18 h',
+    href: 'https://www.kaercher.com/hr/servisi/podrska/kaercher-centri/kaercher-center-zagreb.html',
+    cta: 'Kärcher Center Zagreb',
     mapsLabel: 'Otvori na karti',
     mapsHref:
-      'https://www.google.com/maps/search/?api=1&query=K%C3%A4rcher+Centar+Servis+Ko%C5%A1i%C4%87+Slavonska+avenija+71+Zagreb',
+      'https://www.google.com/maps/search/?api=1&query=K%C3%A4rcher+Center+Zagreb+Samoborska+cesta+169A',
   },
   items: [
     {
