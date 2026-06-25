@@ -117,21 +117,6 @@ html.theme-switching *::after {
   html {
     scroll-behavior: auto;
   }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  .hero-fade {
-    opacity: 1;
-    animation: none;
-  }
-
-  .card-modern {
-    transition: none;
-  }
 }
 
 @media (min-width: 640px) {
@@ -154,10 +139,6 @@ body {
   transition:
     background-color 0.28s ease,
     color 0.28s ease;
-}
-
-.theme-toggle:active .theme-toggle-icon {
-  animation: var(--animate-theme-pulse);
 }
 
 .reveal {
@@ -194,6 +175,43 @@ body {
   animation-delay: 0.32s;
 }
 
+@media (max-width: 767px), ((hover: none) and (pointer: coarse)) {
+  html,
+  body {
+    transition: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero-fade {
+    opacity: 1;
+    animation: none;
+  }
+
+  .card-modern,
+  .mesh-bg,
+  .section-alt,
+  .section-surface {
+    transition: none;
+  }
+
+  .theme-toggle-icon {
+    transition: none !important;
+  }
+
+  .theme-toggle:active .theme-toggle-icon {
+    animation: none;
+  }
+
+  header {
+    transition: none;
+  }
+}
+
 .card-modern {
   @apply rounded-lg border border-gray-200 bg-surface shadow-sm;
   transition:
@@ -224,6 +242,10 @@ body {
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .theme-toggle:active .theme-toggle-icon {
+    animation: var(--animate-theme-pulse);
+  }
+
   .letter-hover-word {
     display: inline-block;
   }

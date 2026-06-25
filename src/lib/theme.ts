@@ -21,13 +21,21 @@ export function applyTheme(theme: Theme) {
 }
 
 export function transitionTheme(theme: Theme) {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isTouchViewport = window.matchMedia(
+    "(max-width: 767px), (hover: none) and (pointer: coarse)",
+  ).matches;
+
+  if (prefersReducedMotion || isTouchViewport) {
+    applyTheme(theme);
+    return;
+  }
+
   const root = document.documentElement;
   root.classList.add("theme-switching");
   applyTheme(theme);
 
   requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      root.classList.remove("theme-switching");
-    });
+    root.classList.remove("theme-switching");
   });
 }

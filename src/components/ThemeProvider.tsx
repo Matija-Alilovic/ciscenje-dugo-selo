@@ -28,10 +28,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const toggleTheme = useCallback(() => {
-    const next = theme === "light" ? "dark" : "light";
-    transitionTheme(next);
-    setTheme(next);
-  }, [theme]);
+    setTheme((current) => {
+      const next = current === "light" ? "dark" : "light";
+      transitionTheme(next);
+      return next;
+    });
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, mounted, toggleTheme }}>

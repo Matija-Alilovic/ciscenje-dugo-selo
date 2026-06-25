@@ -31,7 +31,7 @@ export default function Hero({
             <span>{area}</span>
           </p>
         )}
-        <h1 className="hero-fade hero-delay-2 group w-full min-w-0 max-w-3xl text-[1.75rem] font-bold leading-tight text-balance text-gray-900 dark:text-gray-900 sm:text-3xl md:text-5xl lg:text-[3.25rem]">
+        <h1 className="hero-fade hero-delay-2 group w-full min-w-0 max-w-3xl text-[1.75rem] font-bold leading-tight text-balance text-gray-900 sm:text-3xl md:text-5xl lg:text-[3.25rem]">
           <LetterHoverText text={title} delayStepMs={32} />
         </h1>
         <p className="hero-fade hero-delay-3 mt-4 max-w-2xl text-lg leading-relaxed text-gray-600 sm:mt-5 sm:text-2xl">
