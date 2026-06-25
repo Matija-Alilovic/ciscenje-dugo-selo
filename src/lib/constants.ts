@@ -189,7 +189,7 @@ export const ABOUT_US = {
   teamNote:
     'Na svaki posao dolaze naši radnici sa svojim sredstvima i profesionalnom opremom.',
   highlights: [
-    '6 zaposlenih u redovnom radu',
+    '6 zaposlenih',
     'Tim od 1 do 2 osobe po dolasku',
     'Radimo u Dugom Selu, Sesvetama, Vrbovcu i okolici',
     'Dogovorimo cijenu prije dolaska',

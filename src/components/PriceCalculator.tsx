@@ -35,8 +35,7 @@ const FULL_STEPS = [
 
 const WINDOW_STEPS = ["Vrsta čišćenja", "Prozori", "Okvirna cijena"] as const;
 
-const inputClassName =
-  "w-full rounded-lg border border-gray-300 px-4 py-2.5 text-base outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100";
+const inputClassName = "form-field";
 
 function FieldLabel({
   htmlFor,
@@ -49,10 +48,10 @@ function FieldLabel({
 }) {
   return (
     <div className="mb-1">
-      <label htmlFor={htmlFor} className="block text-base font-medium text-gray-700">
+      <label htmlFor={htmlFor} className="form-label">
         {children}
       </label>
-      {hint && <p className="mt-0.5 text-sm text-gray-500">{hint}</p>}
+      {hint && <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-600">{hint}</p>}
     </div>
   );
 }

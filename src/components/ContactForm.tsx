@@ -77,46 +77,25 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {fromCalculator && (
-        <p className="rounded-lg border border-brand-200 bg-brand-50 px-4 py-3 text-sm leading-relaxed text-brand-800">
+        <p className="rounded-lg border border-brand-200 bg-brand-50 px-4 py-3 text-sm leading-relaxed text-brand-800 dark:border-brand-200 dark:bg-brand-50/40 dark:text-brand-400">
           Podaci iz kalkulatora su uneseni u formu. Dopunite ime, mobitel i lokaciju pa
           pošaljite upit.
         </p>
       )}
       <div>
-        <label
-          htmlFor="ime"
-          className="mb-1 block text-base font-medium text-gray-700"
-        >
+        <label htmlFor="ime" className="form-label">
           Ime
         </label>
-        <input
-          id="ime"
-          name="ime"
-          type="text"
-          required
-          className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-base outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
-        />
+        <input id="ime" name="ime" type="text" required className="form-field" />
       </div>
       <div>
-        <label
-          htmlFor="mobitel"
-          className="mb-1 block text-base font-medium text-gray-700"
-        >
+        <label htmlFor="mobitel" className="form-label">
           Broj mobitela
         </label>
-        <input
-          id="mobitel"
-          name="mobitel"
-          type="tel"
-          required
-          className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-base outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
-        />
+        <input id="mobitel" name="mobitel" type="tel" required className="form-field" />
       </div>
       <div>
-        <label
-          htmlFor="lokacija"
-          className="mb-1 block text-base font-medium text-gray-700"
-        >
+        <label htmlFor="lokacija" className="form-label">
           Lokacija
         </label>
         <input
@@ -125,14 +104,11 @@ export default function ContactForm() {
           type="text"
           placeholder="npr. Dugo Selo, Sesvete..."
           required
-          className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-base outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+          className="form-field"
         />
       </div>
       <div>
-        <label
-          htmlFor="kvadratura"
-          className="mb-1 block text-base font-medium text-gray-700"
-        >
+        <label htmlFor="kvadratura" className="form-label">
           Kvadratura stana
         </label>
         <input
@@ -149,14 +125,11 @@ export default function ContactForm() {
             }
             setKvadratura(value);
           }}
-          className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-base outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+          className="form-field"
         />
       </div>
       <div>
-        <label
-          htmlFor="vrsta"
-          className="mb-1 block text-base font-medium text-gray-700"
-        >
+        <label htmlFor="vrsta" className="form-label">
           Vrsta čišćenja
         </label>
         <select
@@ -165,7 +138,7 @@ export default function ContactForm() {
           required
           value={vrsta}
           onChange={(e) => setVrsta(e.target.value)}
-          className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-base outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+          className="form-field"
         >
           <option value="">Odaberite...</option>
           {CLEANING_TYPES.map((type) => (
@@ -176,10 +149,7 @@ export default function ContactForm() {
         </select>
       </div>
       <div>
-        <label
-          htmlFor="poruka"
-          className="mb-1 block text-base font-medium text-gray-700"
-        >
+        <label htmlFor="poruka" className="form-label">
           Poruka
         </label>
         <textarea
@@ -189,13 +159,13 @@ export default function ContactForm() {
           placeholder="Kratko napišite što treba očistiti, stanje prostora, željeni termin..."
           value={poruka}
           onChange={(e) => setPoruka(e.target.value)}
-          className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-base outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+          className="form-field"
         />
       </div>
       <button type="submit" className="btn-primary w-full sm:w-auto">
         Pošalji upit na WhatsApp
       </button>
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-gray-500 dark:text-gray-600">
         Otvara se WhatsApp s porukom — dopunite je ili pošaljite odmah.
       </p>
     </form>

@@ -3,7 +3,9 @@ import Reveal from './Reveal';
 
 export default function AboutSection() {
   return (
-    <div className="max-w-3xl space-y-5">        <Reveal>
+    <div className="space-y-8">
+      <div className="max-w-3xl space-y-5">
+        <Reveal>
           <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-800 sm:text-xl">
             {ABOUT_US.intro}
           </p>
@@ -18,22 +20,24 @@ export default function AboutSection() {
             {ABOUT_US.teamNote}
           </p>
         </Reveal>
-        <Reveal delay={200}>
-          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {ABOUT_US.highlights.map((item) => (
-              <li
-                key={item}
-                className="card-modern flex items-start gap-3 p-4 text-base text-gray-700 dark:text-gray-800"
-              >
-                <span
-                  className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-600"
-                  aria-hidden="true"
-                />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
+      </div>
+
+      <Reveal delay={200}>
+        <ul className="mx-auto grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {ABOUT_US.highlights.map((item) => (
+            <li
+              key={item}
+              className="card-modern flex h-full min-h-[6.5rem] flex-col items-center justify-center gap-3 p-5 text-center text-base leading-snug text-gray-700 dark:text-gray-800"
+            >
+              <span
+                className="h-2.5 w-2.5 shrink-0 rounded-full bg-brand-600"
+                aria-hidden="true"
+              />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </Reveal>
     </div>
   );
 }
