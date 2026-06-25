@@ -1,7 +1,7 @@
 export const SITE = {
   name: 'Čišćenje Dugo Selo',
   serviceHeadline: 'Čišćenje stanova i kuća',
-  url: 'https://ciscenje-dugo-selo.hr',
+  url: 'https://www.ciscenje-dugo-selo.com',
   locale: 'hr_HR',
   phone: '+385976083278',
   phoneDisplay: '+385 97 608 3278',
