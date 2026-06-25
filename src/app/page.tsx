@@ -1,0 +1,138 @@
+import Header from '@/components/Header';
+import Reveal from '@/components/Reveal';
+import Footer from '@/components/Footer';
+import MobileStickyCTA from '@/components/MobileStickyCTA';
+import Hero from '@/components/Hero';
+import Section from '@/components/Section';
+import FirstVisitOffer from '@/components/FirstVisitOffer';
+import ServiceTypes from '@/components/ServiceTypes';
+import ServiceCards from '@/components/ServiceCards';
+import PricingTable from '@/components/PricingTable';
+import PriceCalculator from '@/components/PriceCalculator';
+import Checklist from '@/components/Checklist';
+import Steps from '@/components/Steps';
+import AboutSection from '@/components/AboutSection';
+import PartnersSection from '@/components/PartnersSection';
+import WhyUs from '@/components/WhyUs';
+import BeforeAfterSection from '@/components/BeforeAfterSection';
+import FAQ from '@/components/FAQ';
+import ContactSection from '@/components/ContactSection';
+import JsonLd from '@/components/JsonLd';
+import {
+  BASIC_CLEANING,
+  COMPANY,
+  DEEP_CLEANING,
+  INTRO_TEXT,
+} from '@/lib/constants';
+import { getHomePageSchemas } from '@/lib/schema';
+import { HOME_METADATA } from '@/lib/seo';
+
+export const metadata = HOME_METADATA;
+
+export default function HomePage() {
+  return (
+    <>
+      <JsonLd data={getHomePageSchemas()} />
+      <Header />
+      <main>
+        <Hero
+          title="Čišćenje stanova Dugo Selo"
+          subtitle="Čistimo stanove i kuće u Dugom Selu i okolici — redovno održavanje, jednokratni dolazak ili temeljito čišćenje."
+          highlightCalculator
+        />
+        <Section title="O usluzi">
+          <Reveal>
+            <p className="max-w-2xl text-lg leading-relaxed text-gray-700 sm:text-xl">
+              {INTRO_TEXT}
+            </p>
+          </Reveal>
+        </Section>
+        <Section
+          id="o-nama"
+          title="O nama"
+          subtitle={``}
+          className="section-alt"
+        >
+          <AboutSection />
+        </Section>
+        <Section
+          id="suradnici"
+          title="Naši suradnici"
+          subtitle="Profesionalni brendovi čiju opremu koristimo — a naši klijenti mogu iskoristiti i popuste na kućnu opremu."
+        >
+          <PartnersSection />
+        </Section>
+        <Section
+          id="vrste-ciscenja"
+          title="Koja vam treba usluga?"
+          subtitle="Tri vrste čišćenja razlikuju se po tome koliko često dolazimo i koliko detaljno čistimo."
+          className="section-alt"
+        >
+          <ServiceTypes />
+        </Section>
+        <Section
+          id="usluge"
+          title="Sve usluge"
+          subtitle="Osim stanova, čistimo i kuće, peremo prozore i dolazimo nakon selidbe."
+        >
+          <ServiceCards />
+        </Section>
+        <Section
+          id="kalkulator"
+          title="Kalkulator cijene"
+          subtitle="Odgovorite na pitanja o prostoru i usluzi — dobit ćete okvirnu cijenu prije nego nas kontaktirate."
+          className="section-alt"
+        >
+          <PriceCalculator />
+        </Section>
+        <Section id="cjenik" title="Cjenik" className="section-surface">
+          <div className="space-y-8">
+            <FirstVisitOffer />
+            <PricingTable />
+          </div>
+        </Section>
+        <Section
+          title="Što je uključeno u osnovno čišćenje"
+          subtitle="Ovo ulazi u redovno i jednokratno čišćenje."
+        >
+          <Checklist items={BASIC_CLEANING} />
+        </Section>
+        <Section
+          title="Što je uključeno u generalno čišćenje"
+          className="section-alt"
+        >
+          <Checklist items={DEEP_CLEANING} />
+        </Section>
+        <Section title="Kako radimo" className="section-alt">
+          <Steps />
+        </Section>
+        <Section title="Zašto odabrati">
+          <WhyUs />
+        </Section>
+        {/*
+        <Section
+          id="prije-poslije"
+          title="Prije i poslije"
+          subtitle="Kako prostor izgleda prije i poslije čišćenja."
+          className="section-alt"
+        >
+          <BeforeAfterSection />
+        </Section>
+        */}
+        <Section id="faq" title="Česta pitanja" className="section-surface">
+          <FAQ />
+        </Section>
+        <Section
+          id="kontakt"
+          title="Kontakt"
+          subtitle="Niste prošli kalkulator? Ispunite formu — ili nam se javite izravno."
+          className="section-surface"
+        >
+          <ContactSection />
+        </Section>
+      </main>
+      <Footer />
+      <MobileStickyCTA />
+    </>
+  );
+}
