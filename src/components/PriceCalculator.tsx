@@ -223,12 +223,17 @@ export default function PriceCalculator() {
             </FieldLabel>
             <input
               id="sqm"
-              type="number"
+              type="text"
               inputMode="numeric"
+              pattern="[0-9]*"
               min={20}
               max={400}
-              value={input.sqm}
-              onChange={(e) => updateInput({ sqm: Number(e.target.value) || 0 })}
+              placeholder="npr. 65"
+              value={input.sqm > 0 ? input.sqm : ""}
+              onChange={(e) => {
+                const digits = e.target.value.replace(/\D/g, "");
+                updateInput({ sqm: digits === "" ? 0 : Number(digits) });
+              }}
               className={inputClassName}
             />
           </div>
