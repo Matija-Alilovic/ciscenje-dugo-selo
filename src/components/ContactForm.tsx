@@ -141,7 +141,14 @@ export default function ContactForm() {
           type="text"
           placeholder="npr. 65 m²"
           value={kvadratura}
-          onChange={(e) => setKvadratura(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (/^\d+$/.test(value)) {
+              setKvadratura(value === "" ? "" : String(Number(value)));
+              return;
+            }
+            setKvadratura(value);
+          }}
           className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-base outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
         />
       </div>
