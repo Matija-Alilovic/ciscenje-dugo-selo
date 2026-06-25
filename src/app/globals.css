@@ -288,7 +288,8 @@ body {
   }
 }
 
-body > :not(.page-ambient) {
+main,
+footer {
   position: relative;
   z-index: 1;
 }
@@ -543,6 +544,10 @@ details[open] .faq-body {
 }
 
 .mobile-safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+body.mobile-safe-bottom.floating-cta-visible {
   padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
 }
 

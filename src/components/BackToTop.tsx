@@ -5,15 +5,32 @@ import { cn } from "@/lib/utils";
 
 export default function BackToTop() {
   const [visible, setVisible] = useState(false);
+  const [ctaVisible, setCtaVisible] = useState(false);
 
   useEffect(() => {
+    const hero = document.getElementById("hero");
+
     function onScroll() {
       setVisible(window.scrollY > 640);
     }
 
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    if (!hero) {
+      return () => window.removeEventListener("scroll", onScroll);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setCtaVisible(!entry.isIntersecting),
+      { threshold: 0, rootMargin: "0px 0px -20% 0px" },
+    );
+
+    observer.observe(hero);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer.disconnect();
+    };
   }, []);
 
   if (!visible) return null;
@@ -24,7 +41,9 @@ export default function BackToTop() {
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       className={cn(
         "fixed z-40 flex h-11 w-11 items-center justify-center rounded-lg border border-gray-300 bg-surface text-gray-700 shadow-sm",
-        "bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] left-4 md:bottom-6 md:left-auto md:right-6",
+        ctaVisible
+          ? "bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] left-4 md:left-auto md:right-6"
+          : "bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))] left-4 md:left-auto md:right-6",
         "hover:border-brand-300 hover:text-brand-700",
         "dark:border-gray-500 dark:text-gray-200 dark:hover:border-brand-400",
       )}

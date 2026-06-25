@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getPhoneHref, getWhatsAppHref } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { showToast } from "@/lib/toast";
 
 function notifyWhatsAppOpen(href: string) {
@@ -67,29 +69,64 @@ export function CTAButtons({
 }
 
 export default function MobileStickyCTA() {
+  const [visible, setVisible] = useState(false);
   const whatsappHref = getWhatsAppHref();
 
+  useEffect(() => {
+    const hero = document.getElementById("hero");
+
+    if (!hero) {
+      const onScroll = () => setVisible(window.scrollY > 320);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      return () => window.removeEventListener("scroll", onScroll);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(!entry.isIntersecting),
+      { threshold: 0, rootMargin: "0px 0px -20% 0px" },
+    );
+
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle("floating-cta-visible", visible);
+    return () => document.body.classList.remove("floating-cta-visible");
+  }, [visible]);
+
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-gray-300 bg-surface px-3 pt-3 shadow-sm transition-colors duration-300 md:hidden dark:border-gray-600 dark:shadow-black/30">
-      <div className="mx-auto flex max-w-lg gap-2 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))]">
+    <div
+      className={cn(
+        "fixed inset-x-0 bottom-0 z-50 border-t border-gray-300 bg-surface/95 px-3 pt-3 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md transition-[transform,opacity] duration-300 ease-out dark:border-gray-600 dark:shadow-black/40",
+        visible
+          ? "translate-y-0 opacity-100"
+          : "pointer-events-none translate-y-full opacity-0",
+      )}
+      aria-hidden={!visible}
+    >
+      <div className="mx-auto flex max-w-3xl gap-2 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] md:gap-3 md:pb-5 md:pt-1">
         <Link
           href="/#kalkulator"
-          className="btn-primary flex-1 px-2 py-3 text-center text-sm sm:text-base"
+          className="btn-primary flex-1 px-2 py-3 text-center text-sm md:px-4 md:text-base"
         >
-          Cijena
+          <span className="md:hidden">Cijena</span>
+          <span className="hidden md:inline">Izračunaj cijenu</span>
         </Link>
         <a
           href={whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => notifyWhatsAppOpen(whatsappHref)}
-          className="btn-outline flex-1 px-2 py-3 text-center text-sm sm:text-base"
+          className="btn-outline flex-1 px-2 py-3 text-center text-sm md:px-4 md:text-base"
         >
-          WhatsApp
+          <span className="md:hidden">WhatsApp</span>
+          <span className="hidden md:inline">Javi se na WhatsApp</span>
         </a>
         <a
           href={getPhoneHref()}
-          className="btn-muted flex-1 px-2 py-3 text-center text-sm sm:text-base"
+          className="btn-muted flex-1 px-2 py-3 text-center text-sm md:px-4 md:text-base"
         >
           Nazovi
         </a>

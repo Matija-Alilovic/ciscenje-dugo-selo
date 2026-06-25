@@ -111,7 +111,7 @@ export default function RootLayout({
   return (
     <html lang="hr" suppressHydrationWarning>
       <body
-        className={`${sourceSans.variable} ${lora.variable} mobile-safe-bottom font-sans antialiased md:pb-0`}
+        className={`${sourceSans.variable} ${lora.variable} mobile-safe-bottom font-sans antialiased`}
         suppressHydrationWarning
       >
         <Script id="theme-init" strategy="beforeInteractive">

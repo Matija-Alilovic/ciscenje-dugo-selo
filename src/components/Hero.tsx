@@ -16,7 +16,7 @@ export default function Hero({
   highlightCalculator = false,
 }: HeroProps) {
   return (
-    <section className="mesh-bg">
+    <section id="hero" className="mesh-bg">
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-20">
         <h1 className="hero-fade hero-delay-1 group w-full min-w-0 max-w-3xl text-[1.75rem] font-bold leading-tight text-balance text-gray-900 sm:text-3xl md:text-5xl lg:text-[3.25rem]">
           <LetterHoverText text={title} delayStepMs={32} />

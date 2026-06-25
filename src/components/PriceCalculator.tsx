@@ -35,6 +35,23 @@ const FULL_STEPS = [
 
 const WINDOW_STEPS = ["Vrsta čišćenja", "Prozori", "Okvirna cijena"] as const;
 
+const FULL_STEP_HINTS = [
+  "Odaberite uslugu — procjena traje oko minute.",
+  "Super početak! Još malo o prostoru.",
+  "Odlično napredujete.",
+  "Zadnji korak prije procjene!",
+] as const;
+
+const WINDOW_STEP_HINTS = [
+  "Odaberite uslugu — procjena traje oko minute.",
+  "Koliko prozora treba oprati?",
+] as const;
+
+function remainingStepsLabel(count: number) {
+  if (count === 1) return "Još 1 korak";
+  return `Još ${count} koraka`;
+}
+
 const inputClassName = "form-field";
 
 function FieldLabel({
@@ -90,6 +107,9 @@ export default function PriceCalculator() {
   const estimate = useMemo(() => calculatePrice(input), [input]);
   const isLastStep = step === steps.length - 1;
   const progress = ((step + 1) / steps.length) * 100;
+  const stepHints = isWindowsOnly ? WINDOW_STEP_HINTS : FULL_STEP_HINTS;
+  const stepHint = stepHints[Math.min(step, stepHints.length - 1)];
+  const stepsRemaining = steps.length - step - 1;
 
   useEffect(() => {
     function applyCleaningType(type: string) {
@@ -365,6 +385,21 @@ export default function PriceCalculator() {
   function renderResult() {
     return (
       <div className="space-y-5">
+        <div className="flex items-start gap-3 rounded-lg border border-brand-200 bg-brand-50 p-4 dark:border-brand-400/30 dark:bg-brand-50/10">
+          <span
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-600 text-lg font-bold text-white"
+            aria-hidden="true"
+          >
+            ✓
+          </span>
+          <div>
+            <p className="font-semibold text-brand-800 dark:text-brand-300">Procjena spremna!</p>
+            <p className="mt-0.5 text-sm text-gray-600 dark:text-gray-500">
+              Pošaljite je na WhatsApp ili nas nazovite — dogovorimo detalje bez obveze.
+            </p>
+          </div>
+        </div>
+
         {!isWindowsOnly && (
           <div>
             <FieldLabel>Prvi put kod nas?</FieldLabel>
@@ -442,8 +477,16 @@ export default function PriceCalculator() {
           Odgovorite na nekoliko pitanja — dobit ćete okvirnu cijenu u rasponu.{" "}
           <span className="font-medium text-brand-700">{CALCULATOR_DURATION_HINT}</span>
         </p>
-        <p className="mt-3 text-sm font-semibold text-brand-800 sm:hidden">
+        {!isLastStep && (
+          <p className="mt-2 text-sm font-medium text-brand-700 dark:text-brand-400">{stepHint}</p>
+        )}
+        <p className="mt-3 text-sm font-semibold text-brand-800 sm:hidden dark:text-brand-300">
           Korak {step + 1} od {steps.length}: {steps[step]}
+          {stepsRemaining > 0 && (
+            <span className="ml-1 font-normal text-brand-600 dark:text-brand-400">
+              · {remainingStepsLabel(stepsRemaining)}
+            </span>
+          )}
         </p>
         <div
           className="mt-3 h-2 w-full overflow-hidden rounded-full bg-gray-200"
@@ -458,22 +501,27 @@ export default function PriceCalculator() {
             style={{ width: `${progress}%` }}
           />
         </div>
-        <div className="mt-4 hidden flex-wrap gap-2 sm:flex">
+        <div className="mt-4 hidden flex-wrap items-center gap-2 sm:flex">
           {steps.map((label, index) => (
             <span
               key={label}
               className={cn(
-                "rounded-md px-2.5 py-1 text-sm font-medium",
+                "rounded-md px-2.5 py-1 text-sm font-medium transition-colors duration-300",
                 index === step
                   ? "bg-brand-600 text-white"
                   : index < step
-                    ? "bg-brand-100 text-brand-800"
+                    ? "bg-brand-100 text-brand-800 dark:bg-brand-50/20 dark:text-brand-300"
                     : "bg-surface text-gray-500",
               )}
             >
               {index + 1}. {label}
             </span>
           ))}
+          {!isLastStep && stepsRemaining > 0 && (
+            <span className="text-sm font-medium text-brand-600 dark:text-brand-400">
+              {remainingStepsLabel(stepsRemaining)}
+            </span>
+          )}
         </div>
       </div>
 
