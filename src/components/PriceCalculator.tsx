@@ -15,7 +15,6 @@ import {
   buildCalculatorWhatsAppMessage,
   calculatePrice,
   formatPriceRange,
-  getPriceProgress,
 } from "@/lib/priceCalculator";
 import {
   CALCULATOR_TYPE_EVENT,
@@ -24,9 +23,9 @@ import {
   saveCalculatorPrefill,
   scrollToContact,
 } from "@/lib/calculatorPrefill";
-import { broadcastCalculatorEstimate } from "@/lib/calculatorEstimate";
 import { cn, getPhoneHref, openWhatsApp } from "@/lib/utils";
 import { CALCULATOR_DURATION_HINT } from "@/lib/constants";
+import { playUiSound, areUiSoundsMuted, setUiSoundsMuted, unlockUiSounds } from "@/lib/uiSounds";
 
 const FULL_STEPS = [
   "Vrsta čišćenja",
@@ -85,10 +84,15 @@ function ChoiceButton({
   onClick: () => void;
   children: React.ReactNode;
 }) {
+  function handleClick() {
+    playUiSound(selected ? "tap" : "select");
+    onClick();
+  }
+
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={handleClick}
       className={cn(
         "rounded-lg border px-4 py-3.5 text-left text-base transition-colors min-h-11",
         selected
@@ -105,18 +109,41 @@ export default function PriceCalculator() {
   const [step, setStep] = useState(0);
   const [input, setInput] = useState<CalculatorInput>(DEFAULT_CALCULATOR_INPUT);
   const [pricePulse, setPricePulse] = useState(false);
+  const [soundsMuted, setSoundsMuted] = useState(false);
   const prevPriceKey = useRef("");
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const isWindowsOnly = input.cleaningType === "prozori";
   const steps = isWindowsOnly ? WINDOW_STEPS : FULL_STEPS;
   const estimate = useMemo(() => calculatePrice(input), [input]);
-  const priceProgress = useMemo(() => getPriceProgress(input), [input]);
   const priceLabel = formatPriceRange(estimate);
   const isLastStep = step === steps.length - 1;
   const progress = ((step + 1) / steps.length) * 100;
   const stepHints = isWindowsOnly ? WINDOW_STEP_HINTS : FULL_STEP_HINTS;
   const stepHint = stepHints[Math.min(step, stepHints.length - 1)];
   const stepsRemaining = steps.length - step - 1;
+
+  const prevStep = useRef(step);
+
+  useEffect(() => {
+    setSoundsMuted(areUiSoundsMuted());
+  }, []);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    const onPointerDown = () => unlockUiSounds();
+    card.addEventListener("pointerdown", onPointerDown, { passive: true });
+    return () => card.removeEventListener("pointerdown", onPointerDown);
+  }, []);
+
+  useEffect(() => {
+    if (isLastStep && prevStep.current !== step) {
+      playUiSound("success");
+    }
+    prevStep.current = step;
+  }, [isLastStep, step]);
 
   useEffect(() => {
     const priceKey = `${estimate.min}-${estimate.max}`;
@@ -127,10 +154,6 @@ export default function PriceCalculator() {
       return () => window.clearTimeout(timer);
     }
   }, [estimate.min, estimate.max]);
-
-  useEffect(() => {
-    broadcastCalculatorEstimate(estimate, priceProgress);
-  }, [estimate, priceProgress]);
 
   useEffect(() => {
     function applyCleaningType(type: string) {
@@ -171,20 +194,38 @@ export default function PriceCalculator() {
   }
 
   function goNext() {
-    setStep((current) => Math.min(current + 1, steps.length - 1));
+    const nextStep = Math.min(step + 1, steps.length - 1);
+    if (nextStep < steps.length - 1) {
+      playUiSound("step");
+    }
+    setStep(nextStep);
   }
 
   function goBack() {
+    playUiSound("back");
     setStep((current) => Math.max(current - 1, 0));
   }
 
   function handleWhatsApp() {
+    playUiSound("action");
     openWhatsApp(buildCalculatorWhatsAppMessage(input, estimate));
   }
 
   function handleContactForm() {
+    playUiSound("action");
     saveCalculatorPrefill(buildCalculatorPrefill(input, estimate));
     scrollToContact();
+  }
+
+  function toggleSounds() {
+    const nextMuted = !soundsMuted;
+    setSoundsMuted(nextMuted);
+    setUiSoundsMuted(nextMuted);
+
+    if (!nextMuted) {
+      unlockUiSounds();
+      playUiSound("tap");
+    }
   }
 
   function renderStep() {
@@ -446,7 +487,11 @@ export default function PriceCalculator() {
         <div className="space-y-3">
           <p className="text-sm font-semibold text-gray-800">Što dalje?</p>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <button type="button" onClick={handleWhatsApp} className="btn-primary w-full sm:w-auto">
+            <button
+              type="button"
+              onClick={handleWhatsApp}
+              className="btn-primary btn-cta-hint w-full sm:w-auto"
+            >
               Pošalji procjenu na WhatsApp
             </button>
             <button type="button" onClick={handleContactForm} className="btn-outline w-full sm:w-auto">
@@ -469,11 +514,33 @@ export default function PriceCalculator() {
     );
 
   return (
-    <div className="card-modern overflow-hidden">
+    <div ref={cardRef} className="card-modern overflow-hidden">
       <div className="border-b border-gray-200 bg-brand-50 px-4 py-4 sm:px-6">
-        <p className="text-sm font-semibold uppercase tracking-wide text-brand-700">
-          Kalkulator cijene
-        </p>
+        <div className="flex items-start justify-between gap-3">
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand-700">
+            Kalkulator cijene
+          </p>
+          <button
+            type="button"
+            onClick={toggleSounds}
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-brand-200 bg-surface text-brand-700 transition-colors hover:bg-brand-100 dark:border-brand-400/30 dark:hover:bg-brand-50/10"
+            aria-label={soundsMuted ? "Uključi zvukove" : "Isključi zvukove"}
+            aria-pressed={!soundsMuted}
+            title={soundsMuted ? "Uključi zvukove" : "Isključi zvukove"}
+          >
+            {soundsMuted ? (
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11 5L6 9H3v6h3l5 4V5z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 9l4 4m0-4l-4 4" />
+              </svg>
+            ) : (
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11 5L6 9H3v6h3l5 4V5z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.54 8.46a5 5 0 010 7.08M18.36 5.64a9 9 0 010 12.72" />
+              </svg>
+            )}
+          </button>
+        </div>
         <p className="mt-1 text-sm text-gray-600 sm:text-base">
           Odgovorite na nekoliko pitanja — dobit ćete okvirnu cijenu u rasponu.{" "}
           <span className="font-medium text-brand-700">{CALCULATOR_DURATION_HINT}</span>
@@ -519,20 +586,7 @@ export default function PriceCalculator() {
               {priceLabel}
             </p>
           </div>
-          <div
-            className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-gray-200"
-            role="progressbar"
-            aria-valuenow={priceProgress}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-label="Procjena cijene prema odabranim opcijama"
-          >
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-brand-400 to-brand-600 transition-[width] duration-500 ease-out"
-              style={{ width: `${priceProgress}%` }}
-            />
-          </div>
-          <p className="mt-1.5 text-xs text-gray-500 dark:text-gray-600">
+          <p className="mt-2 text-xs text-gray-500 dark:text-gray-600">
             Cijena se ažurira dok birate opcije — što više detalja, točnija procjena.
           </p>
         </div>

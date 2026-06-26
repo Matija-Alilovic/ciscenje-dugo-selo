@@ -6,11 +6,6 @@ import { getPhoneHref, getWhatsAppHref } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import { showToast } from "@/lib/toast";
 import CalculatorLink from "./CalculatorLink";
-import {
-  CALCULATOR_ESTIMATE_EVENT,
-  type CalculatorEstimateDetail,
-} from "@/lib/calculatorEstimate";
-import { formatPriceRange, type PriceEstimate } from "@/lib/priceCalculator";
 
 function notifyWhatsAppOpen(href: string) {
   showToast({
@@ -77,8 +72,8 @@ export function CTAButtons({
 export default function MobileStickyCTA() {
   const [visible, setVisible] = useState(false);
   const [calculatorInView, setCalculatorInView] = useState(false);
-  const [liveEstimate, setLiveEstimate] = useState<PriceEstimate | null>(null);
   const whatsappHref = getWhatsAppHref();
+  const showBar = visible && !calculatorInView;
 
   useEffect(() => {
     const hero = document.getElementById("hero");
@@ -105,7 +100,7 @@ export default function MobileStickyCTA() {
 
     const observer = new IntersectionObserver(
       ([entry]) => setCalculatorInView(entry.isIntersecting),
-      { threshold: 0.12, rootMargin: "-72px 0px -96px 0px" },
+      { threshold: 0.08, rootMargin: "-64px 0px -48px 0px" },
     );
 
     observer.observe(calculator);
@@ -113,59 +108,32 @@ export default function MobileStickyCTA() {
   }, []);
 
   useEffect(() => {
-    function onEstimate(event: Event) {
-      const detail = (event as CustomEvent<CalculatorEstimateDetail>).detail;
-      setLiveEstimate(detail.estimate);
-    }
-
-    window.addEventListener(CALCULATOR_ESTIMATE_EVENT, onEstimate);
-    return () => window.removeEventListener(CALCULATOR_ESTIMATE_EVENT, onEstimate);
-  }, []);
-
-  useEffect(() => {
-    document.body.classList.toggle("floating-cta-visible", visible);
-    document.documentElement.classList.toggle("floating-cta-visible", visible);
+    document.body.classList.toggle("floating-cta-visible", showBar);
+    document.documentElement.classList.toggle("floating-cta-visible", showBar);
     return () => {
       document.body.classList.remove("floating-cta-visible");
       document.documentElement.classList.remove("floating-cta-visible");
     };
-  }, [visible]);
-
-  const showLivePrice = calculatorInView && liveEstimate !== null;
-  const livePriceLabel = liveEstimate ? formatPriceRange(liveEstimate) : "";
+  }, [showBar]);
 
   return (
     <div
       id="mobile-sticky-cta"
       className={cn(
         "fixed inset-x-0 bottom-0 z-50 bg-surface/95 px-3 pt-3 shadow-[0_-8px_32px_rgba(0,0,0,0.12)] backdrop-blur-md transition-[transform,opacity] duration-300 ease-out dark:shadow-[0_-8px_32px_rgba(0,0,0,0.45)]",
-        visible
+        showBar
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-full opacity-0",
       )}
-      aria-hidden={!visible}
+      aria-hidden={!showBar}
     >
       <div className="mx-auto flex max-w-3xl gap-2 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] md:gap-3 md:pb-5 md:pt-1">
         <CalculatorLink
           href="/#kalkulator"
-          className="btn-primary flex min-w-0 flex-1 flex-col items-center justify-center px-2 py-2.5 text-center text-sm md:px-4 md:py-3 md:text-base"
-          aria-label={showLivePrice ? `Okvirna cijena ${livePriceLabel}` : "Izračunaj cijenu"}
+          className="btn-primary flex-1 px-2 py-3 text-center text-sm md:px-4 md:text-base"
         >
-          {showLivePrice ? (
-            <>
-              <span className="text-[10px] font-semibold uppercase tracking-wide opacity-90 md:text-xs">
-                Okvirno
-              </span>
-              <span className="truncate text-sm font-bold tabular-nums leading-tight md:text-base">
-                {livePriceLabel}
-              </span>
-            </>
-          ) : (
-            <>
-              <span className="md:hidden">Cijena</span>
-              <span className="hidden md:inline">Izračunaj cijenu</span>
-            </>
-          )}
+          <span className="md:hidden">Cijena</span>
+          <span className="hidden md:inline">Izračunaj cijenu</span>
         </CalculatorLink>
         <a
           href={whatsappHref}

@@ -91,6 +91,22 @@
   }
 }
 
+@keyframes cta-glow-pulse {
+  0%,
+  100% {
+    filter: brightness(1);
+    box-shadow:
+      0 0 0 0 rgba(45, 122, 78, 0.2),
+      0 4px 14px rgba(45, 122, 78, 0.18);
+  }
+  50% {
+    filter: brightness(1.18);
+    box-shadow:
+      0 0 0 4px rgba(45, 122, 78, 0.28),
+      0 0 28px 10px rgba(45, 122, 78, 0.42);
+  }
+}
+
 @keyframes ambient-float-a {
   0%,
   100% {
@@ -542,6 +558,49 @@ footer {
 
 .btn-primary {
   @apply inline-flex min-h-11 items-center justify-center rounded-lg bg-brand-600 px-6 py-3 text-base font-semibold text-white transition-colors duration-300 hover:bg-brand-700;
+}
+
+.btn-cta-hint {
+  animation: cta-glow-pulse 2.2s ease-in-out infinite;
+}
+
+.btn-cta-hint:hover,
+.btn-cta-hint:focus-visible,
+.btn-cta-hint:active {
+  animation: none;
+  filter: none;
+  box-shadow: none;
+}
+
+.dark .btn-cta-hint {
+  animation-name: cta-glow-pulse-dark;
+}
+
+@keyframes cta-glow-pulse-dark {
+  0%,
+  100% {
+    filter: brightness(1);
+    box-shadow:
+      0 0 0 0 rgba(111, 192, 138, 0.15),
+      0 4px 14px rgba(45, 122, 78, 0.22);
+  }
+  50% {
+    filter: brightness(1.28);
+    box-shadow:
+      0 0 0 4px rgba(111, 192, 138, 0.22),
+      0 0 32px 12px rgba(79, 168, 114, 0.38);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-cta-hint {
+    animation: none;
+    box-shadow: 0 0 0 3px rgba(45, 122, 78, 0.35);
+  }
+
+  .dark .btn-cta-hint {
+    box-shadow: 0 0 0 3px rgba(111, 192, 138, 0.3);
+  }
 }
 
 .btn-outline {
