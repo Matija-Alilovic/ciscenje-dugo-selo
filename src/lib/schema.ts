@@ -78,7 +78,6 @@ export function getLocalBusinessSchema() {
       })),
     },
     knowsAbout: SERVICE_TYPES.map((service) => service.title),
-    foundingDate: `${COMPANY.yearFounded}`,
   };
 }
 

@@ -21,7 +21,6 @@ export const COMPANY = {
   city: '10370 Dugo Selo',
   oib: '58472931608',
   mbo: '081234567',
-  yearFounded: 2019,
 } as const;
 
 export const INTRO_TEXT =
@@ -29,7 +28,7 @@ export const INTRO_TEXT =
 
 export const HERO_STATS = [
   'Dogovor cijene prije dolaska',
-  `Od ${COMPANY.yearFounded}.`,
+  'Radimo 8–22 h po dogovoru',
   'Dugo Selo i okolica',
 ] as const;
 
@@ -175,7 +174,7 @@ export const ABOUT_US = {
   intro:
     'Obrt iz Dugog Sela. Radimo od 8 do 22 h po dogovoru. Prije svakog dolaska dogovorimo što treba očistiti i koliko će to otprilike koštati.',
   story:
-    'Obrt Čišćenje Dugo Selo pokrenuli smo 2019. godine jer smo vidjeli da ljudima fali pouzdan tim koji dolazi na vrijeme i obavlja posao kvalitetno.',
+    'Čišćenje Dugo Selo nastalo je iz potrebe za pouzdanim timom koji dolazi na vrijeme i obavlja posao kvalitetno.',
   teamNote:
     'Na svaki posao dolaze naši radnici sa svojim sredstvima i profesionalnom opremom.',
   highlights: [
