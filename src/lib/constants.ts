@@ -22,14 +22,13 @@ export const COMPANY = {
   oib: '58472931608',
   mbo: '081234567',
   yearFounded: 2019,
-  employees: 6,
 } as const;
 
 export const INTRO_TEXT =
   'Za okvirnu cijenu najbrže krenite od online kalkulatora — u par minuta dobit ćete procjenu koju možete odmah poslati na WhatsApp ili u kontakt formu. Prije dolaska dogovorimo što treba očistiti, termin i točnu cijenu. Javite nam se i izravno ako vam je lakše.';
 
 export const HERO_STATS = [
-  `${COMPANY.employees} čistača u timu`,
+  'Dogovor cijene prije dolaska',
   `Od ${COMPANY.yearFounded}.`,
   'Dugo Selo i okolica',
 ] as const;
@@ -174,13 +173,12 @@ export const FOOTER_LINKS = [
 
 export const ABOUT_US = {
   intro:
-    'Obrt iz Dugog Sela s timom od 6 zaposlenih. Radimo od 8 do 22 h po dogovoru. Prije svakog dolaska dogovorimo što treba očistiti i koliko će to otprilike koštati.',
+    'Obrt iz Dugog Sela. Radimo od 8 do 22 h po dogovoru. Prije svakog dolaska dogovorimo što treba očistiti i koliko će to otprilike koštati.',
   story:
-    'Obrt Čišćenje Dugo Selo pokrenuli smo 2019. godine jer smo vidjeli da ljudima fali pouzdan tim koji dolazi na vrijeme, obavlja posao kvalitetno te ima dovoljno ljudi na terenu.',
+    'Obrt Čišćenje Dugo Selo pokrenuli smo 2019. godine jer smo vidjeli da ljudima fali pouzdan tim koji dolazi na vrijeme i obavlja posao kvalitetno.',
   teamNote:
     'Na svaki posao dolaze naši radnici sa svojim sredstvima i profesionalnom opremom.',
   highlights: [
-    '6 zaposlenih',
     'Tim od 1 do 2 osobe po dolasku',
     'Radimo u Dugom Selu, Sesvetama, Vrbovcu i okolici',
     'Dogovorimo cijenu prije dolaska',
@@ -372,7 +370,6 @@ export const STEPS = [
 ] as const;
 
 export const WHY_US = [
-  '6 zaposlenih u stalnom timu',
   'Na posao dolazi 1 do 3 čistača po potrebi',
   'Radimo u Dugom Selu i okolici',
   'Cijenu dogovorimo prije dolaska',
@@ -443,24 +440,29 @@ export const CLEANING_TYPES = [
 
 export type BeforeAfterItem = {
   title: string;
-  beforeSrc: string;
-  afterSrc: string;
+  src: string;
+  caption?: string;
 };
 
 export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
   {
     title: 'Kuhinja',
-    beforeSrc: '/gallery/kuhinja-prije.jpg',
-    afterSrc: '/gallery/kuhinja-poslije.jpg',
+    src: '/gallery/kuhinja-prije-poslije.png',
+    caption: 'Sudoper i radna površina — u jednoj slici lijevo prije, desno poslije čišćenja.',
   },
   {
-    title: 'Kupaonica',
-    beforeSrc: '/gallery/kupaonica-prije.jpg',
-    afterSrc: '/gallery/kupaonica-poslije.jpg',
+    title: 'Hladnjak',
+    src: '/gallery/hladnjak-prije-poslije.png',
+    caption: 'Čišćenje hladnjaka iznutra — uklonjene mrlje, naslage i nečistoće.',
   },
   {
-    title: 'Dnevni boravak',
-    beforeSrc: '/gallery/dnevni-boravak-prije.jpg',
-    afterSrc: '/gallery/dnevni-boravak-poslije.jpg',
+    title: 'Odvod i sifon',
+    src: '/gallery/odvod-prije-poslije.png',
+    caption: 'Dubinsko čišćenje odvoda, sifona i pripadajućih dijelova.',
+  },
+  {
+    title: 'Prostor nakon radova',
+    src: '/gallery/dnevni-boravak-prije-poslije.png',
+    caption: 'Uređenje i čišćenje prostora nakon radova ili prije useljenja.',
   },
 ];

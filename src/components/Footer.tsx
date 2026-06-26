@@ -69,7 +69,7 @@ export default function Footer() {
               <span className="mt-1 block">OIB: {COMPANY.oib}</span>
               <span className="block">MBO: {COMPANY.mbo}</span>
               <span className="mt-1 block text-sm text-gray-500">
-                Obrt je osnovan {COMPANY.yearFounded}. godine · {COMPANY.employees} zaposlenih
+                Obrt je osnovan {COMPANY.yearFounded}. godine
               </span>
             </address>
           </div>

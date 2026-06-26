@@ -13,6 +13,7 @@ import Steps from '@/components/Steps';
 import AboutSection from '@/components/AboutSection';
 import PartnersSection from '@/components/PartnersSection';
 import WhyUs from '@/components/WhyUs';
+import BeforeAfterSection from '@/components/BeforeAfterSection';
 import FAQ from '@/components/FAQ';
 import ContactSection from '@/components/ContactSection';
 import JsonLd from '@/components/JsonLd';
@@ -75,6 +76,12 @@ export default function HomePage() {
         </Section>
         <Section title="Kako radimo" className="section-alt">
           <Steps />
+        </Section>
+        <Section
+          title="Prije i poslije"
+          subtitle="Stvarni rezultati našeg rada — na svakoj slici lijevo je prije, desno poslije čišćenja."
+        >
+          <BeforeAfterSection />
         </Section>
         <Section id="o-nama" title="O nama" subtitle="">
           <AboutSection />

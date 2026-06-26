@@ -67,11 +67,13 @@ export function scrollToCalculator() {
   const calculator = document.getElementById("kalkulator");
   if (!calculator) return;
 
+  const target = calculator;
+
   function runScroll() {
     const { headerHeight, footerHeight } = getScrollChrome();
-    const rect = calculator.getBoundingClientRect();
+    const rect = target.getBoundingClientRect();
     const elementTop = window.scrollY + rect.top;
-    const elementHeight = calculator.offsetHeight;
+    const elementHeight = target.offsetHeight;
     const viewport = window.innerHeight;
     const availableHeight = viewport - headerHeight - footerHeight;
 

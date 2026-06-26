@@ -20,7 +20,7 @@ export function getLocalBusinessSchema() {
     name: COMPANY.name,
     legalName: COMPANY.legalName,
     description:
-      `Profesionalno čišćenje stanova i kuća u Dugom Selu i okolici. Tim od ${COMPANY.employees} zaposlenih. Redovno, jednokratno i generalno čišćenje te pranje prozora.`,
+      "Profesionalno čišćenje stanova i kuća u Dugom Selu i okolici. Redovno, jednokratno i generalno čišćenje te pranje prozora.",
     url: getSiteUrl(),
     telephone: getPhoneNumber(),
     priceRange: "€€",
@@ -79,10 +79,6 @@ export function getLocalBusinessSchema() {
     },
     knowsAbout: SERVICE_TYPES.map((service) => service.title),
     foundingDate: `${COMPANY.yearFounded}`,
-    numberOfEmployees: {
-      "@type": "QuantitativeValue",
-      value: COMPANY.employees,
-    },
   };
 }
 
