@@ -73,7 +73,7 @@ export default function BeforeAfterCard({ title, src, caption }: BeforeAfterCard
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           aria-label={`Uvećana fotografija — ${title}`}
