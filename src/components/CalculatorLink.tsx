@@ -8,6 +8,7 @@ type CalculatorLinkProps = {
   className?: string;
   children: React.ReactNode;
   onClick?: () => void;
+  "aria-label"?: string;
 };
 
 export default function CalculatorLink({
@@ -15,6 +16,7 @@ export default function CalculatorLink({
   className,
   children,
   onClick,
+  "aria-label": ariaLabel,
 }: CalculatorLinkProps) {
   const isHomeHash = href === "#kalkulator" || href === "/#kalkulator";
 
@@ -32,7 +34,7 @@ export default function CalculatorLink({
   }
 
   return (
-    <Link href={href} className={className} onClick={handleClick}>
+    <Link href={href} className={className} onClick={handleClick} aria-label={ariaLabel}>
       {children}
     </Link>
   );

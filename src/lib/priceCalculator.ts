@@ -197,10 +197,6 @@ function estimateHours(input: CalculatorInput) {
   return hours;
 }
 
-function usesSqmPricing(cleaningType: CleaningType) {
-  return cleaningType === "generalno" || cleaningType === "kuca" || cleaningType === "selidba";
-}
-
 export function calculatePrice(input: CalculatorInput): PriceEstimate {
   const rate = RATES[input.cleaningType];
   const centerHours = estimateHours(input);
@@ -250,6 +246,66 @@ export function calculatePrice(input: CalculatorInput): PriceEstimate {
     hoursMax: Math.round(hoursMax * 10) / 10,
     summary,
   };
+}
+
+function usesSqmPricing(cleaningType: CleaningType) {
+  return cleaningType === "generalno" || cleaningType === "kuca" || cleaningType === "selidba";
+}
+
+function baselineInput(cleaningType: CleaningType): CalculatorInput {
+  return {
+    cleaningType,
+    propertyType: "stan",
+    sqm: cleaningType === "prozori" ? 65 : 40,
+    rooms: 1,
+    bathrooms: 1,
+    condition: "obicno",
+    hasPets: false,
+    heavyKitchen: false,
+    hasBalcony: false,
+    oven: false,
+    fridge: false,
+    cabinets: false,
+    windows: cleaningType === "prozori" ? "unutra-malo" : "ne",
+  };
+}
+
+function peakInput(cleaningType: CleaningType): CalculatorInput {
+  return {
+    cleaningType,
+    propertyType: "kuca",
+    sqm: cleaningType === "prozori" ? 65 : 150,
+    rooms: 5,
+    bathrooms: 3,
+    condition: "jako",
+    hasPets: true,
+    heavyKitchen: true,
+    hasBalcony: true,
+    oven: true,
+    fridge: true,
+    cabinets: true,
+    windows: cleaningType === "prozori" ? "unutra-vani" : "unutra-vani",
+  };
+}
+
+function estimateMid(estimate: PriceEstimate) {
+  return (estimate.min + estimate.max) / 2;
+}
+
+export function formatPriceRange(estimate: PriceEstimate) {
+  return `${estimate.min}–${estimate.max} €`;
+}
+
+export function getPriceProgress(input: CalculatorInput) {
+  const current = estimateMid(calculatePrice(input));
+  const baseline = estimateMid(calculatePrice(baselineInput(input.cleaningType)));
+  const peak = estimateMid(calculatePrice(peakInput(input.cleaningType)));
+  const span = peak - baseline;
+
+  if (span <= 0) return 35;
+
+  const ratio = (current - baseline) / span;
+  return Math.round(Math.min(100, Math.max(12, ratio * 100)));
 }
 
 function getCleaningLabel(input: CalculatorInput) {

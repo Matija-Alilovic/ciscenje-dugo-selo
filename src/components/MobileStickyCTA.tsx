@@ -6,6 +6,11 @@ import { getPhoneHref, getWhatsAppHref } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import { showToast } from "@/lib/toast";
 import CalculatorLink from "./CalculatorLink";
+import {
+  CALCULATOR_ESTIMATE_EVENT,
+  type CalculatorEstimateDetail,
+} from "@/lib/calculatorEstimate";
+import { formatPriceRange, type PriceEstimate } from "@/lib/priceCalculator";
 
 function notifyWhatsAppOpen(href: string) {
   showToast({
@@ -71,6 +76,8 @@ export function CTAButtons({
 
 export default function MobileStickyCTA() {
   const [visible, setVisible] = useState(false);
+  const [calculatorInView, setCalculatorInView] = useState(false);
+  const [liveEstimate, setLiveEstimate] = useState<PriceEstimate | null>(null);
   const whatsappHref = getWhatsAppHref();
 
   useEffect(() => {
@@ -93,6 +100,29 @@ export default function MobileStickyCTA() {
   }, []);
 
   useEffect(() => {
+    const calculator = document.getElementById("kalkulator");
+    if (!calculator) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setCalculatorInView(entry.isIntersecting),
+      { threshold: 0.12, rootMargin: "-72px 0px -96px 0px" },
+    );
+
+    observer.observe(calculator);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    function onEstimate(event: Event) {
+      const detail = (event as CustomEvent<CalculatorEstimateDetail>).detail;
+      setLiveEstimate(detail.estimate);
+    }
+
+    window.addEventListener(CALCULATOR_ESTIMATE_EVENT, onEstimate);
+    return () => window.removeEventListener(CALCULATOR_ESTIMATE_EVENT, onEstimate);
+  }, []);
+
+  useEffect(() => {
     document.body.classList.toggle("floating-cta-visible", visible);
     document.documentElement.classList.toggle("floating-cta-visible", visible);
     return () => {
@@ -100,6 +130,9 @@ export default function MobileStickyCTA() {
       document.documentElement.classList.remove("floating-cta-visible");
     };
   }, [visible]);
+
+  const showLivePrice = calculatorInView && liveEstimate !== null;
+  const livePriceLabel = liveEstimate ? formatPriceRange(liveEstimate) : "";
 
   return (
     <div
@@ -115,10 +148,24 @@ export default function MobileStickyCTA() {
       <div className="mx-auto flex max-w-3xl gap-2 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] md:gap-3 md:pb-5 md:pt-1">
         <CalculatorLink
           href="/#kalkulator"
-          className="btn-primary flex-1 px-2 py-3 text-center text-sm md:px-4 md:text-base"
+          className="btn-primary flex min-w-0 flex-1 flex-col items-center justify-center px-2 py-2.5 text-center text-sm md:px-4 md:py-3 md:text-base"
+          aria-label={showLivePrice ? `Okvirna cijena ${livePriceLabel}` : "Izračunaj cijenu"}
         >
-          <span className="md:hidden">Cijena</span>
-          <span className="hidden md:inline">Izračunaj cijenu</span>
+          {showLivePrice ? (
+            <>
+              <span className="text-[10px] font-semibold uppercase tracking-wide opacity-90 md:text-xs">
+                Okvirno
+              </span>
+              <span className="truncate text-sm font-bold tabular-nums leading-tight md:text-base">
+                {livePriceLabel}
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="md:hidden">Cijena</span>
+              <span className="hidden md:inline">Izračunaj cijenu</span>
+            </>
+          )}
         </CalculatorLink>
         <a
           href={whatsappHref}

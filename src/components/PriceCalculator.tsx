@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   CALCULATOR_BATHROOM_OPTIONS,
   CALCULATOR_CLEANING_TYPES,
@@ -14,6 +14,8 @@ import {
   buildCalculatorPrefill,
   buildCalculatorWhatsAppMessage,
   calculatePrice,
+  formatPriceRange,
+  getPriceProgress,
 } from "@/lib/priceCalculator";
 import {
   CALCULATOR_TYPE_EVENT,
@@ -22,6 +24,7 @@ import {
   saveCalculatorPrefill,
   scrollToContact,
 } from "@/lib/calculatorPrefill";
+import { broadcastCalculatorEstimate } from "@/lib/calculatorEstimate";
 import { cn, getPhoneHref, openWhatsApp } from "@/lib/utils";
 import { CALCULATOR_DURATION_HINT } from "@/lib/constants";
 
@@ -101,15 +104,33 @@ function ChoiceButton({
 export default function PriceCalculator() {
   const [step, setStep] = useState(0);
   const [input, setInput] = useState<CalculatorInput>(DEFAULT_CALCULATOR_INPUT);
+  const [pricePulse, setPricePulse] = useState(false);
+  const prevPriceKey = useRef("");
 
   const isWindowsOnly = input.cleaningType === "prozori";
   const steps = isWindowsOnly ? WINDOW_STEPS : FULL_STEPS;
   const estimate = useMemo(() => calculatePrice(input), [input]);
+  const priceProgress = useMemo(() => getPriceProgress(input), [input]);
+  const priceLabel = formatPriceRange(estimate);
   const isLastStep = step === steps.length - 1;
   const progress = ((step + 1) / steps.length) * 100;
   const stepHints = isWindowsOnly ? WINDOW_STEP_HINTS : FULL_STEP_HINTS;
   const stepHint = stepHints[Math.min(step, stepHints.length - 1)];
   const stepsRemaining = steps.length - step - 1;
+
+  useEffect(() => {
+    const priceKey = `${estimate.min}-${estimate.max}`;
+    if (priceKey !== prevPriceKey.current) {
+      prevPriceKey.current = priceKey;
+      setPricePulse(true);
+      const timer = window.setTimeout(() => setPricePulse(false), 450);
+      return () => window.clearTimeout(timer);
+    }
+  }, [estimate.min, estimate.max]);
+
+  useEffect(() => {
+    broadcastCalculatorEstimate(estimate, priceProgress);
+  }, [estimate, priceProgress]);
 
   useEffect(() => {
     function applyCleaningType(type: string) {
@@ -480,6 +501,40 @@ export default function PriceCalculator() {
             className="h-full rounded-full bg-brand-600 transition-all duration-300 ease-out"
             style={{ width: `${progress}%` }}
           />
+        </div>
+
+        <div className="mt-4 rounded-lg border border-brand-200/80 bg-surface px-3 py-3 sm:px-4">
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-xs font-semibold uppercase tracking-wide text-brand-700 sm:text-sm">
+              Okvirno sada
+            </p>
+            <p
+              className={cn(
+                "text-lg font-bold tabular-nums text-gray-900 transition-transform duration-300 sm:text-xl dark:text-gray-900",
+                pricePulse && "scale-105 text-brand-700",
+              )}
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              {priceLabel}
+            </p>
+          </div>
+          <div
+            className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-gray-200"
+            role="progressbar"
+            aria-valuenow={priceProgress}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Procjena cijene prema odabranim opcijama"
+          >
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-brand-400 to-brand-600 transition-[width] duration-500 ease-out"
+              style={{ width: `${priceProgress}%` }}
+            />
+          </div>
+          <p className="mt-1.5 text-xs text-gray-500 dark:text-gray-600">
+            Cijena se ažurira dok birate opcije — što više detalja, točnija procjena.
+          </p>
         </div>
         <div className="mt-4 hidden flex-wrap items-center gap-2 sm:flex">
           {steps.map((label, index) => (
