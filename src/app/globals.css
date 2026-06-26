@@ -191,6 +191,12 @@ body {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  --mouse-x: 42%;
+  --mouse-y: 28%;
+  --mouse-x-2: 28%;
+  --mouse-y-2: 38%;
+  --mouse-x-3: 58%;
+  --mouse-y-3: 20%;
 }
 
 .page-ambient-glow {
@@ -275,6 +281,53 @@ body {
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .page-ambient--interactive .page-ambient-glow--primary {
+    top: var(--mouse-y);
+    left: var(--mouse-x);
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    animation: none;
+  }
+
+  .page-ambient--interactive .page-ambient-glow--secondary {
+    top: var(--mouse-y-2);
+    left: var(--mouse-x-2);
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    animation: none;
+  }
+
+  .page-ambient--interactive .page-ambient-glow--accent {
+    top: var(--mouse-y-3);
+    left: var(--mouse-x-3);
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    animation: none;
+  }
+
+  .page-ambient--interactive .page-ambient-grid {
+    mask-image: radial-gradient(
+      ellipse 48% 42% at var(--mouse-x) var(--mouse-y),
+      black 8%,
+      transparent 72%
+    );
+  }
+
+  .dark .page-ambient--interactive .page-ambient-glow--primary {
+    opacity: 0.38;
+  }
+
+  .dark .page-ambient--interactive .page-ambient-glow--secondary {
+    opacity: 0.28;
+  }
+
+  .dark .page-ambient--interactive .page-ambient-glow--accent {
+    opacity: 0.22;
+  }
+
   .page-ambient-glow--primary {
     animation: ambient-float-a 28s ease-in-out infinite;
   }
