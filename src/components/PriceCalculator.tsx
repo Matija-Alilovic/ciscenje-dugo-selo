@@ -469,9 +469,6 @@ export default function PriceCalculator() {
           <p className="mt-2 text-3xl font-bold text-gray-900 sm:text-4xl">
             {estimate.min}–{estimate.max} €
           </p>
-          <p className="mt-1 text-sm text-gray-600">
-            Okvirno vrijeme: {estimate.hoursMin}–{estimate.hoursMax} h
-          </p>
           <ul className="mt-4 space-y-1 text-sm text-gray-600">
             {estimate.summary.map((line) => (
               <li key={line}>• {line}</li>

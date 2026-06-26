@@ -363,7 +363,6 @@ export function buildCalculatorPrefill(input: CalculatorInput, estimate: PriceEs
   const lines = [
     "Procjena iz kalkulatora na stranici:",
     `Okvirna cijena: ${estimate.min}–${estimate.max} €`,
-    `Procijenjeno vrijeme: ${estimate.hoursMin}–${estimate.hoursMax} h`,
     "",
     ...estimate.summary.map((line) => `• ${line}`),
   ];
@@ -427,7 +426,6 @@ export function buildCalculatorWhatsAppMessage(
   lines.push(
     "",
     `Okvirna cijena iz kalkulatora: ${estimate.min}–${estimate.max} €`,
-    `Procijenjeno vrijeme: ${estimate.hoursMin}–${estimate.hoursMax} h`,
     "",
     "Možete li potvrditi cijenu i termin?",
   );
