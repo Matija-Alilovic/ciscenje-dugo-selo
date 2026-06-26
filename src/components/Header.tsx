@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import ThemeToggle from "./ThemeToggle";
 import LetterHoverText from "./LetterHoverText";
 
-const SCROLL_THRESHOLD = 8;
+ const SCROLL_THRESHOLD = 8;
 const TOP_REVEAL_OFFSET = 64;
 
 export default function Header() {
