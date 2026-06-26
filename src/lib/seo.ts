@@ -82,7 +82,7 @@ export const HOME_METADATA = createPageMetadata({
   absoluteTitle: "Čišćenje stanova i kuća Dugo Selo",
   title: "Čišćenje stanova i kuća Dugo Selo",
   description:
-    "Čišćenje stanova i kuća u Dugom Selu i okolici. Redovno, jednokratno i generalno čišćenje, pranje prozora. Cijena po dogovoru, od 16 €/h. 20 % popusta na prvi dolazak.",
+    "Čišćenje stanova i kuća u Dugom Selu i okolici. Redovno, jednokratno i generalno čišćenje, pranje prozora. Cijena po dogovoru, od 16 €/h.",
   path: "/",
 });
 

@@ -154,15 +154,6 @@ export const SERVICE_PAGES = [
   { href: '/pranje-prozora-dugo-selo', label: 'Pranje prozora Dugo Selo' },
 ] as const;
 
-export const FIRST_VISIT_OFFER = {
-  discount: '20 %',
-  title: 'Popust na prvi dolazak',
-  shortText: 'Ako ste kod nas prvi put, na prvi dolazak imate 20 % popusta.',
-  description:
-    'Vrijedi za redovno i jednokratno čišćenje. Dobar način da probate uslugu bez puno obveza.',
-  note: 'Samo spomenite pri upitu i uračunat ćemo u cijenu prije dolaska.',
-} as const;
-
 export const NAV_LINKS = [
   { href: '/#o-nama', label: 'O nama' },
   { href: '/#usluge', label: 'Usluge' },
@@ -201,22 +192,11 @@ export const ABOUT_US = {
 export const PARTNERS = {
   intro:
     'Za opremu i sredstva za čišćenje surađujemo s provjerenim profesionalnim brendovima',
-  clientPerk: {
-    title: 'Popust na opremu za naše klijente',
-    shortText:
-      'Nakon obavljenog čišćenja možete iskoristiti popuste kod naših suradnika na kućnu opremu i pribor.',
-    description:
-      'Klijentima koji su kod nas obavili barem jedno čišćenje šaljemo kod za popust na odabrane proizvode Kärcher, Vileda i 3M.',
-    eligibility: 'Vrijedi nakon prvog obavljenog čišćenja',
-    delivery: 'Kod šaljemo na WhatsApp u roku od 24 sata nakon posla.',
-    validity: 'Kod vrijedi 60 dana od datuma čišćenja.',
-    note: 'Popust vrijedi na online kupnju kod ovlaštenih distributera u Hrvatskoj, na odabrane proizvode.',
-  },
   store: {
     title: 'Posjetite i dućan partnera',
     badge: 'Partner · Kärcher Center Zagreb',
     description:
-      'Za profesionalnu opremu surađujemo s ovlaštenim Kärcher centrom. U dućanu partnera možete pogledati usisivače, paročistače i perače — a naši klijenti mogu iskoristiti partnerski popust na kućne uređaje.',
+      'Za profesionalnu opremu surađujemo s ovlaštenim Kärcher centrom. U dućanu partnera možete pogledati usisivače, paročistače i perače.',
     image: '/partners/karcher-store-zagreb.jpg',
     imageAlt: 'Kärcher Center Zagreb — profesionalna oprema za čišćenje',
     address: 'Samoborska cesta 169A',
@@ -235,9 +215,6 @@ export const PARTNERS = {
       role: 'Profesionalna oprema',
       description:
         'Usisivači, paročistači i visokotlačni perači za temeljito čišćenje.',
-      clientDiscount: '10 %',
-      clientPerk:
-        'Popust na kućne usisivače, paročistače i pribor u službenoj Kärcher trgovini.',
     },
     {
       name: 'Nilfisk',
@@ -245,8 +222,6 @@ export const PARTNERS = {
       role: 'Industrijska oprema',
       description:
         'Profesionalni usisivači i oprema za veće i zahtjevnije poslove.',
-      clientDiscount: null,
-      clientPerk: null,
     },
     {
       name: 'Vileda Professional',
@@ -254,17 +229,12 @@ export const PARTNERS = {
       role: 'Alati za čišćenje',
       description:
         'Mopovi, krpe, kante i sustavi za redovno i generalno čišćenje.',
-      clientDiscount: '8 %',
-      clientPerk:
-        'Popust na mopove, krpe, kante i zamjenske dijelove u online trgovinama partnera.',
     },
     {
       name: 'Ecolab',
       logo: '/partners/ecolab.svg',
       role: 'Profesionalna sredstva',
       description: 'Sredstva za higijenu kuhinje, kupaonice i radne površine.',
-      clientDiscount: null,
-      clientPerk: null,
     },
     {
       name: 'Diversey',
@@ -272,8 +242,6 @@ export const PARTNERS = {
       role: 'Sredstva i dezinfekcija',
       description:
         'Profesionalna sredstva za čišćenje, dezinfekciju i održavanje.',
-      clientDiscount: null,
-      clientPerk: null,
     },
     {
       name: '3M',
@@ -281,9 +249,6 @@ export const PARTNERS = {
       role: 'Profesionalni pribor',
       description:
         'Krpe, spužve i pribor za detaljno i sigurno čišćenje površina.',
-      clientDiscount: '5 %',
-      clientPerk:
-        'Popust na Scotch-Brite krpe, spužve i setove za održavanje doma.',
     },
   ],
 } as const;
@@ -458,17 +423,6 @@ export const FAQ_ITEMS = [
     question: 'Može li prvi dolazak biti dok sam doma?',
     answer:
       'Može, i mnogi to tako žele jer je lakše dogovoriti prioritete kad ste tu.',
-  },
-  {
-    question: 'Imate li popust za nove klijente?',
-    answer:
-      'Da, 20 % na prvi dolazak za redovno i jednokratno čišćenje. Spomenite pri upitu i uračunat ćemo u cijenu.',
-  },
-  {
-    question:
-      'Mogu li dobiti popust na Kärcher ili drugu opremu ako uzmem vašu uslugu?',
-    answer:
-      'Da. Nakon prvog obavljenog čišćenja šaljemo kodove za popust kod suradnika — npr. 10 % na odabrane Kärcher uređaje, 8 % na Vileda pribor i 5 % na 3M proizvode za dom. Kodovi vrijede 60 dana i odnose se na online kupnju kod ovlaštenih distributera u Hrvatskoj.',
   },
   {
     question: 'Kako se dogovara cijena?',

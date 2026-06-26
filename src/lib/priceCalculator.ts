@@ -71,7 +71,6 @@ export type CalculatorInput = {
   fridge: boolean;
   cabinets: boolean;
   windows: WindowOption;
-  firstVisit: boolean;
 };
 
 export type PriceEstimate = {
@@ -96,7 +95,6 @@ export const DEFAULT_CALCULATOR_INPUT: CalculatorInput = {
   fridge: false,
   cabinets: false,
   windows: "ne",
-  firstVisit: false,
 };
 
 const RATES = {
@@ -224,14 +222,6 @@ export function calculatePrice(input: CalculatorInput): PriceEstimate {
     priceMax = hoursMax * rate.hourly;
   }
 
-  if (
-    input.firstVisit &&
-    (input.cleaningType === "redovno" || input.cleaningType === "jednokratno")
-  ) {
-    priceMin *= 0.8;
-    priceMax *= 0.8;
-  }
-
   priceMin = roundToFive(priceMin * 0.95);
   priceMax = roundToFive(priceMax * 1.05);
 
@@ -252,10 +242,6 @@ export function calculatePrice(input: CalculatorInput): PriceEstimate {
     `${input.sqm} m², ${input.rooms} sobe, ${input.bathrooms} kupaonica`,
     CALCULATOR_CONDITION_OPTIONS.find((item) => item.value === input.condition)?.label ?? "",
   ].filter(Boolean);
-
-  if (input.firstVisit) {
-    summary.push("Popust na prvi dolazak uračunat");
-  }
 
   return {
     min: priceMin,
@@ -341,10 +327,6 @@ export function buildCalculatorPrefill(input: CalculatorInput, estimate: PriceEs
     }
   }
 
-  if (input.firstVisit) {
-    lines.push("", "Prvi dolazak — imam pravo na 20 % popusta.");
-  }
-
   lines.push("", "Molim potvrdu cijene i okvirnog termina.");
 
   return {
@@ -384,10 +366,6 @@ export function buildCalculatorWhatsAppMessage(
     if (extras.length > 0) {
       lines.push(`Dodatno: ${extras.join(", ")}`);
     }
-  }
-
-  if (input.firstVisit) {
-    lines.push("Prvi dolazak kod vas — imam pravo na popust.");
   }
 
   lines.push(

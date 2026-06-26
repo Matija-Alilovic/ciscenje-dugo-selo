@@ -99,7 +99,7 @@ export default function MobileStickyCTA() {
   return (
     <div
       className={cn(
-        "fixed inset-x-0 bottom-0 z-50 border-t border-gray-300 bg-surface/95 px-3 pt-3 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md transition-[transform,opacity] duration-300 ease-out dark:border-gray-600 dark:shadow-black/40",
+        "fixed inset-x-0 bottom-0 z-50 bg-surface/95 px-3 pt-3 shadow-[0_-8px_32px_rgba(0,0,0,0.12)] backdrop-blur-md transition-[transform,opacity] duration-300 ease-out dark:shadow-[0_-8px_32px_rgba(0,0,0,0.45)]",
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-full opacity-0",

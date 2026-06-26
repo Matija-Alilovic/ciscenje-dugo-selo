@@ -15,7 +15,7 @@ type OgImageOptions = {
 
 export function createOgImageResponse({
   title = SITE.serviceHeadline,
-  subtitle = "Dugo Selo i okolica · Cijena po dogovoru · 20 % popusta na prvi dolazak",
+  subtitle = "Dugo Selo i okolica · Cijena po dogovoru",
 }: OgImageOptions = {}) {
   return new ImageResponse(
     (

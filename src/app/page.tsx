@@ -4,7 +4,6 @@ import Footer from '@/components/Footer';
 import MobileStickyCTA from '@/components/MobileStickyCTA';
 import Hero from '@/components/Hero';
 import Section from '@/components/Section';
-import FirstVisitOffer from '@/components/FirstVisitOffer';
 import ServiceTypes from '@/components/ServiceTypes';
 import ServiceCards from '@/components/ServiceCards';
 import ServiceComparisonTable from '@/components/ServiceComparisonTable';
@@ -71,10 +70,7 @@ export default function HomePage() {
           <ServiceCards />
         </Section>
         <Section id="cjenik" title="Cjenik" className="section-surface">
-          <div className="space-y-8">
-            <FirstVisitOffer />
-            <PricingTable />
-          </div>
+          <PricingTable />
         </Section>
         <Section title="Kako radimo" className="section-alt">
           <Steps />

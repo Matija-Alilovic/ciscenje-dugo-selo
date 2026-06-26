@@ -1,5 +1,4 @@
 import { CTAButtons } from "./MobileStickyCTA";
-import FirstVisitOffer from "./FirstVisitOffer";
 import CalculatorHint from "./CalculatorHint";
 import LetterHoverText from "./LetterHoverText";
 import { HERO_STATS } from "@/lib/constants";
@@ -34,14 +33,11 @@ export default function Hero({
             </li>
           ))}
         </ul>
-        <div className="hero-fade hero-delay-3 mt-8 sm:mt-10">
-          <FirstVisitOffer variant="banner" />
-        </div>
         {highlightCalculator && (
-          <CalculatorHint className="hero-fade hero-delay-4 mt-6 sm:mt-8" />
+          <CalculatorHint className="hero-fade hero-delay-3 mt-8 sm:mt-10" />
         )}
         <CTAButtons
-          className="hero-fade hero-delay-4 mt-6 sm:mt-8"
+          className={`hero-fade ${highlightCalculator ? "hero-delay-4" : "hero-delay-3"} mt-6 sm:mt-8`}
           leadWithCalculator={highlightCalculator}
         />
         <div className="hero-fade hero-delay-4 mt-6 grid gap-2 sm:mt-8 sm:flex sm:flex-wrap">

@@ -400,26 +400,6 @@ export default function PriceCalculator() {
           </div>
         </div>
 
-        {!isWindowsOnly && (
-          <div>
-            <FieldLabel>Prvi put kod nas?</FieldLabel>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <ChoiceButton
-                selected={input.firstVisit}
-                onClick={() => updateInput({ firstVisit: true })}
-              >
-                Da — uračunaj 20 % popusta na prvi dolazak
-              </ChoiceButton>
-              <ChoiceButton
-                selected={!input.firstVisit}
-                onClick={() => updateInput({ firstVisit: false })}
-              >
-                Ne ili nije primjenjivo
-              </ChoiceButton>
-            </div>
-          </div>
-        )}
-
         <div className="rounded-lg border border-brand-200 bg-brand-50 p-5 sm:p-6">
           <p className="text-sm font-semibold uppercase tracking-wide text-brand-700">
             Okvirna cijena
