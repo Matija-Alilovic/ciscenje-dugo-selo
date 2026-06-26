@@ -124,6 +124,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
+  scroll-padding-bottom: 1rem;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   color-scheme: light;
@@ -602,6 +603,15 @@ details[open] .faq-body {
 
 body.mobile-safe-bottom.floating-cta-visible {
   padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+html.floating-cta-visible {
+  scroll-padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+#kalkulator {
+  scroll-margin-top: 5.5rem;
+  scroll-margin-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 @media (hover: hover) and (pointer: fine) {

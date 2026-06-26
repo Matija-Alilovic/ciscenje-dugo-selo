@@ -54,11 +54,46 @@ export function clearCalculatorCleaningType() {
   sessionStorage.removeItem(CALCULATOR_TYPE_KEY);
 }
 
+function getScrollChrome() {
+  const header = document.querySelector("header");
+  const headerHeight = header?.offsetHeight ?? 72;
+  const stickyCta = document.getElementById("mobile-sticky-cta");
+  const footerHeight = stickyCta?.offsetHeight ?? 88;
+
+  return { headerHeight, footerHeight };
+}
+
 export function scrollToCalculator() {
-  document.getElementById("kalkulator")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const calculator = document.getElementById("kalkulator");
+  if (!calculator) return;
+
+  function runScroll() {
+    const { headerHeight, footerHeight } = getScrollChrome();
+    const rect = calculator.getBoundingClientRect();
+    const elementTop = window.scrollY + rect.top;
+    const elementHeight = calculator.offsetHeight;
+    const viewport = window.innerHeight;
+    const availableHeight = viewport - headerHeight - footerHeight;
+
+    let targetTop: number;
+
+    if (elementHeight <= availableHeight) {
+      targetTop = elementTop - headerHeight - (availableHeight - elementHeight) / 2;
+    } else {
+      targetTop = elementTop - headerHeight - 16;
+    }
+
+    window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+  }
+
+  runScroll();
+  requestAnimationFrame(() => requestAnimationFrame(runScroll));
 }
 
 export function openCalculatorWithType(type: string) {
   saveCalculatorCleaningType(type);
   scrollToCalculator();
+  if (typeof window !== "undefined" && window.location.pathname === "/") {
+    window.history.pushState(null, "", "#kalkulator");
+  }
 }

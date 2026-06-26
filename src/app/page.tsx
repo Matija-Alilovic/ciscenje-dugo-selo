@@ -41,12 +41,13 @@ export default function HomePage() {
           </Reveal>
         </Section>
         <Section
-          id="kalkulator"
           title="Kalkulator cijene"
           subtitle="Odgovorite na pitanja o prostoru i usluzi — dobit ćete okvirnu cijenu prije nego nas kontaktirate."
           className="section-alt"
         >
-          <PriceCalculator />
+          <div id="kalkulator">
+            <PriceCalculator />
+          </div>
         </Section>
         <Section
           id="vrste-ciscenja"

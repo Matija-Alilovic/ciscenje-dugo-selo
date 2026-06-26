@@ -5,6 +5,7 @@ import Link from "next/link";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { getPhoneHref } from "@/lib/utils";
 import { cn } from "@/lib/utils";
+import { scrollToCalculator } from "@/lib/calculatorPrefill";
 import ThemeToggle from "./ThemeToggle";
 import LetterHoverText from "./LetterHoverText";
 
@@ -164,6 +165,12 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     aria-current={isActive ? "true" : undefined}
+                    onClick={(event) => {
+                      if (sectionId !== "kalkulator" || window.location.pathname !== "/") return;
+                      event.preventDefault();
+                      scrollToCalculator();
+                      window.history.pushState(null, "", "#kalkulator");
+                    }}
                     className={cn(
                       "rounded-lg px-3 py-2 text-base font-medium transition-colors duration-200",
                       isActive
@@ -228,13 +235,20 @@ export default function Header() {
                   <Link
                     href={link.href}
                     aria-current={isActive ? "true" : undefined}
+                    onClick={(event) => {
+                      if (sectionId === "kalkulator" && window.location.pathname === "/") {
+                        event.preventDefault();
+                        scrollToCalculator();
+                        window.history.pushState(null, "", "#kalkulator");
+                      }
+                      setMenuOpen(false);
+                    }}
                     className={cn(
                       "block min-h-11 rounded-lg px-3 py-3 text-base font-medium transition-colors",
                       isActive
                         ? "bg-brand-50 text-brand-700 dark:bg-brand-50/20 dark:text-brand-400"
                         : "text-gray-700 hover:bg-brand-50 hover:text-brand-700 dark:text-gray-500 dark:hover:bg-brand-50/10 dark:hover:text-brand-300",
                     )}
-                    onClick={() => setMenuOpen(false)}
                   >
                     {link.label}
                   </Link>

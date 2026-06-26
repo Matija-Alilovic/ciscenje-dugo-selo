@@ -4,6 +4,7 @@ import { Lora, Source_Sans_3 } from "next/font/google";
 import { SITE } from "@/lib/constants";
 import { getSiteUrl } from "@/lib/site";
 import { SEO_KEYWORDS } from "@/lib/seo";
+import HashScrollHandler from "@/components/HashScrollHandler";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import CustomCursor from "@/components/CustomCursor";
 import Toast from "@/components/Toast";
@@ -119,6 +120,7 @@ export default function RootLayout({
         </Script>
         <PageBackground />
         <ThemeProvider>
+          <HashScrollHandler />
           <CustomCursor />
           <Toast />
           <BackToTop />

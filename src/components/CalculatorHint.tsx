@@ -1,4 +1,6 @@
-import Link from "next/link";
+"use client";
+
+import CalculatorLink from "./CalculatorLink";
 import { CALCULATOR_HINT } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -12,7 +14,7 @@ export default function CalculatorHint({
   className,
 }: CalculatorHintProps) {
   return (
-    <Link
+    <CalculatorLink
       href={href}
       className={cn(
         "group block rounded-lg border border-brand-200 bg-brand-50 p-4 transition-colors hover:border-brand-300 hover:bg-brand-100/80 sm:p-5",
@@ -39,6 +41,6 @@ export default function CalculatorHint({
           </span>
         </div>
       </div>
-    </Link>
+    </CalculatorLink>
   );
 }
