@@ -9,6 +9,14 @@ export function getSiteUrl(): string {
   return SITE.url;
 }
 
+export function getGoogleBusinessUrl(): string | undefined {
+  return process.env.NEXT_PUBLIC_GOOGLE_BUSINESS_URL?.trim() || undefined;
+}
+
+export function getGoogleReviewUrl(): string | undefined {
+  return process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL?.trim() || undefined;
+}
+
 export function getPhoneNumber(): string {
   return process.env.NEXT_PUBLIC_PHONE ?? SITE.phone;
 }

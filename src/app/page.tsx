@@ -14,6 +14,8 @@ import AboutSection from '@/components/AboutSection';
 import PartnersSection from '@/components/PartnersSection';
 import WhyUs from '@/components/WhyUs';
 import BeforeAfterSection from '@/components/BeforeAfterSection';
+import GoogleReviewsSection from '@/components/GoogleReviewsSection';
+import LocalAreaSection from '@/components/LocalAreaSection';
 import FAQ from '@/components/FAQ';
 import ContactSection from '@/components/ContactSection';
 import JsonLd from '@/components/JsonLd';
@@ -30,8 +32,8 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero
-          title="Čišćenje stanova Dugo Selo"
-          subtitle="Čistimo stanove i kuće u Dugom Selu i okolici — redovno održavanje, jednokratni dolazak ili temeljito čišćenje."
+          title="Čišćenje stanova i kuća Dugo Selo"
+          subtitle="Profesionalno čišćenje stanova i kuća u Dugom Selu i okolici — redovno održavanje, jednokratni dolazak ili temeljito generalno čišćenje."
           highlightCalculator
         />
         <Section title="O usluzi">
@@ -40,6 +42,13 @@ export default function HomePage() {
               {INTRO_TEXT}
             </p>
           </Reveal>
+        </Section>
+        <Section
+          title="Čišćenje u Dugom Selu i okolici"
+          subtitle="Dolazimo u Dugo Selo, Sesvete, Vrbovec, Rugvicu i okolna mjesta."
+          className="section-alt"
+        >
+          <LocalAreaSection />
         </Section>
         <Section
           title="Kalkulator cijene"
@@ -79,9 +88,16 @@ export default function HomePage() {
         </Section>
         <Section
           title="Prije i poslije"
-          subtitle="Stvarni rezultati našeg rada — na svakoj slici lijevo je prije, desno poslije čišćenja."
+          subtitle="Stvarni rezultati našeg rada u Dugom Selu — na svakoj slici lijevo je prije, desno poslije čišćenja."
         >
           <BeforeAfterSection />
+        </Section>
+        <Section
+          title="Recenzije na Googleu"
+          subtitle="Stvarne ocjene klijenata — ne izmišljene citate na stranici."
+          className="section-alt"
+        >
+          <GoogleReviewsSection />
         </Section>
         <Section id="o-nama" title="O nama" subtitle="">
           <AboutSection />

@@ -1,15 +1,23 @@
 import {
   FAQ_ITEMS,
   COMPANY,
+  GOOGLE_BUSINESS,
   PRICING,
   SERVICE_TYPES,
   SITE,
 } from "./constants";
 import { absoluteUrl } from "./seo";
-import { getPhoneNumber, getSiteUrl } from "./site";
+import { getGoogleBusinessUrl, getPhoneNumber, getSiteUrl } from "./site";
 
 function businessId() {
   return `${getSiteUrl()}/#business`;
+}
+
+function getBusinessSameAs(): string[] {
+  const urls: string[] = [GOOGLE_BUSINESS.mapsSearchUrl];
+  const profile = getGoogleBusinessUrl();
+  if (profile) urls.unshift(profile);
+  return urls;
 }
 
 export function getLocalBusinessSchema() {
@@ -22,10 +30,13 @@ export function getLocalBusinessSchema() {
     description:
       "Profesionalno čišćenje stanova i kuća u Dugom Selu i okolici. Redovno, jednokratno i generalno čišćenje te pranje prozora.",
     url: getSiteUrl(),
+    image: absoluteUrl("/opengraph-image"),
     telephone: getPhoneNumber(),
     priceRange: "€€",
     currenciesAccepted: "EUR",
     paymentAccepted: "Cash, Bank Transfer",
+    sameAs: getBusinessSameAs(),
+    hasMap: GOOGLE_BUSINESS.mapsSearchUrl,
     address: {
       "@type": "PostalAddress",
       streetAddress: COMPANY.address,
@@ -59,7 +70,7 @@ export function getLocalBusinessSchema() {
           "Saturday",
         ],
         opens: "08:00",
-        closes: "18:00",
+        closes: "22:00",
       },
     ],
     hasOfferCatalog: {

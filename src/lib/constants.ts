@@ -24,7 +24,60 @@ export const COMPANY = {
 } as const;
 
 export const INTRO_TEXT =
-  'Za okvirnu cijenu najbrže krenite od online kalkulatora — u par minuta dobit ćete procjenu koju možete odmah poslati na WhatsApp ili u kontakt formu. Prije dolaska dogovorimo što treba očistiti, termin i točnu cijenu. Javite nam se i izravno ako vam je lakše.';
+  'Čišćenje Dugo Selo je obrt za profesionalno čišćenje stanova i kuća u Dugom Selu i okolici. Za okvirnu cijenu najbrže krenite od online kalkulatora — u par minuta dobit ćete procjenu koju možete odmah poslati na WhatsApp ili u kontakt formu. Prije dolaska dogovorimo što treba očistiti, termin i točnu cijenu.';
+
+export const LOCAL_SEO_TEXT =
+  'Bazirani smo u Dugom Selu i redovito dolazimo u Sesvete, Vrbovec, Rugvicu, Božjakovinu, Brckovljani i okolna mjesta. Ako tražite pouzdanu uslugu čišćenja u Dugom Selu — redovno održavanje, jednokratni dolazak ili generalno čišćenje — javite nam se putem kalkulatora, WhatsAppa ili telefona.';
+
+export const GOOGLE_BUSINESS = {
+  mapsSearchUrl:
+    'https://www.google.com/maps/search/?api=1&query=Ulica+Ante+Star%C4%8Devi%C4%87a+8%2C+10370+Dugo+Selo%2C+%C4%8Ci%C5%A1%C4%87enje',
+  mapsEmbedQuery: 'Ulica+Ante+Starčevića+8,+10370+Dugo+Selo',
+  mapsLabel: 'Pronađite nas na Google Maps',
+} as const;
+
+export const AREA_PAGES = [
+  {
+    slug: 'sesvete',
+    name: 'Sesvete',
+    nameLocative: 'Sesvetama',
+    tagline: 'Čišćenje stanova i kuća u Sesvetama i okolici Dugog Sela',
+    intro:
+      'Dolazimo u Sesvete i okolna naselja za redovno, jednokratno i generalno čišćenje stanova i kuća. Bazirani smo u Dugom Selu, pa su Sesvete u našem redovnom području rada.',
+  },
+  {
+    slug: 'vrbovec',
+    name: 'Vrbovec',
+    nameLocative: 'Vrbovcu',
+    tagline: 'Profesionalno čišćenje stanova i kuća u Vrbovcu',
+    intro:
+      'Čistimo stanove i kuće u Vrbovcu i okolici. Dogovorimo termin i cijenu prije dolaska — bez iznenađenja na licu mjesta.',
+  },
+  {
+    slug: 'rugvica',
+    name: 'Rugvica',
+    nameLocative: 'Rugvici',
+    tagline: 'Čišćenje stanova i kuća u Rugvici',
+    intro:
+      'Za stanovnike Rugvice nudimo redovno čišćenje, jednokratne dolazke i generalno čišćenje. Javite se s kvadraturom i vrstom usluge — vratit ćemo okvirnu cijenu.',
+  },
+  {
+    slug: 'bozjakovina',
+    name: 'Božjakovina',
+    nameLocative: 'Božjakovini',
+    tagline: 'Usluga čišćenja u Božjakovini i okolici',
+    intro:
+      'Božjakovina je u našem području rada. Dolazimo sa svojim sredstvima i opremom, a cijenu dogovorimo unaprijed.',
+  },
+  {
+    slug: 'brckovljani',
+    name: 'Brckovljani',
+    nameLocative: 'Brckovljani',
+    tagline: 'Čišćenje stanova i kuća u Brckovljani',
+    intro:
+      'Čistimo stanove i kuće u Brckovljani i okolnim naseljima. Za brzu procjenu koristite kalkulator cijene na stranici.',
+  },
+] as const;
 
 export const HERO_STATS = [
   'Dogovor cijene prije dolaska',
@@ -115,30 +168,6 @@ export const SERVICE_COMPARISON = [
   },
 ] as const;
 
-export const TESTIMONIALS = [
-  {
-    name: 'Ana M.',
-    location: 'Dugo Selo',
-    service: 'Redovno čišćenje',
-    quote:
-      'Dolaze u isti termin, stan uvijek mirno miriše na čistoću. Konačnu cijenu znala sam prije nego su došli.',
-  },
-  {
-    name: 'Ivan K.',
-    location: 'Sesvete',
-    service: 'Generalno čišćenje',
-    quote:
-      'Nakon renovacije trebao nam je temeljit posao. Kuhinja i kupaonica izgledaju kao nove, dogovorili smo sve unaprijed.',
-  },
-  {
-    name: 'Petra L.',
-    location: 'Vrbovec',
-    service: 'Jednokratno čišćenje',
-    quote:
-      'Javila sam se preko WhatsAppa, brzo su odgovorili i došli prije gostiju. Sve po dogovoru, bez iznenađenja.',
-  },
-] as const;
-
 export const PRICING_TRUST_NOTE =
   'Cijenu dogovorimo prije dolaska — bez iznenađenja na licu mjesta.';
 
@@ -150,6 +179,15 @@ export const SERVICE_PAGES = [
   },
   { href: '/ciscenje-kuca-dugo-selo', label: 'Čišćenje kuća Dugo Selo' },
   { href: '/pranje-prozora-dugo-selo', label: 'Pranje prozora Dugo Selo' },
+  { href: '/ciscenje-nakon-selidbe-dugo-selo', label: 'Čišćenje nakon selidbe' },
+] as const;
+
+export const AREA_LINKS = [
+  { href: '/ciscenje-sesvete', label: 'Čišćenje Sesvete' },
+  { href: '/ciscenje-vrbovec', label: 'Čišćenje Vrbovec' },
+  { href: '/ciscenje-rugvica', label: 'Čišćenje Rugvica' },
+  { href: '/ciscenje-bozjakovina', label: 'Čišćenje Božjakovina' },
+  { href: '/ciscenje-brckovljani', label: 'Čišćenje Brckovljani' },
 ] as const;
 
 export const NAV_LINKS = [
@@ -285,7 +323,7 @@ export const SERVICES = [
     title: 'Čišćenje nakon selidbe',
     description:
       'Selidba je gotova, a prostor još nije spreman? Dolazimo nakon iseljenja ili useljenja, kako dogovorimo.',
-    href: '/#kontakt',
+    href: '/ciscenje-nakon-selidbe-dugo-selo',
   },
 ] as const;
 
@@ -379,6 +417,21 @@ export const WHY_US = [
 ] as const;
 
 export const FAQ_ITEMS = [
+  {
+    question: 'Koliko košta čišćenje stana u Dugom Selu?',
+    answer:
+      'Redovno čišćenje počinje od 16 €/h (najmanje 3 sata), jednokratno od 18 €/h, a generalno od 22 €/h ili od 2,80 €/m². Točna cijena ovisi o veličini stana, stanju i dodatnim uslugama. Najbrže je proći kalkulator cijene na stranici — dobit ćete okvirnu procjenu u minuti.',
+  },
+  {
+    question: 'Gdje se nalazite i dolazite li u Dugo Selo?',
+    answer:
+      'Bazirani smo u Dugom Selu (Ulica Ante Starčevića 8). Redovito dolazimo u Dugo Selo, Sesvete, Vrbovec, Rugvicu, Božjakovinu, Brckovljani i okolna mjesta. Pošaljite lokaciju i potvrdit ćemo dolazak.',
+  },
+  {
+    question: 'Kako mogu naručiti čišćenje u Dugom Selu?',
+    answer:
+      'Najbrže putem kalkulatora cijene na stranici — procjenu možete odmah poslati na WhatsApp. Možete nas nazvati na +385 97 608 3278 ili ispuniti kontakt formu. Odgovaramo što prije i dogovorimo termin.',
+  },
   {
     question:
       'Koja je razlika između redovnog, jednokratnog i generalnog čišćenja?',

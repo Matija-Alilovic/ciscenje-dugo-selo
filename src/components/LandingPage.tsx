@@ -11,7 +11,7 @@ import Checklist from "@/components/Checklist";
 import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
 import JsonLd from "@/components/JsonLd";
-import { BASIC_CLEANING } from "@/lib/constants";
+import { AREA_LINKS, BASIC_CLEANING, SERVICE_PAGES } from "@/lib/constants";
 import { getLandingPageSchemas } from "@/lib/schema";
 
 type LandingPageProps = {
@@ -128,36 +128,35 @@ export function LandingPage({
 
         <Section title="Ostale usluge">
           <div className="flex flex-wrap gap-3">
-            <Link
-              href="/ciscenje-stanova-dugo-selo"
-              className="rounded-lg border border-gray-200 px-4 py-2.5 text-base text-gray-700 hover:border-brand-300 hover:text-brand-700"
-            >
-              Čišćenje stanova Dugo Selo
-            </Link>
-            <Link
-              href="/generalno-ciscenje-stana-dugo-selo"
-              className="rounded-lg border border-gray-200 px-4 py-2.5 text-base text-gray-700 hover:border-brand-300 hover:text-brand-700"
-            >
-              Generalno čišćenje stana
-            </Link>
-            <Link
-              href="/ciscenje-kuca-dugo-selo"
-              className="rounded-lg border border-gray-200 px-4 py-2.5 text-base text-gray-700 hover:border-brand-300 hover:text-brand-700"
-            >
-              Čišćenje kuća Dugo Selo
-            </Link>
-            <Link
-              href="/pranje-prozora-dugo-selo"
-              className="rounded-lg border border-gray-200 px-4 py-2.5 text-base text-gray-700 hover:border-brand-300 hover:text-brand-700"
-            >
-              Pranje prozora Dugo Selo
-            </Link>
+            {SERVICE_PAGES.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-lg border border-gray-200 px-4 py-2.5 text-base text-gray-700 hover:border-brand-300 hover:text-brand-700"
+              >
+                {link.label}
+              </Link>
+            ))}
             <Link
               href="/"
               className="rounded-lg border border-gray-200 px-4 py-2.5 text-base text-gray-700 hover:border-brand-300 hover:text-brand-700"
             >
               Početna
             </Link>
+          </div>
+        </Section>
+
+        <Section title="Područje rada" className="section-alt">
+          <div className="flex flex-wrap gap-3">
+            {AREA_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-lg border border-gray-200 px-4 py-2.5 text-base text-gray-700 hover:border-brand-300 hover:text-brand-700"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </Section>
       </main>

@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
         destination: "/favicon.svg",
         permanent: true,
       },
+      {
+        source: "/ciscenje-dugo-selo",
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
 };

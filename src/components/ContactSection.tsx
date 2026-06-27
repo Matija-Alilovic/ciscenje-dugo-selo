@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { SITE } from "@/lib/constants";
+import { COMPANY, GOOGLE_BUSINESS, SITE } from "@/lib/constants";
+import { getGoogleReviewUrl } from "@/lib/site";
 import { getPhoneHref, getWhatsAppHref } from "@/lib/utils";
 import { showToast } from "@/lib/toast";
 import ContactForm from "./ContactForm";
+import GoogleMapEmbed from "./GoogleMapEmbed";
 import Reveal from "./Reveal";
 
 function notifyWhatsAppOpen(href: string) {
@@ -17,6 +18,7 @@ function notifyWhatsAppOpen(href: string) {
 
 export default function ContactSection() {
   const whatsappHref = getWhatsAppHref();
+  const reviewUrl = getGoogleReviewUrl();
 
   return (
     <div className="grid gap-10 lg:grid-cols-2">
@@ -51,10 +53,41 @@ export default function ContactSection() {
 
           <div className="card-modern p-4">
             <h3 className="text-base font-semibold uppercase tracking-wide text-gray-500">
+              Adresa
+            </h3>
+            <p className="mt-1 text-base leading-relaxed text-gray-700">
+              {COMPANY.address}
+              <br />
+              {COMPANY.city}
+            </p>
+            <a
+              href={GOOGLE_BUSINESS.mapsSearchUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block text-base font-medium text-brand-700 hover:text-brand-800"
+            >
+              {GOOGLE_BUSINESS.mapsLabel}
+            </a>
+            {reviewUrl && (
+              <a
+                href={reviewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 block text-base font-medium text-brand-700 hover:text-brand-800"
+              >
+                Ocijenite nas na Googleu
+              </a>
+            )}
+          </div>
+
+          <div className="card-modern p-4">
+            <h3 className="text-base font-semibold uppercase tracking-wide text-gray-500">
               Područje rada
             </h3>
             <p className="mt-1 text-base leading-relaxed text-gray-700 sm:text-lg">{SITE.area}</p>
           </div>
+
+          <GoogleMapEmbed />
         </div>
       </Reveal>
       <Reveal delay={120}>

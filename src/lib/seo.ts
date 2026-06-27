@@ -79,12 +79,37 @@ export function createPageMetadata({
 }
 
 export const HOME_METADATA = createPageMetadata({
-  absoluteTitle: "Čišćenje stanova i kuća Dugo Selo",
+  absoluteTitle: "Čišćenje stanova i kuća Dugo Selo | Profesionalno čišćenje",
   title: "Čišćenje stanova i kuća Dugo Selo",
   description:
-    "Čišćenje stanova i kuća u Dugom Selu i okolici. Redovno, jednokratno i generalno čišćenje, pranje prozora. Cijena po dogovoru, od 16 €/h.",
+    "Profesionalno čišćenje stanova i kuća u Dugom Selu i okolici. Redovno od 16 €/h, jednokratno, generalno čišćenje i pranje prozora. Besplatna procjena u online kalkulatoru — dogovor cijene prije dolaska.",
   path: "/",
 });
+
+export function createAreaPageMetadata({
+  name,
+  slug,
+  tagline,
+}: {
+  name: string;
+  slug: string;
+  tagline: string;
+}) {
+  const path = `/ciscenje-${slug}`;
+  return createPageMetadata({
+    title: `Čišćenje stanova ${name}`,
+    absoluteTitle: `Čišćenje stanova i kuća ${name} | ${SITE.name}`,
+    description: `${tagline}. Redovno, jednokratno i generalno čišćenje. Od 16 €/h. Besplatna procjena u kalkulatoru — dolazimo iz Dugog Sela.`,
+    path,
+    keywords: [
+      `čišćenje stanova ${name}`,
+      `čišćenje kuća ${name}`,
+      `usluga čišćenja ${name}`,
+      `generalno čišćenje ${name}`,
+      ...SEO_KEYWORDS,
+    ],
+  });
+}
 
 export const PAGE_SEO = {
   stanovi: createPageMetadata({
@@ -134,6 +159,18 @@ export const PAGE_SEO = {
       "pranje prozora Dugo Selo",
       "čišćenje prozora Dugo Selo",
       "pranje prozora unutra i vani Dugo Selo",
+      ...SEO_KEYWORDS,
+    ],
+  }),
+  selidbe: createPageMetadata({
+    title: "Čišćenje nakon selidbe Dugo Selo",
+    description:
+      "Čišćenje stana ili kuće nakon selidbe u Dugom Selu i okolici. Dolazimo nakon iseljenja ili prije useljenja. Cijena po dogovoru — besplatna procjena u kalkulatoru.",
+    path: "/ciscenje-nakon-selidbe-dugo-selo",
+    keywords: [
+      "čišćenje nakon selidbe Dugo Selo",
+      "čišćenje prije useljenja Dugo Selo",
+      "čišćenje stana nakon selidbe",
       ...SEO_KEYWORDS,
     ],
   }),

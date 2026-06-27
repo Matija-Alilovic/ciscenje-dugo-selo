@@ -43,7 +43,7 @@ export default function BeforeAfterCard({ title, src, caption }: BeforeAfterCard
         >
           <Image
             src={src}
-            alt={`${title} — usporedba prije i poslije čišćenja`}
+            alt={`${title} — prije i poslije čišćenja, Dugo Selo`}
             width={1600}
             height={900}
             className="h-auto w-full transition-transform duration-300 group-hover:scale-[1.02]"
@@ -73,7 +73,7 @@ export default function BeforeAfterCard({ title, src, caption }: BeforeAfterCard
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-100 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/92 p-2 sm:p-4"
           role="dialog"
           aria-modal="true"
           aria-label={`Uvećana fotografija — ${title}`}
@@ -82,14 +82,14 @@ export default function BeforeAfterCard({ title, src, caption }: BeforeAfterCard
           <button
             type="button"
             onClick={() => setIsOpen(false)}
-            className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-2xl leading-none text-white transition-colors hover:bg-white/20"
+            className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-2xl leading-none text-white sm:right-4 sm:top-4"
             aria-label="Zatvori"
           >
             ×
           </button>
 
           <div
-            className="relative max-h-[min(92dvh,900px)] max-w-[min(96vw,1200px)]"
+            className="relative inline-block w-full max-w-[1200px] sm:w-auto sm:max-w-[min(96vw,1200px)]"
             onClick={(event) => event.stopPropagation()}
           >
             <Image
@@ -97,12 +97,12 @@ export default function BeforeAfterCard({ title, src, caption }: BeforeAfterCard
               alt={`${title} — uvećana usporedba prije i poslije čišćenja`}
               width={1600}
               height={900}
-              className="h-auto max-h-[min(92dvh,900px)] w-auto max-w-[min(96vw,1200px)] rounded-lg object-contain"
-              sizes="96vw"
+              className="h-auto max-h-[88dvh] w-full rounded-lg object-contain sm:max-h-[min(92vh,900px)] sm:w-auto sm:max-w-[min(96vw,1200px)]"
+              sizes="(max-width: 640px) 100vw, 1200px"
               priority
             />
 
-            <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-between px-3 sm:top-4 sm:px-4">
+            <div className="pointer-events-none absolute inset-x-0 top-2 flex justify-between px-2 sm:top-4 sm:px-4">
               <span className="rounded-md bg-black/55 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">
                 Prije
               </span>
