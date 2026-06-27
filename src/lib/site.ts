@@ -3,6 +3,8 @@ import { SITE } from "./constants";
 export function getSiteUrl(): string {
   const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
   if (fromEnv) return fromEnv;
+  // Production deploys must use the canonical domain — not the ephemeral *.vercel.app URL.
+  if (process.env.VERCEL_ENV === "production") return SITE.url;
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
   return SITE.url;
 }
