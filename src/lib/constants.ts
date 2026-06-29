@@ -17,7 +17,7 @@ export const COMPANY = {
   name: 'Čišćenje Dugo Selo',
   type: 'Usluge profesionalnog čišćenja stanova i kuća',
   legalForm: 'obrt',
-  address: 'Ulica Ante Starčevića 8',
+  address: 'Ul. Dragutina Domjanića 12B',
   city: '10370 Dugo Selo',
   oib: '58472931608',
   mbo: '081234567',
@@ -31,8 +31,8 @@ export const LOCAL_SEO_TEXT =
 
 export const GOOGLE_BUSINESS = {
   mapsSearchUrl:
-    'https://www.google.com/maps/search/?api=1&query=Ulica+Ante+Star%C4%8Devi%C4%87a+8%2C+10370+Dugo+Selo%2C+%C4%8Ci%C5%A1%C4%87enje',
-  mapsEmbedQuery: 'Ulica+Ante+Starčevića+8,+10370+Dugo+Selo',
+    'https://www.google.com/maps/search/?api=1&query=Ul.+Dragutina+Domjani%C4%87a+12B,+10370+Dugo+Selo,+Croatia',
+  mapsEmbedQuery: 'Ul. Dragutina Domjanića 12B, 10370 Dugo Selo, Croatia',
   mapsLabel: 'Pronađite nas na Google Maps',
 } as const;
 
@@ -425,7 +425,7 @@ export const FAQ_ITEMS = [
   {
     question: 'Gdje se nalazite i dolazite li u Dugo Selo?',
     answer:
-      'Bazirani smo u Dugom Selu (Ulica Ante Starčevića 8). Redovito dolazimo u Dugo Selo, Sesvete, Vrbovec, Rugvicu, Božjakovinu, Brckovljani i okolna mjesta. Pošaljite lokaciju i potvrdit ćemo dolazak.',
+      'Bazirani smo u Dugom Selu (Ul. Dragutina Domjanića 12B). Redovito dolazimo u Dugo Selo, Sesvete, Vrbovec, Rugvicu, Božjakovinu, Brckovljani i okolna mjesta. Pošaljite lokaciju i potvrdit ćemo dolazak.',
   },
   {
     question: 'Kako mogu naručiti čišćenje u Dugom Selu?',
