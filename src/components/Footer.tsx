@@ -80,7 +80,7 @@ export default function Footer() {
           <address className="not-italic text-center text-sm leading-relaxed text-gray-600">
             <span className="block font-medium text-gray-800">{COMPANY.legalName}</span>
             <span className="mt-1 block">
-              {COMPANY.address}, {COMPANY.city} · OIB: {COMPANY.oib} · MBO: {COMPANY.mbo}
+              {COMPANY.address}, {COMPANY.city}
             </span>
           </address>
           <p className="mt-4 text-center text-sm text-gray-500">
