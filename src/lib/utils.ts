@@ -63,6 +63,49 @@ export function buildWhatsAppInquiryMessage(data: {
   return lines.join("\n");
 }
 
+export function buildBookingWhatsAppMessage(data: {
+  ime: string;
+  mobitel: string;
+  podrucje: string;
+  adresa: string;
+  datum: string;
+  termin: string;
+  vrsta: string;
+  napomena: string;
+  procjenaCijena?: string;
+  procjenaDetalji?: string[];
+}) {
+  const lines = [
+    "Pozdrav, želim zatražiti termin čišćenja.",
+    "",
+    `Ime: ${data.ime}`,
+    `Mobitel: ${data.mobitel}`,
+    `Područje: ${data.podrucje}`,
+    `Adresa / mjesto: ${data.adresa}`,
+    `Željeni datum: ${data.datum}`,
+    `Željeno vrijeme: ${data.termin}`,
+  ];
+
+  if (data.vrsta.trim()) {
+    lines.push(`Vrsta čišćenja: ${data.vrsta}`);
+  }
+
+  if (data.procjenaCijena) {
+    lines.push("", "Procjena iz kalkulatora:", `Okvirna cijena: ${data.procjenaCijena}`);
+    if (data.procjenaDetalji?.length) {
+      lines.push(...data.procjenaDetalji.map((line) => `• ${line}`));
+    }
+  }
+
+  if (data.napomena.trim()) {
+    lines.push("", `Napomena: ${data.napomena.trim()}`);
+  }
+
+  lines.push("", "Molim potvrdu termina. Hvala!");
+
+  return lines.join("\n");
+}
+
 export function cn(...classes: (string | false | null | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }

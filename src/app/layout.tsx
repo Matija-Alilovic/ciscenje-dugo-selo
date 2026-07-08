@@ -1,16 +1,27 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import dynamic from "next/dynamic";
 import { Lora, Source_Sans_3 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { SITE } from "@/lib/constants";
 import { getSiteUrl } from "@/lib/site";
 import { SEO_KEYWORDS } from "@/lib/seo";
 import HashScrollHandler from "@/components/HashScrollHandler";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import CustomCursor from "@/components/CustomCursor";
 import Toast from "@/components/Toast";
-import BackToTop from "@/components/BackToTop";
-import PageBackground from "@/components/PageBackground";
 import "./globals.css";
+
+const PageBackground = dynamic(() => import("@/components/PageBackground"), {
+  loading: () => null,
+});
+
+const CustomCursor = dynamic(() => import("@/components/CustomCursor"), {
+  loading: () => null,
+});
+
+const BackToTop = dynamic(() => import("@/components/BackToTop"), {
+  loading: () => null,
+});
 
 const sourceSans = Source_Sans_3({
   subsets: ["latin", "latin-ext"],
@@ -124,6 +135,7 @@ export default function RootLayout({
           <CustomCursor />
           <Toast />
           <BackToTop />
+          <Analytics />
           {children}
         </ThemeProvider>
       </body>

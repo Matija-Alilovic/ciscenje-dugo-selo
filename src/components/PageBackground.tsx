@@ -17,6 +17,9 @@ export default function PageBackground() {
     const canTrack = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     if (!canTrack) return;
 
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
     root.classList.add("page-ambient--interactive");
 
     const onMove = (event: MouseEvent) => {

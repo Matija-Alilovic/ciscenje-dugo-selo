@@ -32,6 +32,8 @@ export const LOCAL_SEO_TEXT =
 export const GOOGLE_BUSINESS = {
   mapsSearchUrl:
     'https://www.google.com/maps/search/?api=1&query=Ul.+Dragutina+Domjani%C4%87a+12B,+10370+Dugo+Selo,+Croatia',
+  reviewUrl:
+    'https://www.google.com/maps/place/%C4%8Ci%C5%A1%C4%87enje+Dugo+Selo/@45.806597,16.2379696,758m/data=!3m1!1e3!4m15!1m8!3m7!1s0x47667aafe62e4b0b:0x80f8de3d5c447729!2sUl.+Dragutina+Domjani%C4%87a+12B,+10370,+Dugo+Selo!3b1!8m2!3d45.806597!4d16.2379696!16s%2Fg%2F11tjgkd5xl!3m5!1s0x3cc292a1d2de643:0x36c5626086411339!8m2!3d45.806597!4d16.2379696!16s%2Fg%2F11z9fs6vvy?entry=ttu&g_ep=EgoyMDI2MDcwNS4wIKXMDSoASAFQAw%3D%3D',
   mapsEmbedQuery: 'Ul. Dragutina Domjanića 12B, 10370 Dugo Selo, Croatia',
   mapsLabel: 'Pronađite nas na Google Maps',
 } as const;
@@ -77,6 +79,19 @@ export const AREA_PAGES = [
     intro:
       'Čistimo stanove i kuće u Brckovljani i okolnim naseljima. Za brzu procjenu koristite kalkulator cijene na stranici.',
   },
+] as const;
+
+export const BOOKING_AREAS = [
+  'Dugo Selo',
+  ...AREA_PAGES.map((area) => area.name),
+  'Okolica / drugo',
+] as const;
+
+export const BOOKING_TIME_SLOTS = [
+  { value: 'jutro', label: 'Jutro (8–12 h)' },
+  { value: 'popodne', label: 'Popodne (12–17 h)' },
+  { value: 'vecer', label: 'Večer (17–21 h)' },
+  { value: 'fleksibilno', label: 'Fleksibilno — dogovorimo' },
 ] as const;
 
 export const HERO_STATS = [

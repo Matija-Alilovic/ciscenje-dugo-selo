@@ -1,4 +1,4 @@
-import { SITE } from "./constants";
+import { GOOGLE_BUSINESS, SITE } from "./constants";
 
 export function getSiteUrl(): string {
   const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
@@ -14,7 +14,7 @@ export function getGoogleBusinessUrl(): string | undefined {
 }
 
 export function getGoogleReviewUrl(): string | undefined {
-  return process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL?.trim() || undefined;
+  return process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL?.trim() || GOOGLE_BUSINESS.reviewUrl;
 }
 
 export function getPhoneNumber(): string {

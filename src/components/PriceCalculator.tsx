@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   CALCULATOR_BATHROOM_OPTIONS,
   CALCULATOR_CLEANING_TYPES,
@@ -11,50 +11,53 @@ import {
   DEFAULT_CALCULATOR_INPUT,
   type CalculatorInput,
   type CleaningType,
-  buildCalculatorPrefill,
   buildCalculatorWhatsAppMessage,
   calculatePrice,
   formatPriceRange,
-} from "@/lib/priceCalculator";
+} from '@/lib/priceCalculator';
 import {
   CALCULATOR_TYPE_EVENT,
   clearCalculatorCleaningType,
   readCalculatorCleaningType,
-  saveCalculatorPrefill,
-  scrollToContact,
-} from "@/lib/calculatorPrefill";
-import { cn, getPhoneHref, openWhatsApp } from "@/lib/utils";
-import { CALCULATOR_DURATION_HINT } from "@/lib/constants";
-import { playUiSound, areUiSoundsMuted, setUiSoundsMuted, unlockUiSounds } from "@/lib/uiSounds";
+} from '@/lib/calculatorPrefill';
+import { cn, getPhoneHref, openWhatsApp } from '@/lib/utils';
+import { CALCULATOR_DURATION_HINT } from '@/lib/constants';
+import {
+  playUiSound,
+  areUiSoundsMuted,
+  setUiSoundsMuted,
+  unlockUiSounds,
+} from '@/lib/uiSounds';
+import BookingRequestForm from '@/components/BookingRequest';
 
 const FULL_STEPS = [
-  "Vrsta čišćenja",
-  "Veličina prostora",
-  "Stanje prostora",
-  "Dodatne usluge",
-  "Okvirna cijena",
+  'Vrsta čišćenja',
+  'Veličina prostora',
+  'Stanje prostora',
+  'Dodatne usluge',
+  'Okvirna cijena',
 ] as const;
 
-const WINDOW_STEPS = ["Vrsta čišćenja", "Prozori", "Okvirna cijena"] as const;
+const WINDOW_STEPS = ['Vrsta čišćenja', 'Prozori', 'Okvirna cijena'] as const;
 
 const FULL_STEP_HINTS = [
-  "Odaberite uslugu — procjena traje oko minute.",
-  "Super početak! Još malo o prostoru.",
-  "Odlično napredujete.",
-  "Zadnji korak prije procjene!",
+  'Odaberite uslugu — procjena traje oko minute.',
+  'Super početak! Još malo o prostoru.',
+  'Odlično napredujete.',
+  'Zadnji korak — procjena i termin.',
 ] as const;
 
 const WINDOW_STEP_HINTS = [
-  "Odaberite uslugu — procjena traje oko minute.",
-  "Koliko prozora treba oprati?",
+  'Odaberite uslugu — procjena traje oko minute.',
+  'Koliko prozora treba oprati?',
 ] as const;
 
 function remainingStepsLabel(count: number) {
-  if (count === 1) return "Još 1 korak";
+  if (count === 1) return 'Još 1 korak';
   return `Još ${count} koraka`;
 }
 
-const inputClassName = "form-field";
+const inputClassName = 'form-field';
 
 function FieldLabel({
   htmlFor,
@@ -70,7 +73,11 @@ function FieldLabel({
       <label htmlFor={htmlFor} className="form-label">
         {children}
       </label>
-      {hint && <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-600">{hint}</p>}
+      {hint && (
+        <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-600">
+          {hint}
+        </p>
+      )}
     </div>
   );
 }
@@ -85,7 +92,7 @@ function ChoiceButton({
   children: React.ReactNode;
 }) {
   function handleClick() {
-    playUiSound(selected ? "tap" : "select");
+    playUiSound(selected ? 'tap' : 'select');
     onClick();
   }
 
@@ -94,10 +101,10 @@ function ChoiceButton({
       type="button"
       onClick={handleClick}
       className={cn(
-        "rounded-lg border px-4 py-3.5 text-left text-base transition-colors min-h-11",
+        'rounded-lg border px-4 py-3.5 text-left text-base transition-colors min-h-11',
         selected
-          ? "border-brand-600 bg-brand-50 text-brand-800"
-          : "border-gray-300 bg-surface text-gray-700 hover:border-brand-200 hover:bg-brand-50/50",
+          ? 'border-brand-600 bg-brand-50 text-brand-800'
+          : 'border-gray-300 bg-surface text-gray-700 hover:border-brand-200 hover:bg-brand-50/50',
       )}
     >
       {children}
@@ -110,10 +117,10 @@ export default function PriceCalculator() {
   const [input, setInput] = useState<CalculatorInput>(DEFAULT_CALCULATOR_INPUT);
   const [pricePulse, setPricePulse] = useState(false);
   const [soundsMuted, setSoundsMuted] = useState(false);
-  const prevPriceKey = useRef("");
+  const prevPriceKey = useRef('');
   const cardRef = useRef<HTMLDivElement>(null);
 
-  const isWindowsOnly = input.cleaningType === "prozori";
+  const isWindowsOnly = input.cleaningType === 'prozori';
   const steps = isWindowsOnly ? WINDOW_STEPS : FULL_STEPS;
   const estimate = useMemo(() => calculatePrice(input), [input]);
   const priceLabel = formatPriceRange(estimate);
@@ -134,13 +141,13 @@ export default function PriceCalculator() {
     if (!card) return;
 
     const onPointerDown = () => unlockUiSounds();
-    card.addEventListener("pointerdown", onPointerDown, { passive: true });
-    return () => card.removeEventListener("pointerdown", onPointerDown);
+    card.addEventListener('pointerdown', onPointerDown, { passive: true });
+    return () => card.removeEventListener('pointerdown', onPointerDown);
   }, []);
 
   useEffect(() => {
     if (isLastStep && prevStep.current !== step) {
-      playUiSound("success");
+      playUiSound('success');
     }
     prevStep.current = step;
   }, [isLastStep, step]);
@@ -157,13 +164,15 @@ export default function PriceCalculator() {
 
   useEffect(() => {
     function applyCleaningType(type: string) {
-      const valid = CALCULATOR_CLEANING_TYPES.some((option) => option.value === type);
+      const valid = CALCULATOR_CLEANING_TYPES.some(
+        (option) => option.value === type,
+      );
       if (!valid) return;
 
       setInput((current) => ({
         ...current,
         cleaningType: type as CleaningType,
-        windows: type === "prozori" ? "unutra-malo" : current.windows,
+        windows: type === 'prozori' ? 'unutra-malo' : current.windows,
       }));
       setStep(0);
       clearCalculatorCleaningType();
@@ -177,7 +186,8 @@ export default function PriceCalculator() {
     }
 
     window.addEventListener(CALCULATOR_TYPE_EVENT, onTypePrefill);
-    return () => window.removeEventListener(CALCULATOR_TYPE_EVENT, onTypePrefill);
+    return () =>
+      window.removeEventListener(CALCULATOR_TYPE_EVENT, onTypePrefill);
   }, []);
 
   function updateInput(patch: Partial<CalculatorInput>) {
@@ -185,8 +195,8 @@ export default function PriceCalculator() {
       const next = { ...current, ...patch };
       if (patch.cleaningType && patch.cleaningType !== current.cleaningType) {
         setStep(0);
-        if (patch.cleaningType === "prozori") {
-          next.windows = "unutra-malo";
+        if (patch.cleaningType === 'prozori') {
+          next.windows = 'unutra-malo';
         }
       }
       return next;
@@ -196,25 +206,19 @@ export default function PriceCalculator() {
   function goNext() {
     const nextStep = Math.min(step + 1, steps.length - 1);
     if (nextStep < steps.length - 1) {
-      playUiSound("step");
+      playUiSound('step');
     }
     setStep(nextStep);
   }
 
   function goBack() {
-    playUiSound("back");
+    playUiSound('back');
     setStep((current) => Math.max(current - 1, 0));
   }
 
   function handleWhatsApp() {
-    playUiSound("action");
+    playUiSound('action');
     openWhatsApp(buildCalculatorWhatsAppMessage(input, estimate));
-  }
-
-  function handleContactForm() {
-    playUiSound("action");
-    saveCalculatorPrefill(buildCalculatorPrefill(input, estimate));
-    scrollToContact();
   }
 
   function toggleSounds() {
@@ -224,7 +228,7 @@ export default function PriceCalculator() {
 
     if (!nextMuted) {
       unlockUiSounds();
-      playUiSound("tap");
+      playUiSound('tap');
     }
   }
 
@@ -277,17 +281,17 @@ export default function PriceCalculator() {
               Koji prozori trebaju pranje?
             </FieldLabel>
             <div className="grid gap-3">
-              {CALCULATOR_WINDOW_OPTIONS.filter((option) => option.value !== "ne").map(
-                (option) => (
-                  <ChoiceButton
-                    key={option.value}
-                    selected={input.windows === option.value}
-                    onClick={() => updateInput({ windows: option.value })}
-                  >
-                    {option.label}
-                  </ChoiceButton>
-                ),
-              )}
+              {CALCULATOR_WINDOW_OPTIONS.filter(
+                (option) => option.value !== 'ne',
+              ).map((option) => (
+                <ChoiceButton
+                  key={option.value}
+                  selected={input.windows === option.value}
+                  onClick={() => updateInput({ windows: option.value })}
+                >
+                  {option.label}
+                </ChoiceButton>
+              ))}
             </div>
           </div>
         );
@@ -300,7 +304,10 @@ export default function PriceCalculator() {
       return (
         <div className="space-y-5">
           <div>
-            <FieldLabel htmlFor="sqm" hint="Ako ne znate točno, upišite okvirno.">
+            <FieldLabel
+              htmlFor="sqm"
+              hint="Ako ne znate točno, upišite okvirno."
+            >
               Kvadratura (m²)
             </FieldLabel>
             <input
@@ -311,10 +318,10 @@ export default function PriceCalculator() {
               min={20}
               max={400}
               placeholder="npr. 65"
-              value={input.sqm > 0 ? input.sqm : ""}
+              value={input.sqm > 0 ? input.sqm : ''}
               onChange={(e) => {
-                const digits = e.target.value.replace(/\D/g, "");
-                updateInput({ sqm: digits === "" ? 0 : Number(digits) });
+                const digits = e.target.value.replace(/\D/g, '');
+                updateInput({ sqm: digits === '' ? 0 : Number(digits) });
               }}
               className={inputClassName}
             />
@@ -342,7 +349,9 @@ export default function PriceCalculator() {
                 <ChoiceButton
                   key={option.value}
                   selected={input.bathrooms === Number(option.value)}
-                  onClick={() => updateInput({ bathrooms: Number(option.value) })}
+                  onClick={() =>
+                    updateInput({ bathrooms: Number(option.value) })
+                  }
                 >
                   {option.label}
                 </ChoiceButton>
@@ -367,7 +376,9 @@ export default function PriceCalculator() {
                 onClick={() => updateInput({ condition: option.value })}
               >
                 <span className="block font-medium">{option.label}</span>
-                <span className="mt-1 block text-sm text-gray-600">{option.hint}</span>
+                <span className="mt-1 block text-sm text-gray-600">
+                  {option.hint}
+                </span>
               </ChoiceButton>
             ))}
           </div>
@@ -445,6 +456,11 @@ export default function PriceCalculator() {
   }
 
   function renderResult() {
+    const cleaningLabel =
+      CALCULATOR_CLEANING_TYPES.find(
+        (item) => item.value === input.cleaningType,
+      )?.label ?? input.cleaningType;
+
     return (
       <div className="space-y-5">
         <div className="flex items-start gap-3 rounded-lg border border-brand-200 bg-brand-50 p-4 dark:border-brand-400/30 dark:bg-brand-50/10">
@@ -455,9 +471,11 @@ export default function PriceCalculator() {
             ✓
           </span>
           <div>
-            <p className="font-semibold text-brand-800 dark:text-brand-300">Procjena spremna!</p>
+            <p className="font-semibold text-brand-800 dark:text-brand-300">
+              Procjena spremna!
+            </p>
             <p className="mt-0.5 text-sm text-gray-600 dark:text-gray-500">
-              Pošaljite je na WhatsApp ili nas nazovite — dogovorimo detalje bez obveze.
+              Odaberite termin i lokaciju — procjena ide s porukom na WhatsApp.
             </p>
           </div>
         </div>
@@ -475,30 +493,46 @@ export default function PriceCalculator() {
             ))}
           </ul>
         </div>
-
-        <p className="rounded-lg border border-gray-200 bg-surface px-4 py-3 text-sm leading-relaxed text-gray-600">
-          Ovo je orientacijska procjena — konačna cijena ovisi o detaljima koje vidimo na
-          licu mjesta. Potvrdit ćemo cijenu prije dolaska, bez iznenađenja.
-        </p>
-
         <div className="space-y-3">
-          <p className="text-sm font-semibold text-gray-800">Što dalje?</p>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <button
               type="button"
               onClick={handleWhatsApp}
-              className="btn-primary btn-cta-hint w-full sm:w-auto"
+              className="btn-outline w-full sm:w-auto"
             >
               Pošalji procjenu na WhatsApp
             </button>
-            <button type="button" onClick={handleContactForm} className="btn-outline w-full sm:w-auto">
-              Nastavi u kontakt formi
-            </button>
-            <a href={getPhoneHref()} className="btn-muted w-full text-center sm:w-auto">
+            <a
+              href={getPhoneHref()}
+              className="btn-muted w-full text-center sm:w-auto"
+            >
               Nazovi
             </a>
           </div>
         </div>
+        <div className="rounded-lg border border-gray-200 bg-surface p-4 sm:p-5">
+          <p className="text-sm font-semibold text-gray-900">
+            Zatražite termin
+          </p>
+          <p className="mt-1 text-sm text-gray-600 dark:text-gray-500">
+            Usluga:{' '}
+            <span className="font-medium text-gray-800">{cleaningLabel}</span>
+          </p>
+          <div className="mt-4">
+            <BookingRequestForm
+              idPrefix="calc-booking"
+              defaultVrsta={cleaningLabel}
+              procjenaCijena={`${estimate.min}–${estimate.max} €`}
+              procjenaDetalji={estimate.summary}
+              onSubmitSuccess={() => playUiSound('action')}
+            />
+          </div>
+        </div>
+
+        <p className="rounded-lg border border-gray-200 bg-surface px-4 py-3 text-sm leading-relaxed text-gray-600">
+          Ovo je orientacijska procjena — konačnu cijenu potvrdit ćemo prije
+          dolaska.
+        </p>
       </div>
     );
   }
@@ -507,7 +541,7 @@ export default function PriceCalculator() {
     !isLastStep &&
     !(
       (step === 1 && !isWindowsOnly && (input.sqm < 20 || input.sqm > 400)) ||
-      (step === 1 && isWindowsOnly && input.windows === "ne")
+      (step === 1 && isWindowsOnly && input.windows === 'ne')
     );
 
   return (
@@ -521,29 +555,63 @@ export default function PriceCalculator() {
             type="button"
             onClick={toggleSounds}
             className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-brand-200 bg-surface text-brand-700 transition-colors hover:bg-brand-100 dark:border-brand-400/30 dark:hover:bg-brand-50/10"
-            aria-label={soundsMuted ? "Uključi zvukove" : "Isključi zvukove"}
+            aria-label={soundsMuted ? 'Uključi zvukove' : 'Isključi zvukove'}
             aria-pressed={!soundsMuted}
-            title={soundsMuted ? "Uključi zvukove" : "Isključi zvukove"}
+            title={soundsMuted ? 'Uključi zvukove' : 'Isključi zvukove'}
           >
             {soundsMuted ? (
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M11 5L6 9H3v6h3l5 4V5z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 9l4 4m0-4l-4 4" />
+              <svg
+                className="h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M11 5L6 9H3v6h3l5 4V5z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 9l4 4m0-4l-4 4"
+                />
               </svg>
             ) : (
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M11 5L6 9H3v6h3l5 4V5z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.54 8.46a5 5 0 010 7.08M18.36 5.64a9 9 0 010 12.72" />
+              <svg
+                className="h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M11 5L6 9H3v6h3l5 4V5z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.54 8.46a5 5 0 010 7.08M18.36 5.64a9 9 0 010 12.72"
+                />
               </svg>
             )}
           </button>
         </div>
         <p className="mt-1 text-sm text-gray-600 sm:text-base">
-          Odgovorite na nekoliko pitanja — dobit ćete okvirnu cijenu u rasponu.{" "}
-          <span className="font-medium text-brand-700">{CALCULATOR_DURATION_HINT}</span>
+          Odgovorite na nekoliko pitanja — dobit ćete okvirnu cijenu u rasponu.{' '}
+          <span className="font-medium text-brand-700">
+            {CALCULATOR_DURATION_HINT}
+          </span>
         </p>
         {!isLastStep && (
-          <p className="mt-2 text-sm font-medium text-brand-700 dark:text-brand-400">{stepHint}</p>
+          <p className="mt-2 text-sm font-medium text-brand-700 dark:text-brand-400">
+            {stepHint}
+          </p>
         )}
         <p className="mt-3 text-sm font-semibold text-brand-800 sm:hidden dark:text-brand-300">
           Korak {step + 1} od {steps.length}: {steps[step]}
@@ -574,8 +642,8 @@ export default function PriceCalculator() {
             </p>
             <p
               className={cn(
-                "text-lg font-bold tabular-nums text-gray-900 transition-transform duration-300 sm:text-xl dark:text-gray-900",
-                pricePulse && "scale-105 text-brand-700",
+                'text-lg font-bold tabular-nums text-gray-900 transition-transform duration-300 sm:text-xl dark:text-gray-900',
+                pricePulse && 'scale-105 text-brand-700',
               )}
               aria-live="polite"
               aria-atomic="true"
@@ -584,7 +652,8 @@ export default function PriceCalculator() {
             </p>
           </div>
           <p className="mt-2 text-xs text-gray-500 dark:text-gray-600">
-            Cijena se ažurira dok birate opcije — što više detalja, točnija procjena.
+            Cijena se ažurira dok birate opcije — što više detalja, točnija
+            procjena.
           </p>
         </div>
         <div className="mt-4 hidden flex-wrap items-center gap-2 sm:flex">
@@ -592,12 +661,12 @@ export default function PriceCalculator() {
             <span
               key={label}
               className={cn(
-                "rounded-md px-2.5 py-1 text-sm font-medium transition-colors duration-300",
+                'rounded-md px-2.5 py-1 text-sm font-medium transition-colors duration-300',
                 index === step
-                  ? "bg-brand-600 text-white"
+                  ? 'bg-brand-600 text-white'
                   : index < step
-                    ? "bg-brand-100 text-brand-800 dark:bg-brand-50/20 dark:text-brand-300"
-                    : "bg-surface text-gray-500",
+                    ? 'bg-brand-100 text-brand-800 dark:bg-brand-50/20 dark:text-brand-300'
+                    : 'bg-surface text-gray-500',
               )}
             >
               {index + 1}. {label}
@@ -616,12 +685,20 @@ export default function PriceCalculator() {
 
         <div className="flex flex-col gap-3 border-t border-gray-200 pt-5 sm:flex-row sm:flex-wrap">
           {canGoNext && (
-            <button type="button" onClick={goNext} className="btn-primary order-2 w-full sm:order-1 sm:w-auto">
+            <button
+              type="button"
+              onClick={goNext}
+              className="btn-primary order-2 w-full sm:order-1 sm:w-auto"
+            >
               Dalje
             </button>
           )}
           {step > 0 && (
-            <button type="button" onClick={goBack} className="btn-muted order-1 w-full sm:order-2 sm:w-auto">
+            <button
+              type="button"
+              onClick={goBack}
+              className="btn-muted order-1 w-full sm:order-2 sm:w-auto"
+            >
               Natrag
             </button>
           )}

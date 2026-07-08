@@ -119,7 +119,7 @@ export default function HomePage() {
         <Section
           id="kontakt"
           title="Kontakt"
-          subtitle="Niste prošli kalkulator? Ispunite formu — ili nam se javite izravno."
+          subtitle="Imate pitanje ili želite opći upit? Ispunite formu ili nam se javite izravno."
           className="section-surface"
         >
           <ContactSection />
