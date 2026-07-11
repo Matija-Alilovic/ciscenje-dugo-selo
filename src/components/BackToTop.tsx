@@ -6,8 +6,11 @@ import { cn } from "@/lib/utils";
 export default function BackToTop() {
   const [visible, setVisible] = useState(false);
   const [ctaVisible, setCtaVisible] = useState(false);
+  const [hiddenOnPage, setHiddenOnPage] = useState(false);
 
   useEffect(() => {
+    setHiddenOnPage(window.location.pathname.startsWith("/provjera"));
+
     const hero = document.getElementById("hero");
 
     function onScroll() {
@@ -33,7 +36,7 @@ export default function BackToTop() {
     };
   }, []);
 
-  if (!visible) return null;
+  if (!visible || hiddenOnPage) return null;
 
   return (
     <button

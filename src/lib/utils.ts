@@ -2,7 +2,7 @@ import {
   RECURRING_BASE_RATE,
   RECURRING_PACKAGES,
 } from "./constants";
-import { getPhoneNumber, getWhatsAppNumber } from "./site";
+import { getManagerWhatsAppNumber, getPhoneNumber, getWhatsAppNumber } from "./site";
 import { showToast } from "./toast";
 
 type RecurringPackage = (typeof RECURRING_PACKAGES)[number];
@@ -43,6 +43,14 @@ export function getWhatsAppHref(message?: string) {
   return `https://wa.me/${getWhatsAppNumber()}?text=${text}`;
 }
 
+export function getManagerWhatsAppHref(message?: string) {
+  const text = encodeURIComponent(
+    message ??
+      "Izvjestaj provjere ciscenja — poslano s web provjere zaposlenika.",
+  );
+  return `https://wa.me/${getManagerWhatsAppNumber()}?text=${text}`;
+}
+
 export function openWhatsApp(message: string) {
   const url = getWhatsAppHref(message);
 
@@ -50,6 +58,26 @@ export function openWhatsApp(message: string) {
 
   showToast({
     message: "Otvara se WhatsApp…",
+    href: url,
+    hrefLabel: "Ako se ne otvori, klikni ovdje",
+  });
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+}
+
+export function openManagerWhatsApp(message: string) {
+  const url = getManagerWhatsAppHref(message);
+
+  if (typeof window === "undefined") return;
+
+  showToast({
+    message: "Otvara se WhatsApp voditelju…",
     href: url,
     hrefLabel: "Ako se ne otvori, klikni ovdje",
   });

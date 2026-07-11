@@ -668,6 +668,10 @@ html.floating-cta-visible {
   scroll-padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
 }
 
+body.employee-checklist-page {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+
 #kalkulator {
   scroll-margin-top: 5.5rem;
   scroll-margin-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
@@ -813,4 +817,25 @@ html.floating-cta-visible {
   .page-ambient-glow {
     animation: none !important;
   }
+}
+
+/* Employee checklist (/provjera) */
+.employee-check-item {
+  @apply flex cursor-pointer items-start gap-3 rounded-lg border border-gray-200/90 bg-surface px-4 py-3.5 transition-all duration-200;
+}
+
+.employee-check-item:hover {
+  @apply border-brand-200;
+}
+
+.employee-check-item.is-done {
+  @apply border-brand-200 bg-brand-50/70;
+}
+
+.employee-check-box {
+  @apply mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2 border-gray-300 bg-surface text-transparent transition-all duration-200;
+}
+
+.employee-check-item.is-done .employee-check-box {
+  @apply border-brand-600 bg-brand-600 text-white;
 }

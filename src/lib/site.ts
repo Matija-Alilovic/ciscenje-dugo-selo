@@ -24,3 +24,15 @@ export function getPhoneNumber(): string {
 export function getWhatsAppNumber(): string {
   return (process.env.NEXT_PUBLIC_WHATSAPP ?? SITE.whatsapp).replace(/\D/g, "");
 }
+
+/** Broj vlasnika / menadžera za izvještaje zaposlenika (WhatsApp). */
+export function getManagerWhatsAppNumber(): string {
+  const fromEnv = process.env.NEXT_PUBLIC_MANAGER_WHATSAPP?.replace(/\D/g, "");
+  if (fromEnv) return fromEnv;
+  return getWhatsAppNumber();
+}
+
+export function getEmployeeChecklistPin(): string | undefined {
+  const pin = process.env.NEXT_PUBLIC_EMPLOYEE_CHECKLIST_PIN?.trim();
+  return pin || undefined;
+}
