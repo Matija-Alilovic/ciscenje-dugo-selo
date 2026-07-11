@@ -33,7 +33,7 @@ export default function HomePage() {
       <main>
         <Hero
           title="Čišćenje stanova i kuća Dugo Selo"
-          subtitle="Profesionalno čišćenje stanova i kuća u Dugom Selu i okolici — redovno održavanje, jednokratni dolazak ili temeljito generalno čišćenje."
+          subtitle="Redovno čišćenje svaki tjedan već od 11 €/h — ili jednokratno i generalno kad zatreba. Dugo Selo i okolica."
           highlightCalculator
         />
         <Section title="O usluzi">

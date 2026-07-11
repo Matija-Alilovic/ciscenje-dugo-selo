@@ -1,5 +1,34 @@
+import {
+  RECURRING_BASE_RATE,
+  RECURRING_PACKAGES,
+} from "./constants";
 import { getPhoneNumber, getWhatsAppNumber } from "./site";
 import { showToast } from "./toast";
+
+type RecurringPackage = (typeof RECURRING_PACKAGES)[number];
+
+export function getRecurringPackageVisitMin(pkg: RecurringPackage) {
+  return pkg.hourlyRate * pkg.minHours;
+}
+
+export function getRecurringPackageMonthlyEstimate(pkg: RecurringPackage) {
+  return getRecurringPackageVisitMin(pkg) * pkg.visitsPerMonth;
+}
+
+export function buildRecurringPackageWhatsAppMessage(pkg: RecurringPackage) {
+  const visitMin = getRecurringPackageVisitMin(pkg);
+  const monthlyEstimate = getRecurringPackageMonthlyEstimate(pkg);
+
+  return [
+    "Pozdrav, zanima me paket redovnog čišćenja.",
+    "",
+    `Paket: ${pkg.title} (${pkg.frequencyLabel})`,
+    `Satnica: ${pkg.hourlyRate} €/h (popust ${pkg.discountPercent}%, standardno ${RECURRING_BASE_RATE.hourly} €/h)`,
+    `Okvirno: od ${visitMin} € po dolasku · ~${monthlyEstimate} €/mj (najmanje ${pkg.minHours} h po dolasku)`,
+    "",
+    "Molim okvirnu cijenu za moj prostor i prvi slobodan termin.",
+  ].join("\n");
+}
 
 export function getPhoneHref() {
   return `tel:${getPhoneNumber().replace(/\s/g, "")}`;

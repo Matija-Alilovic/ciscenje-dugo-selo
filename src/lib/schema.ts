@@ -3,6 +3,7 @@ import {
   COMPANY,
   GOOGLE_BUSINESS,
   PRICING,
+  RECURRING_PACKAGES,
   SERVICE_TYPES,
   SITE,
 } from "./constants";
@@ -76,17 +77,30 @@ export function getLocalBusinessSchema() {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Usluge čišćenja",
-      itemListElement: PRICING.map((item, index) => ({
-        "@type": "Offer",
-        position: index + 1,
-        itemOffered: {
-          "@type": "Service",
-          name: item.service,
-          description: item.note ?? item.service,
-          provider: { "@id": businessId() },
-          areaServed: "Dugo Selo i okolica",
-        },
-      })),
+      itemListElement: [
+        ...PRICING.map((item, index) => ({
+          "@type": "Offer",
+          position: index + 1,
+          itemOffered: {
+            "@type": "Service",
+            name: item.service,
+            description: item.note ?? item.service,
+            provider: { "@id": businessId() },
+            areaServed: "Dugo Selo i okolica",
+          },
+        })),
+        ...RECURRING_PACKAGES.map((pkg, index) => ({
+          "@type": "Offer",
+          position: PRICING.length + index + 1,
+          itemOffered: {
+            "@type": "Service",
+            name: `Paket redovnog čišćenja — ${pkg.title}`,
+            description: `${pkg.frequencyLabel}. ${pkg.hourlyRate} €/h (popust ${pkg.discountPercent}%).`,
+            provider: { "@id": businessId() },
+            areaServed: "Dugo Selo i okolica",
+          },
+        })),
+      ],
     },
     knowsAbout: SERVICE_TYPES.map((service) => service.title),
   };

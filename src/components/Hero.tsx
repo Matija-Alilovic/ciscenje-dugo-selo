@@ -1,6 +1,7 @@
 import { CTAButtons } from "./MobileStickyCTA";
 import CalculatorHint from "./CalculatorHint";
 import LetterHoverText from "./LetterHoverText";
+import RecurringPackages from "./RecurringPackages";
 import { HERO_STATS } from "@/lib/constants";
 
 type HeroProps = {
@@ -33,16 +34,22 @@ export default function Hero({
             </li>
           ))}
         </ul>
+
+        <RecurringPackages
+          id="paketi"
+          variant="hero"
+          className="hero-fade hero-delay-3 mt-8 sm:mt-10"
+        />
+
         {highlightCalculator && (
-          <CalculatorHint className="hero-fade hero-delay-3 mt-8 sm:mt-10" />
+          <CalculatorHint className="hero-fade hero-delay-4 mt-6 sm:mt-8" />
         )}
         <CTAButtons
-          className={`hero-fade ${highlightCalculator ? "hero-delay-4" : "hero-delay-3"} mt-6 sm:mt-8`}
+          className={`hero-fade ${highlightCalculator ? "hero-delay-5" : "hero-delay-4"} mt-6 sm:mt-8`}
           leadWithCalculator={highlightCalculator}
         />
-        <div className="hero-fade hero-delay-4 mt-6 grid gap-2 sm:mt-8 sm:flex sm:flex-wrap">
+        <div className="hero-fade hero-delay-5 mt-6 grid gap-2 sm:mt-8 sm:flex sm:flex-wrap">
           {[
-            { label: "Redovno", price: "od 16 €/h" },
             { label: "Jednokratno", price: "od 18 €/h" },
             { label: "Generalno", price: "od 22 €/h" },
           ].map((item) => (

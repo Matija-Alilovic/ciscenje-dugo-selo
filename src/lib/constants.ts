@@ -95,8 +95,8 @@ export const BOOKING_TIME_SLOTS = [
 ] as const;
 
 export const HERO_STATS = [
+  'Paketi od 11 €/h · svaki tjedan',
   'Dogovor cijene prije dolaska',
-  'Radimo 8–22 h po dogovoru',
   'Dugo Selo i okolica',
 ] as const;
 
@@ -106,7 +106,7 @@ export const SERVICE_TYPES = [
     tagline: 'Kad želite uredan stan bez stalnog planiranja',
     description:
       'Dolazimo jednom tjedno ili na dva tjedna, čistimo prašinu, podove, kuhinju, kupaonicu i WC, i dogovorimo fiksni termin koji vam paše.',
-    price: 'od 16 €/h · najmanje 3 sata',
+    price: 'od 12 €/h uz paket · inače 16 €/h',
     href: '/ciscenje-stanova-dugo-selo',
     calculatorType: 'redovno',
   },
@@ -208,6 +208,7 @@ export const AREA_LINKS = [
 export const NAV_LINKS = [
   { href: '/#o-nama', label: 'O nama' },
   { href: '/#usluge', label: 'Usluge' },
+  { href: '/#paketi', label: 'Paketi' },
   { href: '/#kalkulator', label: 'Kalkulator' },
   { href: '/#cjenik', label: 'Cjenik' },
   { href: '/#kontakt', label: 'Kontakt' },
@@ -218,6 +219,7 @@ export const FOOTER_LINKS = [
   { href: '/#o-nama', label: 'O nama' },
   { href: '/#usluge', label: 'Usluge' },
   { href: '/#kalkulator', label: 'Kalkulator cijene' },
+  { href: '/#paketi', label: 'Paketi' },
   { href: '/#cjenik', label: 'Cjenik' },
   { href: '/#faq', label: 'Česta pitanja' },
   { href: '/#kontakt', label: 'Kontakt' },
@@ -342,11 +344,58 @@ export const SERVICES = [
   },
 ] as const;
 
+export const RECURRING_BASE_RATE = {
+  hourly: 16,
+  minHours: 3,
+} as const;
+
+export const RECURRING_PACKAGES = [
+  {
+    id: 'weekly-1',
+    title: '1× tjedno',
+    tagline: 'Jedan fiksni termin svaki tjedan',
+    description:
+      'Za stan ili kuću koja treba redovito održavanje — jedan dogovoreni dan u tjednu, ista ekipa kad god je moguće.',
+    frequencyLabel: 'Svaki tjedan · 1 dolazak',
+    visitsPerMonth: 4,
+    discountPercent: 25,
+    hourlyRate: 12,
+    minHours: 3,
+    features: [
+      'Popust na satnicu u odnosu na standardnu cijenu',
+      'Fiksni termin koji vam odgovara',
+      'Ista ekipa kad god je moguće',
+    ],
+    badge: 'Popularno' as const,
+  },
+  {
+    id: 'weekly-2',
+    title: '2× tjedno',
+    tagline: 'Dva fiksna termina svaki tjedan',
+    description:
+      'Za obitelji, kuće s djecom ili prostor koji treba češće čišćenje — dva termina tjedno po dogovoru.',
+    frequencyLabel: 'Svaki tjedan · 2 dolaska',
+    visitsPerMonth: 8,
+    discountPercent: 31,
+    hourlyRate: 11,
+    minHours: 3,
+    features: [
+      'Najveći popust na redovno čišćenje',
+      'Dva dogovorena dana u tjednu',
+      'Prioritet pri rezervaciji termina',
+    ],
+    badge: 'Najbolja vrijednost' as const,
+  },
+] as const;
+
+export const RECURRING_PACKAGES_NOTE =
+  'Paketi vrijede za redovno čišćenje stanova i kuća u Dugom Selu i okolici. Minimalno trajanje: 1 mjesec. Veći prostori mogu imati duže dolazke — točnu cijenu potvrđujemo prije prvog čišćenja. Dolazak jednom na dva tjedna bez paketa: standardna cijena od 16 €/h.';
+
 export const PRICING = [
   {
     service: 'Redovno čišćenje',
-    price: 'od 16 €/h',
-    note: 'Najmanje 3 sata po dolasku',
+    price: 'od 12 €/h',
+    note: 'Paketi 1× ili 2× tjedno · inače od 16 €/h · najmanje 3 h po dolasku',
   },
   {
     service: 'Jednokratno čišćenje',
@@ -466,7 +515,12 @@ export const FAQ_ITEMS = [
   {
     question: 'Radite li redovna čišćenja?',
     answer:
-      'Da, dolazimo jednom tjedno ili na dva tjedna, kako dogovorimo. Za stalne klijente držimo isti termin.',
+      'Da, dolazimo jednom tjedno, dva puta tjedno ili na dva tjedna, kako dogovorimo. Za stalne klijente držimo isti termin. Ako naručite redovno čišćenje svaki tjedan (1× ili 2×), imate popust na satnicu — pogledajte pakete u cjeniku.',
+  },
+  {
+    question: 'Imate li popust za redovno čišćenje svaki tjedan?',
+    answer:
+      'Da. Paket 1× tjedno ima popust na satnicu (12 €/h umjesto 16 €/h), a paket 2× tjedno još veći popust (11 €/h). Za manji stan to može biti okvirno od 144 €/mj (1× tjedno) ili od 264 €/mj (2× tjedno). Točna cijena ovisi o veličini prostora — javite se na WhatsApp.',
   },
   {
     question: 'Radite li generalno čišćenje?',
