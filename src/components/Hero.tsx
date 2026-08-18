@@ -1,7 +1,6 @@
 import { CTAButtons } from "./MobileStickyCTA";
 import CalculatorHint from "./CalculatorHint";
 import LetterHoverText from "./LetterHoverText";
-import RecurringPackages from "./RecurringPackages";
 import { HERO_STATS } from "@/lib/constants";
 
 type HeroProps = {
@@ -35,33 +34,13 @@ export default function Hero({
           ))}
         </ul>
 
-        <RecurringPackages
-          id="paketi"
-          variant="hero"
-          className="hero-fade hero-delay-3 mt-8 sm:mt-10"
-        />
-
         {highlightCalculator && (
-          <CalculatorHint className="hero-fade hero-delay-4 mt-6 sm:mt-8" />
+          <CalculatorHint className="hero-fade hero-delay-3 mt-6 sm:mt-8" />
         )}
         <CTAButtons
-          className={`hero-fade ${highlightCalculator ? "hero-delay-5" : "hero-delay-4"} mt-6 sm:mt-8`}
+          className={`hero-fade ${highlightCalculator ? "hero-delay-4" : "hero-delay-3"} mt-6 sm:mt-8`}
           leadWithCalculator={highlightCalculator}
         />
-        <div className="hero-fade hero-delay-5 mt-6 grid gap-2 sm:mt-8 sm:flex sm:flex-wrap">
-          {[
-            { label: "Jednokratno", price: "od 18 €/h" },
-            { label: "Generalno", price: "od 22 €/h" },
-          ].map((item) => (
-            <span
-              key={item.label}
-              className="flex items-center justify-between gap-3 rounded-md border border-gray-300 bg-surface px-3 py-2.5 text-base sm:inline-flex sm:justify-start"
-            >
-              <span className="font-medium text-gray-800">{item.label}</span>
-              <span className="shrink-0 text-brand-700">{item.price}</span>
-            </span>
-          ))}
-        </div>
       </div>
     </section>
   );

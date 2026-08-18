@@ -7,7 +7,6 @@ import Section from '@/components/Section';
 import ServiceTypes from '@/components/ServiceTypes';
 import ServiceCards from '@/components/ServiceCards';
 import ServiceComparisonTable from '@/components/ServiceComparisonTable';
-import PricingTable from '@/components/PricingTable';
 import PriceCalculator from '@/components/PriceCalculator';
 import Steps from '@/components/Steps';
 import AboutSection from '@/components/AboutSection';
@@ -33,7 +32,7 @@ export default function HomePage() {
       <main>
         <Hero
           title="Čišćenje stanova i kuća Dugo Selo"
-          subtitle="Redovno čišćenje svaki tjedan već od 11 €/h — ili jednokratno i generalno kad zatreba. Dugo Selo i okolica."
+          subtitle="Redovno, jednokratno i generalno čišćenje. Okvirnu cijenu dobijete u kalkulatoru — Dugo Selo i okolica."
           highlightCalculator
         />
         <Section title="O usluzi">
@@ -79,9 +78,6 @@ export default function HomePage() {
           subtitle="Osim stanova, čistimo i kuće, peremo prozore i dolazimo nakon selidbe."
         >
           <ServiceCards />
-        </Section>
-        <Section id="cjenik" title="Cjenik" className="section-surface">
-          <PricingTable />
         </Section>
         <Section title="Kako radimo" className="section-alt">
           <Steps />

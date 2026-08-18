@@ -39,7 +39,7 @@ export default async function AreaCleaningPage({ params }: PageProps) {
       subtitle={area.tagline}
       intro={[
         area.intro,
-        `Dolazimo u ${area.nameLocative} za redovno čišćenje (od 16 €/h), jednokratne dolazke (od 18 €/h) i generalno čišćenje (od 22 €/h ili 2,80 €/m²). Cijenu dogovorimo prije dolaska — bez iznenađenja.`,
+        `Dolazimo u ${area.nameLocative} za redovno čišćenje, jednokratne dolazke i generalno čišćenje. Cijenu dogovorimo prije dolaska — bez iznenađenja.`,
         `Bazirani smo u Dugom Selu i ${area.name} su u našem redovnom području rada. Za brzu procjenu koristite kalkulator cijene ili nas kontaktirajte na WhatsApp.`,
       ]}
       sections={[

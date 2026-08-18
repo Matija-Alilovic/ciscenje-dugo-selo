@@ -82,7 +82,7 @@ export const HOME_METADATA = createPageMetadata({
   absoluteTitle: "Čišćenje stanova i kuća Dugo Selo | Profesionalno čišćenje",
   title: "Čišćenje stanova i kuća Dugo Selo",
   description:
-    "Profesionalno čišćenje stanova i kuća u Dugom Selu i okolici. Redovno od 16 €/h, jednokratno, generalno čišćenje i pranje prozora. Besplatna procjena u online kalkulatoru — dogovor cijene prije dolaska.",
+    "Profesionalno čišćenje stanova i kuća u Dugom Selu i okolici. Redovno, jednokratno, generalno čišćenje i pranje prozora. Besplatna procjena u online kalkulatoru — dogovor cijene prije dolaska.",
   path: "/",
 });
 
@@ -99,7 +99,7 @@ export function createAreaPageMetadata({
   return createPageMetadata({
     title: `Čišćenje stanova ${name}`,
     absoluteTitle: `Čišćenje stanova i kuća ${name} | ${SITE.name}`,
-    description: `${tagline}. Redovno, jednokratno i generalno čišćenje. Od 16 €/h. Besplatna procjena u kalkulatoru — dolazimo iz Dugog Sela.`,
+    description: `${tagline}. Redovno, jednokratno i generalno čišćenje. Besplatna procjena u kalkulatoru — dolazimo iz Dugog Sela.`,
     path,
     keywords: [
       `čišćenje stanova ${name}`,
@@ -115,7 +115,7 @@ export const PAGE_SEO = {
   stanovi: createPageMetadata({
     title: "Čišćenje stanova Dugo Selo",
     description:
-      "Redovno i jednokratno čišćenje stanova u Dugom Selu i okolici. Dolazimo jednom tjedno ili na dva tjedna. Od 16 €/h, dogovor cijene prije dolaska.",
+      "Redovno i jednokratno čišćenje stanova u Dugom Selu i okolici. Dolazimo jednom tjedno ili na dva tjedna. Besplatna procjena u kalkulatoru — dogovor cijene prije dolaska.",
     path: "/ciscenje-stanova-dugo-selo",
     keywords: [
       "čišćenje stanova Dugo Selo",
@@ -128,7 +128,7 @@ export const PAGE_SEO = {
   generalno: createPageMetadata({
     title: "Generalno čišćenje stana Dugo Selo",
     description:
-      "Generalno čišćenje stana u Dugom Selu i okolici. Kuhinja, kupaonica, kamenac, lajsne i podovi. Od 22 €/h ili 2,80 €/m². Besplatna procjena.",
+      "Generalno čišćenje stana u Dugom Selu i okolici. Kuhinja, kupaonica, kamenac, lajsne i podovi. Besplatna procjena u kalkulatoru.",
     path: "/generalno-ciscenje-stana-dugo-selo",
     keywords: [
       "generalno čišćenje stana Dugo Selo",

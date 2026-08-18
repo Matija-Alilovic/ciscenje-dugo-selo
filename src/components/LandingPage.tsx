@@ -5,7 +5,6 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import MobileStickyCTA, { CTAButtons } from "@/components/MobileStickyCTA";
 import CalculatorHint from "@/components/CalculatorHint";
 import Section from "@/components/Section";
-import PricingTable from "@/components/PricingTable";
 import PriceCalculator from "@/components/PriceCalculator";
 import Checklist from "@/components/Checklist";
 import FAQ from "@/components/FAQ";
@@ -100,18 +99,13 @@ export function LandingPage({
         )}
 
         {showPricing && (
-          <>
-            <Section
-              id="kalkulator"
-              title="Kalkulator cijene"
-              subtitle="Odgovorite na pitanja i dobit ćete okvirnu cijenu prije kontakta."
-            >
-              <PriceCalculator />
-            </Section>
-            <Section id="cjenik" title="Cjenik" className="section-alt">
-              <PricingTable />
-            </Section>
-          </>
+          <Section
+            id="kalkulator"
+            title="Kalkulator cijene"
+            subtitle="Odgovorite na pitanja i dobit ćete okvirnu cijenu prije kontakta."
+          >
+            <PriceCalculator />
+          </Section>
         )}
 
         {showFaq && (

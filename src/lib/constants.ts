@@ -95,7 +95,7 @@ export const BOOKING_TIME_SLOTS = [
 ] as const;
 
 export const HERO_STATS = [
-  'Paketi od 11 €/h · svaki tjedan',
+  'Okvirna cijena u kalkulatoru',
   'Dogovor cijene prije dolaska',
   'Dugo Selo i okolica',
 ] as const;
@@ -106,7 +106,7 @@ export const SERVICE_TYPES = [
     tagline: 'Kad želite uredan stan bez stalnog planiranja',
     description:
       'Dolazimo jednom tjedno ili na dva tjedna, čistimo prašinu, podove, kuhinju, kupaonicu i WC, i dogovorimo fiksni termin koji vam paše.',
-    price: 'od 12 €/h uz paket · inače 16 €/h',
+    price: 'Okvirna cijena u kalkulatoru',
     href: '/ciscenje-stanova-dugo-selo',
     calculatorType: 'redovno',
   },
@@ -115,7 +115,7 @@ export const SERVICE_TYPES = [
     tagline: 'Kad treba srediti stan jednom',
     description:
       'Dolazimo jednom i čistimo isto što i kod redovnog čišćenja, npr. prije gostiju, nakon sitnih radova ili kad jednostavno nemate vremena. Dogovorimo termin i što je prvo na redu.',
-    price: 'od 18 €/h · najmanje 3 sata',
+    price: 'Okvirna cijena u kalkulatoru',
     href: '/ciscenje-stanova-dugo-selo',
     calculatorType: 'jednokratno',
   },
@@ -124,7 +124,7 @@ export const SERVICE_TYPES = [
     tagline: 'Kad treba ozbiljnije ući u posao',
     description:
       'Detaljno čistimo cijeli stan ili kuću, kuhinju i kupaonicu, skidamo kamenac, brišemo lajsne, vrata i paučinu, i sve što se kod redovnog čišćenja radi brže. Npr. prije useljenja, nakon renovacije ili kad je dugo bilo zanemareno.',
-    price: 'od 22 €/h ili od 2,80 €/m²',
+    price: 'Okvirna cijena u kalkulatoru',
     href: '/generalno-ciscenje-stana-dugo-selo',
     calculatorType: 'generalno',
   },
@@ -183,9 +183,6 @@ export const SERVICE_COMPARISON = [
   },
 ] as const;
 
-export const PRICING_TRUST_NOTE =
-  'Cijenu dogovorimo prije dolaska — bez iznenađenja na licu mjesta.';
-
 export const SERVICE_PAGES = [
   { href: '/ciscenje-stanova-dugo-selo', label: 'Čišćenje stanova Dugo Selo' },
   {
@@ -208,9 +205,7 @@ export const AREA_LINKS = [
 export const NAV_LINKS = [
   { href: '/#o-nama', label: 'O nama' },
   { href: '/#usluge', label: 'Usluge' },
-  { href: '/#paketi', label: 'Paketi' },
   { href: '/#kalkulator', label: 'Kalkulator' },
-  { href: '/#cjenik', label: 'Cjenik' },
   { href: '/#kontakt', label: 'Kontakt' },
 ] as const;
 
@@ -219,8 +214,6 @@ export const FOOTER_LINKS = [
   { href: '/#o-nama', label: 'O nama' },
   { href: '/#usluge', label: 'Usluge' },
   { href: '/#kalkulator', label: 'Kalkulator cijene' },
-  { href: '/#paketi', label: 'Paketi' },
-  { href: '/#cjenik', label: 'Cjenik' },
   { href: '/#faq', label: 'Česta pitanja' },
   { href: '/#kontakt', label: 'Kontakt' },
 ] as const;
@@ -344,68 +337,21 @@ export const SERVICES = [
   },
 ] as const;
 
-export const RECURRING_BASE_RATE = {
-  hourly: 16,
-  minHours: 3,
-} as const;
-
-export const RECURRING_PACKAGES = [
-  {
-    id: 'weekly-1',
-    title: '1× tjedno',
-    tagline: 'Jedan fiksni termin svaki tjedan',
-    description:
-      'Za stan ili kuću koja treba redovito održavanje — jedan dogovoreni dan u tjednu, ista ekipa kad god je moguće.',
-    frequencyLabel: 'Svaki tjedan · 1 dolazak',
-    visitsPerMonth: 4,
-    discountPercent: 25,
-    hourlyRate: 12,
-    minHours: 3,
-    features: [
-      'Popust na satnicu u odnosu na standardnu cijenu',
-      'Fiksni termin koji vam odgovara',
-      'Ista ekipa kad god je moguće',
-    ],
-    badge: 'Popularno' as const,
-  },
-  {
-    id: 'weekly-2',
-    title: '2× tjedno',
-    tagline: 'Dva fiksna termina svaki tjedan',
-    description:
-      'Za obitelji, kuće s djecom ili prostor koji treba češće čišćenje — dva termina tjedno po dogovoru.',
-    frequencyLabel: 'Svaki tjedan · 2 dolaska',
-    visitsPerMonth: 8,
-    discountPercent: 31,
-    hourlyRate: 11,
-    minHours: 3,
-    features: [
-      'Najveći popust na redovno čišćenje',
-      'Dva dogovorena dana u tjednu',
-      'Prioritet pri rezervaciji termina',
-    ],
-    badge: 'Najbolja vrijednost' as const,
-  },
-] as const;
-
-export const RECURRING_PACKAGES_NOTE =
-  'Paketi vrijede za redovno čišćenje stanova i kuća u Dugom Selu i okolici. Minimalno trajanje: 1 mjesec. Veći prostori mogu imati duže dolazke — točnu cijenu potvrđujemo prije prvog čišćenja. Dolazak jednom na dva tjedna bez paketa: standardna cijena od 16 €/h.';
-
 export const PRICING = [
   {
     service: 'Redovno čišćenje',
-    price: 'od 12 €/h',
-    note: 'Paketi 1× ili 2× tjedno · inače od 16 €/h · najmanje 3 h po dolasku',
+    price: 'po dogovoru',
+    note: 'Okvirnu cijenu dobijete u kalkulatoru',
   },
   {
     service: 'Jednokratno čišćenje',
-    price: 'od 18 €/h',
-    note: 'Najmanje 3 sata po dolasku',
+    price: 'po dogovoru',
+    note: 'Okvirnu cijenu dobijete u kalkulatoru',
   },
   {
     service: 'Generalno čišćenje',
-    price: 'od 22 €/h ili od 2,80 €/m²',
-    note: null,
+    price: 'po dogovoru',
+    note: 'Okvirnu cijenu dobijete u kalkulatoru',
   },
   {
     service: 'Pranje prozora',
@@ -484,7 +430,7 @@ export const FAQ_ITEMS = [
   {
     question: 'Koliko košta čišćenje stana u Dugom Selu?',
     answer:
-      'Redovno čišćenje počinje od 16 €/h (najmanje 3 sata), jednokratno od 18 €/h, a generalno od 22 €/h ili od 2,80 €/m². Točna cijena ovisi o veličini stana, stanju i dodatnim uslugama. Najbrže je proći kalkulator cijene na stranici — dobit ćete okvirnu procjenu u minuti.',
+      'Točna cijena ovisi o veličini stana, stanju i dodatnim uslugama. Najbrže je proći kalkulator cijene na stranici — dobit ćete okvirnu procjenu u minuti, a prije dolaska je potvrdimo.',
   },
   {
     question: 'Gdje se nalazite i dolazite li u Dugo Selo?',
@@ -515,17 +461,17 @@ export const FAQ_ITEMS = [
   {
     question: 'Radite li redovna čišćenja?',
     answer:
-      'Da, dolazimo jednom tjedno, dva puta tjedno ili na dva tjedna, kako dogovorimo. Za stalne klijente držimo isti termin. Ako naručite redovno čišćenje svaki tjedan (1× ili 2×), imate popust na satnicu — pogledajte pakete u cjeniku.',
+      'Da, dolazimo jednom tjedno, dva puta tjedno ili na dva tjedna, kako dogovorimo. Za stalne klijente držimo isti termin.',
   },
   {
     question: 'Imate li popust za redovno čišćenje svaki tjedan?',
     answer:
-      'Da. Paket 1× tjedno ima popust na satnicu (12 €/h umjesto 16 €/h), a paket 2× tjedno još veći popust (11 €/h). Za manji stan to može biti okvirno od 144 €/mj (1× tjedno) ili od 264 €/mj (2× tjedno). Točna cijena ovisi o veličini prostora — javite se na WhatsApp.',
+      'Za stalne klijente možemo dogovoriti povoljnije uvjete. Točna cijena ovisi o veličini prostora i učestalosti — najbrže je proći kalkulator ili javiti se na WhatsApp.',
   },
   {
     question: 'Radite li generalno čišćenje?',
     answer:
-      'Da, detaljnije čistimo kuhinju, kupaonicu, podove, vrata i ostale površine. Cijena je od 22 €/h ili od 2,80 €/m².',
+      'Da, detaljnije čistimo kuhinju, kupaonicu, podove, vrata i ostale površine. Okvirnu cijenu dobijete u kalkulatoru, a prije dolaska je potvrdimo.',
   },
   {
     question: 'Čistite li kuće ili samo stanove?',

@@ -3,7 +3,6 @@ import {
   COMPANY,
   GOOGLE_BUSINESS,
   PRICING,
-  RECURRING_PACKAGES,
   SERVICE_TYPES,
   SITE,
 } from "./constants";
@@ -89,17 +88,6 @@ export function getLocalBusinessSchema() {
             areaServed: "Dugo Selo i okolica",
           },
         })),
-        ...RECURRING_PACKAGES.map((pkg, index) => ({
-          "@type": "Offer",
-          position: PRICING.length + index + 1,
-          itemOffered: {
-            "@type": "Service",
-            name: `Paket redovnog čišćenja — ${pkg.title}`,
-            description: `${pkg.frequencyLabel}. ${pkg.hourlyRate} €/h (popust ${pkg.discountPercent}%).`,
-            provider: { "@id": businessId() },
-            areaServed: "Dugo Selo i okolica",
-          },
-        })),
       ],
     },
     knowsAbout: SERVICE_TYPES.map((service) => service.title),
@@ -115,7 +103,7 @@ export function getWebSiteSchema() {
     url: getSiteUrl(),
     inLanguage: "hr-HR",
     description:
-      "Čišćenje stanova i kuća u Dugom Selu i okolici. Cjenik, kalkulator cijene i kontakt na jednom mjestu.",
+      "Čišćenje stanova i kuća u Dugom Selu i okolici. Kalkulator cijene i kontakt na jednom mjestu.",
     publisher: { "@id": businessId() },
   };
 }

@@ -24,9 +24,9 @@ export default function GeneralnoCiscenjePage() {
           title: "Koliko košta generalno čišćenje stana u Dugom Selu",
           content: (
             <p className="max-w-2xl text-lg leading-relaxed text-gray-700">
-              Od 22 €/h ili od 2,80 €/m², ovisno o veličini i stanju stana.
-              Pošaljite podatke o kvadraturi i kratki opis, javit ćemo okvirnu
-              cijenu prije dolaska.
+              Okvirna cijena ovisi o veličini i stanju stana. Prođite kalkulator
+              ili pošaljite podatke o kvadraturi i kratki opis — javit ćemo
+              procjenu prije dolaska.
             </p>
           ),
         },

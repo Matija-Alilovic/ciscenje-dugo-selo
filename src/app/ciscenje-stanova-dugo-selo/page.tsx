@@ -20,7 +20,7 @@ export default function CiscenjeStanovaPage() {
             <p className="max-w-2xl text-lg leading-relaxed text-gray-700">
               Za stalne klijente držimo fiksni termin, dolazimo jednom tjedno ili
               na dva tjedna. Svaki put čistimo prašinu, podove, kupaonicu, kuhinju
-              i sve što smo dogovorili. Od 16 €/h, najmanje 3 sata po dolasku.
+              i sve što smo dogovorili. Okvirnu cijenu dobijete u kalkulatoru.
             </p>
           ),
         },
@@ -29,8 +29,8 @@ export default function CiscenjeStanovaPage() {
           content: (
             <p className="max-w-2xl text-lg leading-relaxed text-gray-700">
               Kad treba brzo srediti stan, npr. prije gostiju, nakon radova ili
-              kad jednostavno nemate vremena, dolazimo u dogovoreni termin. Od 18
-              €/h, najmanje 3 sata po dolasku.
+              kad jednostavno nemate vremena, dolazimo u dogovoreni termin.
+              Okvirnu cijenu dobijete u kalkulatoru.
             </p>
           ),
         },
