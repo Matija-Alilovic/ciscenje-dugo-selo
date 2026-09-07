@@ -25,7 +25,7 @@ export function applyTheme(theme: Theme) {
 function overlayThemeTransition(theme: Theme, apply: () => void) {
   const overlay = document.createElement("div");
   overlay.className = "theme-fade-overlay";
-  overlay.style.background = theme === "dark" ? "#121614" : "#faf8f4";
+  overlay.style.background = theme === "dark" ? "#131410" : "#f6f3ec";
   overlay.setAttribute("aria-hidden", "true");
   document.body.appendChild(overlay);
 

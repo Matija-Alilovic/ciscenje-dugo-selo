@@ -8,16 +8,16 @@ export default function PranjeProzoraPage() {
     <LandingPage
       title="Pranje prozora Dugo Selo"
       pagePath="/pranje-prozora-dugo-selo"
-      subtitle="Peremo prozore u Dugom Selu i okolici, unutra, vani ili oboje."
+      subtitle="Po dogovoru uz redovito čišćenje. Nije samostalna jednokratna usluga."
       intro={[
-        "Čisti prozori puno mijenjaju kako prostor izgleda. Možemo doći samo zbog prozora ili to uklopiti uz generalno čišćenje.",
-        "Cijena ovisi o broju prozora, katnosti i tome treba li prati samo unutrašnju ili i vanjsku stranu. Javite koliko prozora imate i gdje ste, pa dogovorimo cijenu.",
+        "Pranje prozora radimo po dogovoru uz redovito čišćenje, ne kao zaseban jednokratni posao jednom godišnje.",
+        "Recite koliko prozora ima i treba li i vanjska strana. Vanjsko pranje ovisi o pristupu — to dogovorimo prije dolaska.",
       ]}
       sections={[
         {
           title: "Što radimo",
           content: (
-            <ul className="max-w-2xl space-y-3 text-lg text-gray-700">
+            <ul className="max-w-3xl space-y-3 text-xl text-gray-700">
               <li className="flex items-start gap-3">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
                 Peremo unutrašnju stranu stakla
@@ -30,20 +30,15 @@ export default function PranjeProzoraPage() {
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
                 Brišemo okvire i klupice
               </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
-                Može i uz generalno čišćenje
-              </li>
             </ul>
           ),
         },
         {
-          title: "Gdje peremo prozore",
+          title: "Cijena",
           content: (
-            <p className="max-w-2xl text-lg leading-relaxed text-gray-700">
-              Radimo u Dugom Selu, Božjakovini, Rugvici, Brckovljani, Sesvetama,
-              Vrbovcu i okolici.               Za lokacije malo dalje od Dugog Sela javite se i potvrdit ćemo
-              možemo li doći.
+            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+              Do šest prozora unutra: 30–45 €. Unutra i vani: 65–90 €. Ako ste
+              malo dalje, pošaljite ulicu — potvrdit ćemo možemo li doći i kada.
             </p>
           ),
         },

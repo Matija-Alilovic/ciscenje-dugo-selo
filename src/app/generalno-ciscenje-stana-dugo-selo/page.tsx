@@ -10,23 +10,30 @@ export default function GeneralnoCiscenjePage() {
     <LandingPage
       title="Generalno čišćenje stana Dugo Selo"
       pagePath="/generalno-ciscenje-stana-dugo-selo"
-      subtitle="Kad stan treba temeljito očistiti, s više posla nego kod redovnog održavanja."
+      subtitle="Nudimo samo iznimno. Naša osnovna usluga je redovito tjedno čišćenje."
       intro={[
-        "Generalno čišćenje je za situacije kad treba ozbiljnije ući u posao, npr. nakon renovacije, prije useljenja ili kad je dugo bilo zanemareno.",
-        "Detaljno čistimo kuhinju i kupaonicu, skidamo kamenac, brišemo lajsne, vrata, paučinu i ostale površine. Prozore, pećnicu i hladnjak radimo po dogovoru.",
+        "Generalno čišćenje nije naša osnovna usluga. Fokusiramo se na redovito čišćenje — isti dan svaki tjedan ili svaka dva tjedna.",
+        "Jednokratni temeljiti dolazak rješavamo samo iznimno, ako stignemo uz redovite klijente. Ako želite dugoročnu suradnju, bolje je dogovoriti redoviti ritam.",
       ]}
       sections={[
         {
-          title: "Što uključuje generalno čišćenje",
+          title: "Što uključuje generalno čišćenje (ako se dogovorimo)",
           content: <Checklist items={DEEP_CLEANING} />,
         },
         {
-          title: "Koliko košta generalno čišćenje stana u Dugom Selu",
+          title: "Što preporučujemo umjesto toga",
           content: (
-            <p className="max-w-2xl text-lg leading-relaxed text-gray-700">
-              Okvirna cijena ovisi o veličini i stanju stana. Prođite kalkulator
-              ili pošaljite podatke o kvadraturi i kratki opis — javit ćemo
-              procjenu prije dolaska.
+            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+              Redovito čišćenje po 13 €/h, tjedno ili svaka dva tjedna. Tako
+              stan ostaje uredan cijelu godinu, bez jednokratnog posla jednom
+              godišnje. Pogledajte{" "}
+              <a
+                href="/ciscenje-stanova-dugo-selo"
+                className="font-medium text-brand-700 underline underline-offset-2"
+              >
+                redovito čišćenje stanova
+              </a>
+              .
             </p>
           ),
         },

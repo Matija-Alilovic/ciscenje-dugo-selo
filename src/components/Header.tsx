@@ -144,18 +144,18 @@ export default function Header() {
           !headerVisible && !menuOpen && "-translate-y-full",
         )}
       >
-        <div className="mx-auto flex max-w-5xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3.5 sm:gap-4 sm:px-6 sm:py-4 lg:px-8">
           <Link href="/" className="group min-w-0 flex-1">
-            <span className="block font-heading text-base font-bold leading-tight text-gray-900 dark:text-gray-900 sm:text-xl">
+            <span className="block font-heading text-lg font-bold leading-tight text-gray-900 dark:text-gray-900 sm:text-2xl">
               <LetterHoverText text={SITE.serviceHeadline} />
             </span>
-            <span className="hidden min-[380px]:block truncate text-xs text-gray-500 transition-colors group-hover:text-brand-600 dark:text-gray-500 dark:group-hover:text-brand-400 sm:text-sm">
-              {SITE.name} · {SITE.tagline}
+            <span className="hidden min-[380px]:block truncate text-sm text-gray-500 transition-colors group-hover:text-brand-600 dark:text-gray-500 dark:group-hover:text-brand-400 sm:text-base">
+              {SITE.name}
             </span>
           </Link>
 
           <div className="flex shrink-0 items-center gap-2">
-            <nav className="hidden items-center gap-1 md:flex" aria-label="Glavna navigacija">
+            <nav className="hidden items-center gap-1 lg:flex" aria-label="Glavna navigacija">
               {NAV_LINKS.map((link) => {
                 const sectionId = link.href.split("#")[1] ?? "";
                 const isActive = activeSection === sectionId;
@@ -172,7 +172,7 @@ export default function Header() {
                       window.history.pushState(null, "", "#kalkulator");
                     }}
                     className={cn(
-                      "rounded-lg px-3 py-2 text-base font-medium transition-colors duration-200",
+                      "rounded-lg px-3.5 py-2.5 text-lg font-medium transition-colors duration-200",
                       isActive
                         ? "bg-brand-50 text-brand-700 dark:bg-brand-50/20 dark:text-brand-400"
                         : "text-gray-600 hover:bg-brand-50 hover:text-brand-700 dark:text-gray-500 dark:hover:bg-brand-50/10 dark:hover:text-brand-300",
@@ -182,14 +182,14 @@ export default function Header() {
                   </Link>
                 );
               })}
-              <a href={getPhoneHref()} className="btn-primary ml-2 px-4 py-2.5 text-base">
+              <a href={getPhoneHref()} className="btn-primary ml-2">
                 Nazovi
               </a>
             </nav>
 
             <button
               type="button"
-              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 md:hidden dark:border-gray-400 dark:text-gray-700 dark:hover:bg-gray-200/10"
+              className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 lg:hidden dark:border-gray-400 dark:text-gray-700 dark:hover:bg-gray-200/10"
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
               aria-label={menuOpen ? "Zatvori izbornik" : "Otvori izbornik"}
@@ -211,7 +211,7 @@ export default function Header() {
         {menuOpen && (
           <button
             type="button"
-            className="fixed inset-0 z-30 bg-gray-900/40 md:hidden"
+            className="fixed inset-0 z-30 bg-gray-900/40 lg:hidden"
             aria-label="Zatvori izbornik"
             onClick={() => setMenuOpen(false)}
           />
@@ -220,7 +220,7 @@ export default function Header() {
         <nav
           id="mobile-nav"
           className={cn(
-            "relative z-40 border-t border-gray-200/80 bg-surface md:hidden dark:border-gray-300/50 dark:bg-gray-100",
+            "relative z-40 border-t border-gray-200/80 bg-surface lg:hidden dark:border-gray-300/50 dark:bg-gray-100",
             menuOpen ? "block" : "hidden",
           )}
           aria-label="Mobilna navigacija"

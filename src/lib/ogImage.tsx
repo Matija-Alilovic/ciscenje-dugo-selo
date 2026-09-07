@@ -27,8 +27,8 @@ export function createOgImageResponse({
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "64px 72px",
-          background: "linear-gradient(145deg, #faf8f4 0%, #edf7f0 48%, #d4eadc 100%)",
-          color: "#2a2420",
+          background: "linear-gradient(145deg, #f6f3ec 0%, #eef3f8 48%, #f3e0cc 100%)",
+          color: "#231e18",
           fontFamily: "Georgia, serif",
         }}
       >
@@ -40,25 +40,45 @@ export function createOgImageResponse({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: "#2f6f52",
+              background: "#2a4d6b",
               borderRadius: 18,
             }}
           >
             <div
               style={{
-                width: 28,
-                height: 36,
-                marginTop: -4,
-                background: "#edf7f0",
-                borderRadius: "50% 50% 50% 50% / 35% 35% 65% 65%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
               }}
-            />
+            >
+              <div
+                style={{
+                  width: 0,
+                  height: 0,
+                  borderLeft: "18px solid transparent",
+                  borderRight: "18px solid transparent",
+                  borderBottom: "16px solid #f6f3ec",
+                }}
+              />
+              <div
+                style={{
+                  width: 32,
+                  height: 22,
+                  background: "#f6f3ec",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "flex-end",
+                }}
+              >
+                <div style={{ width: 10, height: 14, background: "#c4783a" }} />
+              </div>
+            </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span
               style={{
                 fontSize: 28,
-                color: "#2f6f52",
+                color: "#2a4d6b",
                 fontWeight: 700,
                 fontFamily: "Arial, sans-serif",
               }}
@@ -72,7 +92,7 @@ export function createOgImageResponse({
                 fontFamily: "Arial, sans-serif",
               }}
             >
-              Profesionalno čišćenje stanova i kuća
+              Čišćenje, kuća i dvorište
             </span>
           </div>
         </div>
@@ -83,7 +103,7 @@ export function createOgImageResponse({
               fontSize: 68,
               lineHeight: 1.08,
               fontWeight: 700,
-              color: "#1f4f38",
+              color: "#182c3e",
               letterSpacing: "-0.02em",
             }}
           >
@@ -107,7 +127,7 @@ export function createOgImageResponse({
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            borderTop: "2px solid #a8d4b8",
+            borderTop: "2px solid #a8c0d6",
             paddingTop: 28,
             fontFamily: "Arial, sans-serif",
           }}
@@ -115,7 +135,7 @@ export function createOgImageResponse({
           <span
             style={{
               fontSize: 24,
-              color: "#266045",
+              color: "#213c54",
               fontWeight: 700,
             }}
           >
@@ -127,7 +147,7 @@ export function createOgImageResponse({
               color: "#5e564d",
             }}
           >
-            Redovno · Generalno · Pranje prozora
+            Čišćenje · Dvorište · Sitni radovi
           </span>
         </div>
       </div>

@@ -17,15 +17,15 @@ export default function Section({
 }: SectionProps) {
   return (
     <section id={id} className={`scroll-mt-19 py-10 sm:scroll-mt-24 sm:py-16 md:py-20 ${className}`}>
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <div className="mb-8 max-w-2xl sm:mb-10">
+          <div className="mb-8 max-w-3xl sm:mb-10">
             <div className="mb-3 h-0.5 w-12 bg-brand-600" aria-hidden="true" />
-            <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
               {title}
             </h2>
             {subtitle && (
-              <p className="mt-3 text-base leading-relaxed text-gray-600 sm:text-lg">
+              <p className="mt-3 text-lg leading-relaxed text-gray-600 sm:text-xl">
                 {subtitle}
               </p>
             )}

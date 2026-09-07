@@ -9,7 +9,7 @@ export function getWhatsAppHref(message?: string) {
   const text = message
     ? encodeURIComponent(message)
     : encodeURIComponent(
-        "Pozdrav, zanima me čišćenje u Dugom Selu. Možete li mi poslati okvirnu cijenu i termin?",
+        "Pozdrav, zanima me čišćenje / održavanje u Dugom Selu.",
       );
   return `https://wa.me/${getWhatsAppNumber()}?text=${text}`;
 }

@@ -1,10 +1,6 @@
 export const CALCULATOR_CLEANING_TYPES = [
-  { value: "redovno", label: "Redovno čišćenje" },
-  { value: "jednokratno", label: "Jednokratno čišćenje" },
-  { value: "generalno", label: "Generalno čišćenje" },
-  { value: "kuca", label: "Čišćenje kuće" },
-  { value: "prozori", label: "Samo pranje prozora" },
-  { value: "selidba", label: "Čišćenje nakon selidbe" },
+  { value: "tjedno", label: "Jednom tjedno" },
+  { value: "dvotjedno", label: "Svaka 2 tjedna" },
 ] as const;
 
 export const CALCULATOR_PROPERTY_TYPES = [
@@ -30,7 +26,7 @@ export const CALCULATOR_CONDITION_OPTIONS = [
   {
     value: "obicno",
     label: "Uobičajeno čisto",
-    hint: "Redovno održavan, bez većih naslaga",
+    hint: "Redovito održavan, bez većih naslaga",
   },
   {
     value: "prljavo",
@@ -82,7 +78,7 @@ export type PriceEstimate = {
 };
 
 export const DEFAULT_CALCULATOR_INPUT: CalculatorInput = {
-  cleaningType: "jednokratno",
+  cleaningType: "tjedno",
   propertyType: "stan",
   sqm: 65,
   rooms: 3,
@@ -98,12 +94,8 @@ export const DEFAULT_CALCULATOR_INPUT: CalculatorInput = {
 };
 
 const RATES = {
-  redovno: { hourly: 16, minHours: 3 },
-  jednokratno: { hourly: 18, minHours: 3 },
-  generalno: { hourly: 22, perSqm: 2.8, minHours: 4 },
-  kuca: { hourly: 22, perSqm: 2.85, minHours: 4 },
-  prozori: { hourly: 18, minHours: 2 },
-  selidba: { hourly: 22, perSqm: 2.9, minHours: 4 },
+  tjedno: { hourly: 13, minHours: 3 },
+  dvotjedno: { hourly: 13, minHours: 3 },
 } as const;
 
 function roundToFive(value: number) {
@@ -121,18 +113,7 @@ function baseHoursFromSqm(sqm: number) {
   return 6.5 + (sqm - 150) / 30;
 }
 
-function windowHours(option: WindowOption, cleaningType: CleaningType) {
-  if (cleaningType === "prozori") {
-    const map: Record<WindowOption, number> = {
-      ne: 2.5,
-      "unutra-malo": 2.5,
-      "unutra-vise": 4,
-      "unutra-vani": 5.5,
-      "samo-vani": 3.5,
-    };
-    return map[option];
-  }
-
+function windowHours(option: WindowOption) {
   const map: Record<WindowOption, number> = {
     ne: 0,
     "unutra-malo": 1,
@@ -141,18 +122,6 @@ function windowHours(option: WindowOption, cleaningType: CleaningType) {
     "samo-vani": 2.5,
   };
   return map[option];
-}
-
-function typeMultiplier(cleaningType: CleaningType) {
-  const map: Record<CleaningType, number> = {
-    redovno: 1,
-    jednokratno: 1.05,
-    generalno: 1.45,
-    kuca: 1.3,
-    prozori: 1,
-    selidba: 1.35,
-  };
-  return map[cleaningType];
 }
 
 function conditionMultiplier(condition: Condition) {
@@ -165,10 +134,6 @@ function conditionMultiplier(condition: Condition) {
 }
 
 function estimateHours(input: CalculatorInput) {
-  if (input.cleaningType === "prozori") {
-    return Math.max(windowHours(input.windows, "prozori"), RATES.prozori.minHours);
-  }
-
   let hours = baseHoursFromSqm(input.sqm);
 
   if (input.rooms > 3) {
@@ -179,7 +144,6 @@ function estimateHours(input: CalculatorInput) {
     hours += (input.bathrooms - 1) * 0.55;
   }
 
-  hours *= typeMultiplier(input.cleaningType);
   hours *= conditionMultiplier(input.condition);
 
   if (input.propertyType === "kuca") {
@@ -192,7 +156,7 @@ function estimateHours(input: CalculatorInput) {
   if (input.oven) hours += 0.5;
   if (input.fridge) hours += 0.5;
   if (input.cabinets) hours += 1.25;
-  hours += windowHours(input.windows, input.cleaningType);
+  hours += windowHours(input.windows);
 
   return hours;
 }
@@ -203,20 +167,8 @@ export function calculatePrice(input: CalculatorInput): PriceEstimate {
   const hoursMin = Math.max(centerHours * 0.9, rate.minHours);
   const hoursMax = Math.max(centerHours * 1.12, rate.minHours * 1.15);
 
-  let priceMin: number;
-  let priceMax: number;
-
-  if (usesSqmPricing(input.cleaningType) && "perSqm" in rate) {
-    const hourlyMin = hoursMin * rate.hourly;
-    const hourlyMax = hoursMax * rate.hourly;
-    const sqmMin = input.sqm * rate.perSqm;
-    const sqmMax = input.sqm * rate.perSqm * 1.08;
-    priceMin = (hourlyMin + sqmMin) / 2;
-    priceMax = (hourlyMax + sqmMax) / 2;
-  } else {
-    priceMin = hoursMin * rate.hourly;
-    priceMax = hoursMax * rate.hourly;
-  }
+  let priceMin = hoursMin * rate.hourly;
+  let priceMax = hoursMax * rate.hourly;
 
   priceMin = roundToFive(priceMin * 0.95);
   priceMax = roundToFive(priceMax * 1.05);
@@ -234,7 +186,7 @@ export function calculatePrice(input: CalculatorInput): PriceEstimate {
     input.cleaningType;
 
   const summary = [
-    cleaningLabel,
+    `Redovito čišćenje — ${cleaningLabel.toLowerCase()}`,
     `${input.sqm} m², ${input.rooms} sobe, ${input.bathrooms} kupaonica`,
     CALCULATOR_CONDITION_OPTIONS.find((item) => item.value === input.condition)?.label ?? "",
   ].filter(Boolean);
@@ -248,15 +200,11 @@ export function calculatePrice(input: CalculatorInput): PriceEstimate {
   };
 }
 
-function usesSqmPricing(cleaningType: CleaningType) {
-  return cleaningType === "generalno" || cleaningType === "kuca" || cleaningType === "selidba";
-}
-
 function baselineInput(cleaningType: CleaningType): CalculatorInput {
   return {
     cleaningType,
     propertyType: "stan",
-    sqm: cleaningType === "prozori" ? 65 : 40,
+    sqm: 40,
     rooms: 1,
     bathrooms: 1,
     condition: "obicno",
@@ -266,7 +214,7 @@ function baselineInput(cleaningType: CleaningType): CalculatorInput {
     oven: false,
     fridge: false,
     cabinets: false,
-    windows: cleaningType === "prozori" ? "unutra-malo" : "ne",
+    windows: "ne",
   };
 }
 
@@ -274,7 +222,7 @@ function peakInput(cleaningType: CleaningType): CalculatorInput {
   return {
     cleaningType,
     propertyType: "kuca",
-    sqm: cleaningType === "prozori" ? 65 : 150,
+    sqm: 150,
     rooms: 5,
     bathrooms: 3,
     condition: "jako",
@@ -284,7 +232,7 @@ function peakInput(cleaningType: CleaningType): CalculatorInput {
     oven: true,
     fridge: true,
     cabinets: true,
-    windows: cleaningType === "prozori" ? "unutra-vani" : "unutra-vani",
+    windows: "unutra-vani",
   };
 }
 
@@ -349,12 +297,8 @@ function getExtras(input: CalculatorInput) {
 
 function mapCleaningTypeToFormValue(cleaningType: CleaningType) {
   const map: Record<CleaningType, string> = {
-    redovno: "Redovno čišćenje",
-    jednokratno: "Jednokratno čišćenje",
-    generalno: "Generalno čišćenje",
-    kuca: "Čišćenje kuće",
-    prozori: "Pranje prozora",
-    selidba: "Čišćenje nakon selidbe",
+    tjedno: "Redovito čišćenje (tjedno)",
+    dvotjedno: "Redovito čišćenje (svaka 2 tjedna)",
   };
   return map[cleaningType];
 }
@@ -367,25 +311,21 @@ export function buildCalculatorPrefill(input: CalculatorInput, estimate: PriceEs
     ...estimate.summary.map((line) => `• ${line}`),
   ];
 
-  if (input.cleaningType === "prozori") {
-    lines.push("", `Prozori: ${getWindowLabel(input)}`);
-  } else {
-    lines.push(
-      "",
-      `Stanje: ${getConditionLabel(input)}`,
-      `Prozori: ${getWindowLabel(input)}`,
-    );
+  lines.push(
+    "",
+    `Stanje: ${getConditionLabel(input)}`,
+    `Prozori: ${getWindowLabel(input)}`,
+  );
 
-    const extras = getExtras(input);
-    if (extras.length > 0) {
-      lines.push(`Dodatno: ${extras.join(", ")}`);
-    }
+  const extras = getExtras(input);
+  if (extras.length > 0) {
+    lines.push(`Dodatno: ${extras.join(", ")}`);
   }
 
   lines.push("", "Molim potvrdu cijene i okvirnog termina.");
 
   return {
-    kvadratura: input.cleaningType === "prozori" ? "" : `${input.sqm} m²`,
+    kvadratura: `${input.sqm} m²`,
     vrsta: mapCleaningTypeToFormValue(input.cleaningType),
     poruka: lines.join("\n"),
   };
@@ -397,30 +337,22 @@ export function buildCalculatorWhatsAppMessage(
 ) {
   const cleaningLabel = getCleaningLabel(input);
   const windowLabel = getWindowLabel(input);
+  const extras = getExtras(input);
 
   const lines = [
-    "Pozdrav, zanima me čišćenje. Prošao/la sam kalkulator na stranici.",
+    "Pozdrav, zanima me redovito čišćenje. Prošao/la sam kalkulator na stranici.",
     "",
-    `Vrsta: ${cleaningLabel}`,
+    `Ritam: ${cleaningLabel}`,
+    `Prostor: ${getPropertyLabel(input)}`,
+    `Kvadratura: ${input.sqm} m²`,
+    `Sobe: ${input.rooms}`,
+    `Kupaonice: ${input.bathrooms}`,
+    `Stanje: ${getConditionLabel(input)}`,
+    `Prozori: ${windowLabel}`,
   ];
 
-  if (input.cleaningType === "prozori") {
-    lines.push(`Prozori: ${windowLabel}`);
-  } else {
-    const extras = getExtras(input);
-
-    lines.push(
-      `Prostor: ${getPropertyLabel(input)}`,
-      `Kvadratura: ${input.sqm} m²`,
-      `Sobe: ${input.rooms}`,
-      `Kupaonice: ${input.bathrooms}`,
-      `Stanje: ${getConditionLabel(input)}`,
-      `Prozori: ${windowLabel}`,
-    );
-
-    if (extras.length > 0) {
-      lines.push(`Dodatno: ${extras.join(", ")}`);
-    }
+  if (extras.length > 0) {
+    lines.push(`Dodatno: ${extras.join(", ")}`);
   }
 
   lines.push(

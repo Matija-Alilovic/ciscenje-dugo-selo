@@ -18,6 +18,14 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: "/ciscenje-:grad",
+        destination: "/podrucje/:grad",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

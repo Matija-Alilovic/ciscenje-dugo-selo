@@ -8,44 +8,25 @@ export const metadata = PAGE_SEO.kuce;
 export default function CiscenjeKucaPage() {
   return (
     <LandingPage
-      title="Čišćenje kuća Dugo Selo"
+      title="Redovito čišćenje kuća Dugo Selo"
       pagePath="/ciscenje-kuca-dugo-selo"
-      subtitle="Čistimo kuće i veće prostore u Dugom Selu i okolici."
+      subtitle="Isti dan svaki tjedan. Više soba i kupaonica — cijenu dogovaramo prema kući."
       intro={[
-        "Kuće obično imaju više soba i kupaonica nego stanovi, pa svaki posao dogovorimo posebno, prema veličini, stanju i onome što vam je bitno.",
-        "Može biti redovno održavanje, jednokratni dolazak ili generalno čišćenje cijele kuće. Prije dolaska pregledamo što je prioritet i koliko će trajati.",
+        "Čistimo kuće u Dugom Selu i okolici kao redovito održavanje. Ne nudimo jednokratne poslove jednom godišnje — dolazimo tjedno ili svaka dva tjedna.",
+        "Kuća obično ima više hodnika i kupaonica. Dogovorimo dan u tjednu i držimo ga. Ako treba i redovita košnja, recite odmah — može isti tjedan.",
       ]}
       sections={[
         {
-          title: "Vrste čišćenja kuća",
-          content: (
-            <ul className="max-w-2xl space-y-3 text-lg text-gray-700">
-              <li className="flex items-start gap-3">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
-                Redovno, dolazimo jednom tjedno ili na dva tjedna
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
-                Jednokratno, npr. prije gostiju, nakon radova ili sezone
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
-                Generalno, temeljit rad u cijeloj kući
-              </li>
-            </ul>
-          ),
+          title: "Što uključuje redovito čišćenje",
+          content: <Checklist items={[...BASIC_CLEANING]} />,
         },
         {
-          title: "Što je uključeno u osnovno čišćenje kuće",
-          content: <Checklist items={BASIC_CLEANING} />,
-        },
-        {
-          title: "Cijena čišćenja kuće u Dugom Selu",
+          title: "Cijena redovitog čišćenja kuće",
           content: (
-            <p className="max-w-2xl text-lg leading-relaxed text-gray-700">
-              Ovisi o veličini kuće, broju soba i kupaonica te stanju prostora.
-              Pošaljite upit s osnovnim podacima i javit ćemo okvirnu ponudu prije
-              dolaska.
+            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+              Redovito čišćenje je 13 €/h. Cijena ovisi o veličini i stanju
+              kuće. Za točnu ponudu pošaljite kvadraturu ili slike — odgovaramo
+              u kratkom roku.
             </p>
           ),
         },

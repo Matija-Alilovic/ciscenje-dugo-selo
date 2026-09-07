@@ -8,30 +8,32 @@ export default function CiscenjeNakonSelidbePage() {
     <LandingPage
       title="Čišćenje nakon selidbe Dugo Selo"
       pagePath="/ciscenje-nakon-selidbe-dugo-selo"
-      subtitle="Čistimo stan ili kuću nakon selidbe u Dugom Selu i okolici — prije useljenja ili nakon iseljenja."
+      subtitle="Nudimo samo iznimno. Naša osnovica je redovito čišćenje tjedno ili svaka dva tjedna."
       intro={[
-        "Selidba je gotova, a prostor još nije spreman? Dolazimo nakon iseljenja ili prije useljenja, kako dogovorimo.",
-        "Čistimo prašinu, podove, kuhinju, kupaonicu, WC i ostale površine. Za temeljitiji posao nakon radova ili renovacije preporučujemo generalno čišćenje.",
-        "Radimo u Dugom Selu, Sesvetama, Vrbovcu, Rugvici i okolici. Pošaljite kvadraturu i kratki opis — javit ćemo okvirnu cijenu prije dolaska.",
+        "Čišćenje nakon selidbe nije naša osnovna usluga. Fokusiramo se na redovito održavanje — isti dan svaki tjedan.",
+        "Ako se uselite i želite da netko dolazi redovito nakon toga, tu smo. Jednokratni dolazak zbog selidbe rješavamo samo iznimno.",
       ]}
       sections={[
         {
-          title: "Čišćenje prije useljenja",
+          title: "Što preporučujemo",
           content: (
-            <p className="max-w-2xl text-lg leading-relaxed text-gray-700">
-              Prije nego uđete u novi stan ili kuću, možemo očistiti cijeli
-              prostor — od podova do kupaonice. Idealno nakon renovacije ili kad
-              prethodni stanar nije ostavio prostor urednim.
-            </p>
-          ),
-        },
-        {
-          title: "Čišćenje nakon iseljenja",
-          content: (
-            <p className="max-w-2xl text-lg leading-relaxed text-gray-700">
-              Nakon što iseljite namještaj i stvari, dolazimo i čistimo prazan
-              prostor. Pomaže kod predaje stana ili kuće novom vlasniku ili
-              najmoprimcu.
+            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+              Dogovorite redovito čišćenje odmah nakon useljenja. Tako ne
+              trebate jednokratni posao svake godine. Pogledajte{" "}
+              <a
+                href="/ciscenje-stanova-dugo-selo"
+                className="font-medium text-brand-700 underline underline-offset-2"
+              >
+                redovito čišćenje stanova
+              </a>{" "}
+              ili{" "}
+              <a
+                href="/ciscenje-kuca-dugo-selo"
+                className="font-medium text-brand-700 underline underline-offset-2"
+              >
+                redovito čišćenje kuća
+              </a>
+              .
             </p>
           ),
         },

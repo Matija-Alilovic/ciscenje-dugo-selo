@@ -57,24 +57,24 @@ export const viewport = {
   initialScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#faf8f4" },
-    { media: "(prefers-color-scheme: dark)", color: "#121614" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f3ec" },
+    { media: "(prefers-color-scheme: dark)", color: "#12151a" },
   ],
 } as const;
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Čišćenje stanova i kuća Dugo Selo",
-    template: "%s | Čišćenje stanova i kuća Dugo Selo",
+    default: "Održavanje kuće i okućnice Dugo Selo",
+    template: "%s | Održavanje Dugo Selo",
   },
   description:
-    "Čišćenje stanova i kuća u Dugom Selu i okolici. Redovno, jednokratno i generalno čišćenje te pranje prozora.",
+    "Redovito čišćenje i redovita košnja u Dugom Selu i okolici. Dolazimo isti dan svaki tjedan ili svaka dva tjedna.",
   keywords: [...SEO_KEYWORDS],
   authors: [{ name: SITE.name, url: getSiteUrl() }],
   creator: SITE.name,
   publisher: SITE.name,
-  category: "Usluge čišćenja",
+  category: "Održavanje kuće i okućnice",
   formatDetection: {
     telephone: true,
     address: true,
@@ -90,15 +90,15 @@ export const metadata: Metadata = {
     locale: SITE.locale,
     siteName: SITE.name,
     url: getSiteUrl(),
-    title: "Čišćenje stanova i kuća Dugo Selo",
+    title: "Održavanje kuće i okućnice Dugo Selo",
     description:
-      "Čišćenje stanova i kuća u Dugom Selu i okolici. Redovno, jednokratno i generalno čišćenje te pranje prozora.",
+      "Redovito čišćenje i redovita košnja u Dugom Selu i okolici. Dolazimo isti dan svaki tjedan ili svaka dva tjedna.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Čišćenje stanova i kuća Dugo Selo",
+    title: "Održavanje kuće i okućnice Dugo Selo",
     description:
-      "Čišćenje stanova i kuća u Dugom Selu i okolici. Dogovor cijene prije dolaska.",
+      "Redovito čišćenje i redovita košnja u Dugom Selu. Isti dan svaki tjedan — dugoročna suradnja.",
   },
   robots: {
     index: true,

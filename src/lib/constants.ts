@@ -1,12 +1,12 @@
 export const SITE = {
-  name: 'Čišćenje Dugo Selo',
-  serviceHeadline: 'Čišćenje stanova i kuća',
+  name: 'Održavanje Dugo Selo',
+  serviceHeadline: 'Održavanje kuće i okućnice',
   url: 'https://www.ciscenje-dugo-selo.com',
   locale: 'hr_HR',
   phone: '+385976083278',
   phoneDisplay: '+385 97 608 3278',
   whatsapp: '+385976083278',
-  area: 'Dugo Selo, Božjakovina, Rugvica, Brckovljani, Sesvete, Vrbovec i okolica',
+  area: 'Dugo Selo, Božjakovina, Sesvete, Vrbovec i okolica',
   tagline: 'Dugo Selo i okolica',
 } as const;
 
@@ -14,8 +14,8 @@ export const CALCULATOR_DURATION_HINT = 'Procjena u ~1 min';
 
 export const COMPANY = {
   legalName: 'Obrt za usluge čišćenja Čišćenje Dugo Selo',
-  name: 'Čišćenje Dugo Selo',
-  type: 'Usluge profesionalnog čišćenja stanova i kuća',
+  name: 'Održavanje Dugo Selo',
+  type: 'Čišćenje i održavanje okućnice',
   legalForm: 'obrt',
   address: 'Ul. Dragutina Domjanića 12B',
   city: '10370 Dugo Selo',
@@ -24,10 +24,10 @@ export const COMPANY = {
 } as const;
 
 export const INTRO_TEXT =
-  'Čišćenje Dugo Selo je obrt za profesionalno čišćenje stanova i kuća u Dugom Selu i okolici. Za okvirnu cijenu najbrže krenite od online kalkulatora — u par minuta dobit ćete procjenu koju možete odmah poslati na WhatsApp ili u kontakt formu. Prije dolaska dogovorimo što treba očistiti, termin i točnu cijenu.';
+  'Održavanje Dugo Selo je obrt specijaliziran za pouzdano i redovito održavanje kuća i okućnica, s naglaskom na dugoročnu suradnju i brigu o vašem prostoru.';
 
 export const LOCAL_SEO_TEXT =
-  'Bazirani smo u Dugom Selu i redovito dolazimo u Sesvete, Vrbovec, Rugvicu, Božjakovinu, Brckovljani i okolna mjesta. Ako tražite pouzdanu uslugu čišćenja u Dugom Selu — redovno održavanje, jednokratni dolazak ili generalno čišćenje — javite nam se putem kalkulatora, WhatsAppa ili telefona.';
+  'Dolazimo u Sesvete, Dugo Selo i Vrbovec. Svakom klijentu pristupamo individualno, s ciljem dugoročne suradnje i transparentne komunikacije.';
 
 export const GOOGLE_BUSINESS = {
   mapsSearchUrl:
@@ -43,41 +43,41 @@ export const AREA_PAGES = [
     slug: 'sesvete',
     name: 'Sesvete',
     nameLocative: 'Sesvetama',
-    tagline: 'Čišćenje stanova i kuća u Sesvetama i okolici Dugog Sela',
+    tagline: 'Redovito čišćenje stanova i kuća u Sesvetama',
     intro:
-      'Dolazimo u Sesvete i okolna naselja za redovno, jednokratno i generalno čišćenje stanova i kuća. Bazirani smo u Dugom Selu, pa su Sesvete u našem redovnom području rada.',
+      'U Sesvetama nudimo redovito čišćenje stanova i kuća. Na rubu naselja dogovaramo i redovito održavanje okućnice, uvijek na isti dan.',
   },
   {
     slug: 'vrbovec',
     name: 'Vrbovec',
     nameLocative: 'Vrbovcu',
-    tagline: 'Profesionalno čišćenje stanova i kuća u Vrbovcu',
+    tagline: 'Redovito čišćenje i održavanje okućnice u Vrbovcu',
     intro:
-      'Čistimo stanove i kuće u Vrbovcu i okolici. Dogovorimo termin i cijenu prije dolaska — bez iznenađenja na licu mjesta.',
+      'U Vrbovcu često radimo u kućama s okućnicom. Klijenti dogovaraju redovito čišćenje i košnju u istom tjednu, kako bi sve bilo riješeno jednim dogovorom.',
   },
   {
     slug: 'rugvica',
     name: 'Rugvica',
     nameLocative: 'Rugvici',
-    tagline: 'Čišćenje stanova i kuća u Rugvici',
+    tagline: 'Redovito čišćenje i održavanje okućnice u Rugvici',
     intro:
-      'Za stanovnike Rugvice nudimo redovno čišćenje, jednokratne dolazke i generalno čišćenje. Javite se s kvadraturom i vrstom usluge — vratit ćemo okvirnu cijenu.',
+      'U Rugvici nudimo redovito čišćenje stanova i kuća te redovito održavanje okućnice. Recite nam kvadraturu i što trebate — unutra, vani ili oboje — pa ćemo dogovoriti ritam i okvirnu cijenu.',
   },
   {
     slug: 'bozjakovina',
     name: 'Božjakovina',
     nameLocative: 'Božjakovini',
-    tagline: 'Usluga čišćenja u Božjakovini i okolici',
+    tagline: 'Redovito čišćenje i održavanje u Božjakovini',
     intro:
-      'Božjakovina je u našem području rada. Dolazimo sa svojim sredstvima i opremom, a cijenu dogovorimo unaprijed.',
+      'Božjakovina se nalazi neposredno uz Dugo Selo. Ako ste tu, brzo možemo potvrditi redoviti termin dolaska.',
   },
   {
     slug: 'brckovljani',
     name: 'Brckovljani',
-    nameLocative: 'Brckovljani',
-    tagline: 'Čišćenje stanova i kuća u Brckovljani',
+    nameLocative: 'Brckovljanima',
+    tagline: 'Redovito čišćenje i održavanje u Brckovljanima',
     intro:
-      'Čistimo stanove i kuće u Brckovljani i okolnim naseljima. Za brzu procjenu koristite kalkulator cijene na stranici.',
+      'Brckovljani su susjedno mjesto. Dolazimo na redovito čišćenje i košnju, uz osobni pristup i jasnu komunikaciju.',
   },
 ] as const;
 
@@ -95,38 +95,46 @@ export const BOOKING_TIME_SLOTS = [
 ] as const;
 
 export const HERO_STATS = [
-  'Okvirna cijena u kalkulatoru',
-  'Dogovor cijene prije dolaska',
+  'Dugoročna suradnja',
   'Dugo Selo i okolica',
+] as const;
+
+export const SERVICE_PILLARS = [
+  {
+    title: 'Redovito čišćenje',
+    tagline: 'Stanovi i kuće',
+    description:
+      'Dolazimo isti dan svaki tjedan. Brišemo prašinu, peremo podove te čistimo kuhinju i kupaonicu.',
+    href: '/ciscenje-stanova-dugo-selo',
+    calculatorType: 'ciscenje',
+  },
+  {
+    title: 'Redovito održavanje okućnice',
+    tagline: 'Kosimo travu, flancamo i održavamo živicu',
+    description:
+      'Košnja i održavanje travnjaka, trimanje rubova, živica, cvjetnjaci, gredice, lišće, terase i sezonski poslovi. Dogovaramo ritam i držimo ga kroz sezonu.',
+    href: '/odrzavanje-dvorista-dugo-selo',
+    calculatorType: 'dvoriste',
+  },
+  {
+    title: 'Komplet',
+    tagline: 'Unutra i vani, isti tjedan',
+    description:
+      'Redovito čišćenje i redovita košnja jednim dogovorom. Idealno za kuće koje žele uredan dom i okućnicu bez ponovnog dogovaranja svaki put.',
+    href: '/#kalkulator',
+    calculatorType: 'ciscenje',
+  },
 ] as const;
 
 export const SERVICE_TYPES = [
   {
-    title: 'Redovno čišćenje',
-    tagline: 'Kad želite uredan stan bez stalnog planiranja',
+    title: 'Redovito čišćenje',
+    tagline: 'Jednom tjedno ili svaka 2 tjedna',
     description:
-      'Dolazimo jednom tjedno ili na dva tjedna, čistimo prašinu, podove, kuhinju, kupaonicu i WC, i dogovorimo fiksni termin koji vam paše.',
-    price: 'Okvirna cijena u kalkulatoru',
+      'Naša osnovna usluga. Dogovaramo termin i pouzdano ga držimo. Brišemo prašinu, peremo podove te čistimo kuhinju i kupaonicu.',
+    price: '13 €/h',
     href: '/ciscenje-stanova-dugo-selo',
-    calculatorType: 'redovno',
-  },
-  {
-    title: 'Jednokratno čišćenje',
-    tagline: 'Kad treba srediti stan jednom',
-    description:
-      'Dolazimo jednom i čistimo isto što i kod redovnog čišćenja, npr. prije gostiju, nakon sitnih radova ili kad jednostavno nemate vremena. Dogovorimo termin i što je prvo na redu.',
-    price: 'Okvirna cijena u kalkulatoru',
-    href: '/ciscenje-stanova-dugo-selo',
-    calculatorType: 'jednokratno',
-  },
-  {
-    title: 'Generalno čišćenje',
-    tagline: 'Kad treba ozbiljnije ući u posao',
-    description:
-      'Detaljno čistimo cijeli stan ili kuću, kuhinju i kupaonicu, skidamo kamenac, brišemo lajsne, vrata i paučinu, i sve što se kod redovnog čišćenja radi brže. Npr. prije useljenja, nakon renovacije ili kad je dugo bilo zanemareno.',
-    price: 'Okvirna cijena u kalkulatoru',
-    href: '/generalno-ciscenje-stana-dugo-selo',
-    calculatorType: 'generalno',
+    calculatorType: 'tjedno',
   },
 ] as const;
 
@@ -184,22 +192,25 @@ export const SERVICE_COMPARISON = [
 ] as const;
 
 export const SERVICE_PAGES = [
-  { href: '/ciscenje-stanova-dugo-selo', label: 'Čišćenje stanova Dugo Selo' },
+  { href: '/ciscenje-stanova-dugo-selo', label: 'Redovito čišćenje stanova' },
+  { href: '/ciscenje-kuca-dugo-selo', label: 'Redovito čišćenje kuća' },
   {
-    href: '/generalno-ciscenje-stana-dugo-selo',
-    label: 'Generalno čišćenje stana',
+    href: '/odrzavanje-dvorista-dugo-selo',
+    label: 'Redovito održavanje okućnice',
   },
-  { href: '/ciscenje-kuca-dugo-selo', label: 'Čišćenje kuća Dugo Selo' },
-  { href: '/pranje-prozora-dugo-selo', label: 'Pranje prozora Dugo Selo' },
-  { href: '/ciscenje-nakon-selidbe-dugo-selo', label: 'Čišćenje nakon selidbe' },
+  { href: '/kosnja-trave-dugo-selo', label: 'Redovita košnja trave' },
+  {
+    href: '/odrzavanje-kuce-dugo-selo',
+    label: 'Održavanje kuće (uz redovito)',
+  },
+  { href: '/pranje-prozora-dugo-selo', label: 'Pranje prozora (po dogovoru)' },
+  { href: '/pranje-terase-dugo-selo', label: 'Pranje terase (po dogovoru)' },
 ] as const;
 
 export const AREA_LINKS = [
-  { href: '/ciscenje-sesvete', label: 'Čišćenje Sesvete' },
-  { href: '/ciscenje-vrbovec', label: 'Čišćenje Vrbovec' },
-  { href: '/ciscenje-rugvica', label: 'Čišćenje Rugvica' },
-  { href: '/ciscenje-bozjakovina', label: 'Čišćenje Božjakovina' },
-  { href: '/ciscenje-brckovljani', label: 'Čišćenje Brckovljani' },
+  { href: '/ciscenje-sesvete', label: 'Sesvete' },
+  { href: '/ciscenje-bozjakovina', label: 'Božjakovina' },
+  { href: '/ciscenje-brckovljani', label: 'Brckovljani' },
 ] as const;
 
 export const NAV_LINKS = [
@@ -220,148 +231,61 @@ export const FOOTER_LINKS = [
 
 export const ABOUT_US = {
   intro:
-    'Obrt iz Dugog Sela. Radimo od 8 do 22 h po dogovoru. Prije svakog dolaska dogovorimo što treba očistiti i koliko će to otprilike koštati.',
+    'Održavanje Dugo Selo je obrt usmjeren na redovito čišćenje i redovito održavanje okućnica na području Dugog Sela i okolice. Dolazimo isti dan svaki tjedan ili svaka dva tjedna.',
   story:
-    'Čišćenje Dugo Selo nastalo je iz potrebe za pouzdanim timom koji dolazi na vrijeme i obavlja posao kvalitetno.',
-  teamNote:
-    'Na svaki posao dolaze naši radnici sa svojim sredstvima i profesionalnom opremom.',
+    'Ne nudimo jednokratne poslove jednom godišnje. Fokusiramo se na dugoročnu suradnju. Naš prioritet je jednostavan kvaliteta prije svega.',
+  teamNote: '',
   highlights: [
-    'Tim od 1 do 2 osobe po dolasku',
-    'Radimo u Dugom Selu, Sesvetama, Vrbovcu i okolici',
-    'Dogovorimo cijenu prije dolaska',
-    'Dolazimo u dogovoreno vrijeme',
-    'Pazimo na namještaj i stvari u stanu',
-  ],
-} as const;
-
-export const PARTNERS = {
-  intro:
-    'Za opremu i sredstva za čišćenje surađujemo s provjerenim profesionalnim brendovima',
-  store: {
-    title: 'Posjetite i dućan partnera',
-    badge: 'Partner · Kärcher Center Zagreb',
-    description:
-      'Za profesionalnu opremu surađujemo s ovlaštenim Kärcher centrom. U dućanu partnera možete pogledati usisivače, paročistače i perače.',
-    image: '/partners/karcher-store-zagreb.jpg',
-    imageAlt: 'Kärcher Center Zagreb — profesionalna oprema za čišćenje',
-    address: 'Samoborska cesta 169A',
-    city: '10090 Zagreb',
-    hours: 'Pon–pet 8–18 h',
-    href: 'https://www.kaercher.com/hr/servisi/podrska/kaercher-centri/kaercher-center-zagreb.html',
-    cta: 'Kärcher Center Zagreb',
-    mapsLabel: 'Otvori na karti',
-    mapsHref:
-      'https://www.google.com/maps/search/?api=1&query=K%C3%A4rcher+Center+Zagreb+Samoborska+cesta+169A',
-  },
-  items: [
-    {
-      name: 'Kärcher',
-      logo: '/partners/karcher.svg',
-      role: 'Profesionalna oprema',
-      description:
-        'Usisivači, paročistači i visokotlačni perači za temeljito čišćenje.',
-    },
-    {
-      name: 'Nilfisk',
-      logo: '/partners/nilfisk.svg',
-      role: 'Industrijska oprema',
-      description:
-        'Profesionalni usisivači i oprema za veće i zahtjevnije poslove.',
-    },
-    {
-      name: 'Vileda Professional',
-      logo: '/partners/vileda.svg',
-      role: 'Alati za čišćenje',
-      description:
-        'Mopovi, krpe, kante i sustavi za redovno i generalno čišćenje.',
-    },
-    {
-      name: 'Ecolab',
-      logo: '/partners/ecolab.svg',
-      role: 'Profesionalna sredstva',
-      description: 'Sredstva za higijenu kuhinje, kupaonice i radne površine.',
-    },
-    {
-      name: 'Diversey',
-      logo: '/partners/diversey.svg',
-      role: 'Sredstva i dezinfekcija',
-      description:
-        'Profesionalna sredstva za čišćenje, dezinfekciju i održavanje.',
-    },
-    {
-      name: '3M',
-      logo: '/partners/3m.svg',
-      role: 'Profesionalni pribor',
-      description:
-        'Krpe, spužve i pribor za detaljno i sigurno čišćenje površina.',
-    },
+    'Isti dan svaki tjedan',
+    'Dugoročna suradnja',
+    'Dugo Selo, Sesvete, Vrbovec i okolica',
+    'Cijena poznata prije početka suradnje',
+    'Koristimo vašu opremu i sredstva',
   ],
 } as const;
 
 export const SERVICES = [
   {
-    title: 'Redovno čišćenje stanova',
+    title: 'Redovito čišćenje stanova',
     description:
-      'Dolazimo jednom tjedno ili na dva tjedna, uvijek u isti termin, i ne morate svaki put ispočetka objašnjavati što treba.',
+      'Dolazimo isti dan svaki tjedan ili svaka dva tjedna. Zapamtimo vaše preferencije, pa ne morate svaki put počinjati ispočetka.',
     href: '/ciscenje-stanova-dugo-selo',
   },
   {
-    title: 'Jednokratno čišćenje',
+    title: 'Redovito čišćenje kuća',
     description:
-      'Dolazimo jednom kad zatreba, npr. prije gostiju, nakon radova ili kad nemate vremena, i čistimo cijeli stan po dogovoru.',
-    href: '/ciscenje-stanova-dugo-selo',
-  },
-  {
-    title: 'Generalno čišćenje',
-    description:
-      'Temeljitije čistimo kuhinju, kupaonicu, podove i sve detalje koji trebaju više pažnje nego kod redovnog održavanja.',
-    href: '/generalno-ciscenje-stana-dugo-selo',
-  },
-  {
-    title: 'Čišćenje kuća',
-    description:
-      'Čistimo kuće i veće prostore u Dugom Selu i okolici, a cijenu i vrijeme dogovorimo prema broju soba i stanju.',
+      'Više soba i kupaonica. Redoviti termin cijelu godinu, cijenu dogovaramo prema kući.',
     href: '/ciscenje-kuca-dugo-selo',
   },
   {
-    title: 'Pranje prozora',
+    title: 'Redovito održavanje okućnice',
     description:
-      'Peremo prozore unutra, vani ili oboje, po dogovoru. Može uz generalno čišćenje ili zasebno.',
-    href: '/pranje-prozora-dugo-selo',
+      'Travnjak, živica, gredice, terase i sezonski poslovi. Isti tjedan kao čišćenje, ako želite.',
+    href: '/odrzavanje-dvorista-dugo-selo',
   },
   {
-    title: 'Čišćenje nakon selidbe',
+    title: 'Redovita košnja trave',
     description:
-      'Selidba je gotova, a prostor još nije spreman? Dolazimo nakon iseljenja ili useljenja, kako dogovorimo.',
-    href: '/ciscenje-nakon-selidbe-dugo-selo',
+      'Od ožujka do studenoga, otprilike svaka dva tjedna. Dogovaramo ritam i držimo ga.',
+    href: '/kosnja-trave-dugo-selo',
   },
 ] as const;
 
 export const PRICING = [
   {
-    service: 'Redovno čišćenje',
-    price: 'po dogovoru',
-    note: 'Okvirnu cijenu dobijete u kalkulatoru',
+    service: 'Redovito čišćenje',
+    price: '13 €/h',
+    note: 'Tjedno ili svaka dva tjedna, od 3 sata',
   },
   {
-    service: 'Jednokratno čišćenje',
-    price: 'po dogovoru',
-    note: 'Okvirnu cijenu dobijete u kalkulatoru',
+    service: 'Redovita košnja trave',
+    price: '0,15–0,30 €/m²',
+    note: 'Od 35 € po dolasku, kroz sezonu',
   },
   {
-    service: 'Generalno čišćenje',
+    service: 'Komplet (čišćenje + okućnica)',
     price: 'po dogovoru',
-    note: 'Okvirnu cijenu dobijete u kalkulatoru',
-  },
-  {
-    service: 'Pranje prozora',
-    price: 'po dogovoru',
-    note: null,
-  },
-  {
-    service: 'Čišćenje nakon selidbe',
-    price: 'po dogovoru',
-    note: null,
+    note: 'Isti tjedan, jedan dogovor',
   },
 ] as const;
 
@@ -390,119 +314,184 @@ export const DEEP_CLEANING = [
   'Pećnica i hladnjak po dogovoru',
 ] as const;
 
+/** Osnovno + generalno — samo čišćenje unutra. */
+export const FULL_CLEANING_CHECKLIST = [
+  ...BASIC_CLEANING,
+  ...DEEP_CLEANING,
+] as const;
+
 export const CALCULATOR_HINT = {
-  title: 'Najbrži put do okvirne cijene',
-  body: 'Prođite kalkulator u par minuta — procjenu možete odmah poslati na WhatsApp ili nastaviti u kontakt formi.',
+  title: 'Izračunajte okvirnu cijenu usluge',
+  body: 'Odgovorite na nekoliko pitanja i dobit ćete okvirnu cijenu održavanja kuće i okućnice.',
   cta: 'Otvori kalkulator',
 } as const;
 
 export const STEPS = [
   {
     step: 1,
-    title: 'Krenite od kalkulatora',
+    title: 'Javite se',
     description:
-      'Za brzu procjenu prođite kalkulator cijene. Ako vam je lakše, javite se na WhatsApp, telefon ili kontakt formu.',
+      'Pošaljite nam upit putem kalkulatora, WhatsAppa ili telefona. Odgovaramo u kratkom roku.',
   },
   {
     step: 2,
-    title: 'Dogovorimo sve',
+    title: 'Dogovorimo ritam i cijenu',
     description:
-      'Pregledamo veličinu prostora, stanje, prioritete i okvirnu cijenu.',
+      'Odredimo dan u tjednu i okvirnu cijenu redovitog održavanja. Cijena ovisi o veličini i stanju prostora.',
   },
   {
     step: 3,
-    title: 'Dolazimo na čišćenje',
-    description: 'Dolazimo u termin koji vam odgovara i radimo po dogovoru.',
+    title: 'Dolazimo isti dan svaki tjedan',
+    description:
+      'Posao obavljamo u dogovorenom terminu. Koristimo vašu opremu i sredstva. Ne dogovarate se svaki put ispočetka.',
   },
 ] as const;
 
 export const WHY_US = [
-  'Na posao dolazi 1 do 3 čistača po potrebi',
-  'Radimo u Dugom Selu i okolici',
-  'Cijenu dogovorimo prije dolaska',
-  'Dolazimo u dogovoreno vrijeme',
-  'Pazimo na stvari u stanu',
-  'Dogovorimo stalne termine za redovna čišćenja',
-  'Profesionalna oprema i sredstva uključeni u uslugu',
+  'Isti dan svaki tjedan',
+  'Dugoročna suradnja, ne jednokratni posao',
+  'Osobni pristup i jasna komunikacija',
+  'Pouzdano izvršavanje dogovorenih termina',
+  'Cijena poznata prije početka suradnje',
+  'Koristimo vašu opremu i sredstva',
+  'Čišćenje i okućnica mogu isti tjedan',
+  'Radimo lokalno, iz Dugog Sela',
 ] as const;
 
 export const FAQ_ITEMS = [
   {
-    question: 'Koliko košta čišćenje stana u Dugom Selu?',
+    question: 'Što nudite — jednokratno ili redovito?',
     answer:
-      'Točna cijena ovisi o veličini stana, stanju i dodatnim uslugama. Najbrže je proći kalkulator cijene na stranici — dobit ćete okvirnu procjenu u minuti, a prije dolaska je potvrdimo.',
+      'Nudimo isključivo redovito održavanje: čišćenje tjedno ili svaka dva tjedna te košnju kroz sezonu. Ne radimo jednokratne poslove jednom godišnje. Ako tražite dugoročnu suradnju i isti dan svaki tjedan — tu smo.',
+  },
+  {
+    question: 'Koliko košta redovito čišćenje stana u Dugom Selu?',
+    answer:
+      'Redovito čišćenje je 13 €/h. Za stan od oko 65 m² obično iznosi 45–60 € po dolasku. Točan iznos potvrdimo kada znamo prostor i ritam (tjedno ili svaka dva tjedna).',
   },
   {
     question: 'Gdje se nalazite i dolazite li u Dugo Selo?',
     answer:
-      'Bazirani smo u Dugom Selu (Ul. Dragutina Domjanića 12B). Redovito dolazimo u Dugo Selo, Sesvete, Vrbovec, Rugvicu, Božjakovinu, Brckovljani i okolna mjesta. Pošaljite lokaciju i potvrdit ćemo dolazak.',
+      'Sjedište nam je u ulici Dragutina Domjanića 12B u Dugom Selu. Odatle redovito dolazimo u Sesvete, Vrbovec, Rugvicu, Božjakovinu i Brckovljane. Pošaljite nam ulicu — reći ćemo možemo li doći i koji dan.',
   },
   {
-    question: 'Kako mogu naručiti čišćenje u Dugom Selu?',
+    question: 'Kako naručiti redovito održavanje?',
     answer:
-      'Najbrže putem kalkulatora cijene na stranici — procjenu možete odmah poslati na WhatsApp. Možete nas nazvati na +385 97 608 3278 ili ispuniti kontakt formu. Odgovaramo što prije i dogovorimo termin.',
+      'Najbrže je kroz kalkulator i zatim WhatsApp. Možete nas i nazvati na +385 97 608 3278 ili ispuniti formu na dnu stranice. Dogovorimo dan u tjednu i držimo ga.',
   },
   {
-    question:
-      'Koja je razlika između redovnog, jednokratnog i generalnog čišćenja?',
+    question: 'Koliko često dolazite?',
     answer:
-      'Redovno čišćenje je održavanje — dolazimo redovno i držimo stan u redu. Jednokratno je isti opseg posla, ali samo jednom, kad vam zatreba. Generalno čišćenje je temeljitije, s više posla u kuhinji, kupaonici, na lajsnama, kamencu i ostalim detaljima. Niste sigurni što vam treba? Javite se, reći ćemo vam.',
+      'Najčešće tjedno ili svaka dva tjedna. Za čišćenje držimo isti dan cijelu godinu. Za košnju dolazimo od ožujka do studenoga, otprilike svaka dva tjedna.',
   },
   {
-    question: 'Koliko traje čišćenje stana?',
+    question: 'Koliko traje redovito čišćenje stana?',
     answer:
-      'Ovisi o veličini i vrsti čišćenja. Manji stan za redovno čišćenje obično traje oko 3 do 4 sata; generalno čišćenje može trajati i duže. Prije dolaska reći ćemo vam okvirno vrijeme.',
+      'Manji stan obično traje oko 3–4 sata. Prije početka suradnje kažemo koliko računamo, da znate što očekivati.',
   },
   {
-    question: 'Moram li kupiti sredstva za čišćenje?',
+    question: 'Moram li imati sredstva i opremu za čišćenje?',
     answer:
-      'Ne, dolazimo sa svojim sredstvima. Ako imate proizvode koje želite da koristimo, samo javite unaprijed.',
+      'Da. Radimo s vašom opremom i sredstvima — usisivač, mop, krpe i sredstva za čišćenje. Recite unaprijed što imate kod kuće, pa se dogovorimo prije prvog dolaska.',
   },
   {
-    question: 'Radite li redovna čišćenja?',
+    question: 'Zašto je redovito čišćenje jeftinije od jednokratnog?',
     answer:
-      'Da, dolazimo jednom tjedno, dva puta tjedno ili na dva tjedna, kako dogovorimo. Za stalne klijente držimo isti termin.',
+      'Redovito je 13 €/h, a jednokratno 14 €/h. Redoviti klijenti su naša osnovica — isti dan, ista ekipa, bez ponovnog dogovaranja svaki put.',
   },
   {
-    question: 'Imate li popust za redovno čišćenje svaki tjedan?',
+    question: 'Radite li generalno čišćenje ili čišćenje nakon selidbe?',
     answer:
-      'Za stalne klijente možemo dogovoriti povoljnije uvjete. Točna cijena ovisi o veličini prostora i učestalosti — najbrže je proći kalkulator ili javiti se na WhatsApp.',
-  },
-  {
-    question: 'Radite li generalno čišćenje?',
-    answer:
-      'Da, detaljnije čistimo kuhinju, kupaonicu, podove, vrata i ostale površine. Okvirnu cijenu dobijete u kalkulatoru, a prije dolaska je potvrdimo.',
+      'To nije naša osnovna usluga. Fokusiramo se na redovito tjedno održavanje. Ako trebate jednokratni temeljiti dolazak, javite se — rješavamo to samo iznimno i samo ako stignemo uz redovite klijente.',
   },
   {
     question: 'Čistite li kuće ili samo stanove?',
     answer:
-      'Čistimo i stanove i kuće u Dugom Selu i okolici. Za kuće cijenu dogovorimo prema veličini i stanju.',
+      'Čistimo i stanove i kuće, uvijek kao redovito održavanje. Kuća obično ima više hodnika i kupaonica, pa cijenu i ritam dogovaramo prema konkretnom prostoru.',
   },
   {
     question: 'Radite li u Sesvetama i okolici Dugog Sela?',
     answer:
-      'Da, radimo u Dugom Selu, Božjakovini, Rugvici, Brckovljani, Sesvetama, Vrbovcu i okolici. Pošaljite lokaciju i potvrdit ćemo možemo li doći.',
+      'Da. Redovito radimo u Dugom Selu, Sesvetama, Vrbovcu, Rugvici, Božjakovini i Brckovljanima. Pošaljite ulicu — reći ćemo možemo li doći i koji dan.',
   },
   {
     question: 'Može li prvi dolazak biti dok sam doma?',
     answer:
-      'Može, i mnogi to tako žele jer je lakše dogovoriti prioritete kad ste tu.',
+      'Može. Većina klijenata prvi put ostane kod kuće kako bi pokazala što je važno. Kasnije možete i otići, ako nam ostavite ključ ili drugačije dogovorimo.',
   },
   {
     question: 'Kako se dogovara cijena?',
     answer:
-      'Pošaljete podatke o veličini prostora, lokaciju i što treba očistiti. Cijena ovisi o stanju prostora, broju kupaonica i sličnom. Javit ćemo okvirnu cijenu prije dolaska.',
+      'Kroz kalkulator ili WhatsApp: kvadratura, ritam i gdje ste. Redovito čišćenje je 13 €/h, košnja od 35 € po dolasku. Ako je stanje prostora drugačije od opisanog, javimo prije početka rada.',
+  },
+  {
+    question: 'Radite li redovitu košnju u Dugom Selu?',
+    answer:
+      'Da. To je naša druga osnovna usluga uz čišćenje. Kosimo travu i orezujemo živicu kroz sezonu. Košnja je 0,15–0,30 €/m², od 35 € po dolasku. Tipično dvorište obično iznosi 50–80 €.',
+  },
+  {
+    question: 'Može li čišćenje i okućnica u istom tjednu?',
+    answer:
+      'Može. Tako radi većina klijenata s kućom. U kalkulatoru krenite od čišćenja i u poruci napišite da treba i košnja — ili nam odmah pošaljite WhatsApp s onim što trebate.',
   },
 ] as const;
 
 export const CLEANING_TYPES = [
-  'Redovno čišćenje',
-  'Jednokratno čišćenje',
-  'Generalno čišćenje',
-  'Čišćenje kuće',
-  'Pranje prozora',
-  'Čišćenje nakon selidbe',
-  'Nisam siguran, trebam savjet',
+  'Redovito čišćenje (tjedno)',
+  'Redovito čišćenje (svaka 2 tjedna)',
+  'Redovito čišćenje kuće',
+  'Redovita košnja / okućnica',
+  'Komplet (čišćenje + okućnica)',
+  'Nisam siguran/na, trebam savjet',
+] as const;
+
+export const YARD_CHECKLIST = [
+  'Košnja trave i održavanje travnjaka (rubovi, gnojidba, dosijavanje)',
+  'Orezivanje i oblikovanje živice i grmlja',
+  'Cvjetnjaci, gredice, povrtnjak i sadnja',
+  'Skupljanje lišća, korov i biljni otpad',
+  'Sezonska priprema vrta (proljeće / zima) i malčiranje',
+  'Čišćenje dvorišta, staza i terasa',
+  'Pranje terasa i opločnika visokotlačnim peračem',
+  'Čišćenje oluka dostupnih sa zemlje',
+  'Zalijevanje i osnovno održavanje navodnjavanja',
+] as const;
+
+/** Kraća lista za stranicu košnje. */
+export const LAWN_CHECKLIST = [
+  'Košnja trave i održavanje travnjaka',
+  'Trimanje rubova oko ograda, stabala i objekata',
+  'Grabljanje i skupljanje pokošene trave',
+  'Prozračivanje i dosijavanje travnjaka',
+  'Gnojidba travnjaka',
+  'Uklanjanje korova',
+] as const;
+
+export const HOUSE_WORK_CHECKLIST = [
+  'Montaža polica i sitnog namještaja',
+  'Popravak vrata, kvaka i šarki',
+  'Zamjena slavine ili sitni vodoinstalaterski zahvat',
+  'Bojanje jedne sobe ili zida',
+  'Sitni popravci oko kuće po dogovoru',
+] as const;
+
+export const TERRACE_CHECKLIST = [
+  'Pranje terase visokotlačnim peračem',
+  'Pranje betonskih staza',
+  'Uklanjanje mahovine i naslaga s ploča',
+  'Pranje vanjskih stepenica po dogovoru',
+] as const;
+
+/** Sažetak usluga za landing stranice — bez preduge liste. */
+export const ALL_SERVICES_CHECKLIST = [
+  'Redovito čišćenje (prašina, podovi, kuhinja, kupaonica)',
+  'Detaljnije čišćenje po dogovoru (kamenac, lajsne, prozori…)',
+  'Košnja trave i održavanje travnjaka',
+  'Orezivanje živice i grmlja',
+  'Cvjetnjaci, gredice i sadnja',
+  'Skupljanje lišća i sezonsko čišćenje okućnice',
+  'Čišćenje i pranje staza, terasa i opločnika',
+  'Zalijevanje i osnovno navodnjavanje',
 ] as const;
 
 export type BeforeAfterItem = {
@@ -515,12 +504,14 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
   {
     title: 'Kuhinja',
     src: '/gallery/kuhinja-prije-poslije.png',
-    caption: 'Sudoper i radna površina — u jednoj slici lijevo prije, desno poslije čišćenja.',
+    caption:
+      'Sudoper i radna površina — u jednoj slici lijevo prije, desno poslije čišćenja.',
   },
   {
     title: 'Hladnjak',
     src: '/gallery/hladnjak-prije-poslije.png',
-    caption: 'Čišćenje hladnjaka iznutra — uklonjene mrlje, naslage i nečistoće.',
+    caption:
+      'Čišćenje hladnjaka iznutra — uklonjene mrlje, naslage i nečistoće.',
   },
   {
     title: 'Odvod i sifon',

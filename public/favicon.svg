@@ -1,7 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Ciscenje Dugo Selo">
-  <rect width="32" height="32" rx="7" fill="#2f6f52"/>
-  <path
-    fill="#edf7f0"
-    d="M16 7s-5.5 7.4-5.5 11.2a5.5 5.5 0 1 0 11 0C21.5 14.4 16 7 16 7z"
-  />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Održavanje Dugo Selo">
+  <rect width="32" height="32" rx="7" fill="#2a4d6b"/>
+  <path fill="#f6f3ec" d="M16 6.5 6.5 15h3.2v9.2h5.1v-5.4h2.4v5.4h5.1V15H25.5L16 6.5z"/>
+  <rect x="14.6" y="20.4" width="2.8" height="3.8" rx="0.4" fill="#c4783a"/>
 </svg>

@@ -5,13 +5,15 @@ import { getPhoneHref } from "@/lib/utils";
 export default function Footer() {
   return (
     <footer className="border-t border-gray-200/80 bg-surface/85 backdrop-blur-sm">
-      <div className="mx-auto max-w-5xl px-4 py-12 pb-[calc(3rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:pb-12">
+      <div className="mx-auto max-w-6xl px-4 py-12 pb-[calc(3rem+env(safe-area-inset-bottom,0px))] sm:px-6 lg:px-8 md:pb-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="sm:col-span-2 lg:col-span-2">
             <p className="font-heading text-xl font-bold text-gray-900">{SITE.name}</p>
             <p className="mt-2 max-w-md text-base leading-relaxed text-gray-600">
-              Profesionalno čišćenje stanova i kuća u Dugom Selu, Sesvetama, Vrbovcu, Rugvici i
-              okolici.
+              Održavanje Dugo Selo je obrt za redovito čišćenje i redovito
+              održavanje okućnica u Dugom Selu i okolici. Dolazimo isti dan
+              svaki tjedan ili svaka dva tjedna — dugoročna suradnja, ne
+              jednokratni posao.
             </p>
             <a
               href={getPhoneHref()}
@@ -21,7 +23,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <nav aria-label="Usluge čišćenja">
+          <nav aria-label="Usluge">
             <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500">
               Usluge
             </p>

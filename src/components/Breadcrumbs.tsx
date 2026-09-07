@@ -12,7 +12,7 @@ type BreadcrumbsProps = {
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav aria-label="Putanja stranice" className="mb-6">
-      <ol className="flex flex-wrap items-center gap-1 text-sm text-gray-500">
+      <ol className="flex flex-wrap items-center gap-1.5 text-base text-gray-500">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
 

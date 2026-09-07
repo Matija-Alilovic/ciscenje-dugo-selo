@@ -1,9 +1,9 @@
 export const CLEANING_JOB_TYPES = [
-  { value: "redovno", label: "Redovno čišćenje" },
-  { value: "jednokratno", label: "Jednokratno čišćenje" },
-  { value: "generalno", label: "Generalno čišćenje" },
+  { value: "redovno", label: "Redovito čišćenje" },
+  { value: "jednokratno", label: "Jednokratno (iznimno)" },
+  { value: "generalno", label: "Generalno (iznimno)" },
   { value: "prozori", label: "Pranje prozora" },
-  { value: "selidba", label: "Čišćenje nakon selidbe" },
+  { value: "selidba", label: "Nakon selidbe (iznimno)" },
 ] as const;
 
 export type CleaningJobType = (typeof CLEANING_JOB_TYPES)[number]["value"];
@@ -39,7 +39,7 @@ export const EMPLOYEE_CHECKLIST_SECTIONS: ChecklistSectionDef[] = [
       },
       {
         id: "start-supplies",
-        label: "Imam sva sredstva, krpe i opremu za posao",
+        label: "Provjerio/la sam da su sredstva, krpe i oprema klijenta dostupni za posao",
         required: true,
       },
       {

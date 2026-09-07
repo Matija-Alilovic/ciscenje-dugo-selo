@@ -109,7 +109,7 @@ export default function ContactForm() {
       </div>
       <div>
         <label htmlFor="kvadratura" className="form-label">
-          Kvadratura stana
+          Kvadratura (ako je relevantno)
         </label>
         <input
           id="kvadratura"
@@ -130,7 +130,7 @@ export default function ContactForm() {
       </div>
       <div>
         <label htmlFor="vrsta" className="form-label">
-          Vrsta čišćenja
+          Vrsta usluge
         </label>
         <select
           id="vrsta"
@@ -156,7 +156,7 @@ export default function ContactForm() {
           id="poruka"
           name="poruka"
           rows={4}
-          placeholder="Kratko napišite što treba očistiti, stanje prostora, željeni termin..."
+          placeholder="npr. stan 65 m², kupaonica i kuhinja, četvrtak prijepodne..."
           value={poruka}
           onChange={(e) => setPoruka(e.target.value)}
           className="form-field"

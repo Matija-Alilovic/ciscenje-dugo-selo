@@ -28,7 +28,7 @@ export function getLocalBusinessSchema() {
     name: COMPANY.name,
     legalName: COMPANY.legalName,
     description:
-      "Profesionalno čišćenje stanova i kuća u Dugom Selu i okolici. Redovno, jednokratno i generalno čišćenje te pranje prozora.",
+      "Redovito čišćenje i redovito održavanje okućnice u Dugom Selu i okolici. Isti dan svaki tjedan ili svaka dva tjedna.",
     url: getSiteUrl(),
     image: absoluteUrl("/opengraph-image"),
     telephone: getPhoneNumber(),
@@ -75,7 +75,7 @@ export function getLocalBusinessSchema() {
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Usluge čišćenja",
+      name: "Usluge održavanja",
       itemListElement: [
         ...PRICING.map((item, index) => ({
           "@type": "Offer",
@@ -83,14 +83,20 @@ export function getLocalBusinessSchema() {
           itemOffered: {
             "@type": "Service",
             name: item.service,
-            description: item.note ?? item.service,
+            description: item.note,
             provider: { "@id": businessId() },
             areaServed: "Dugo Selo i okolica",
           },
         })),
       ],
     },
-    knowsAbout: SERVICE_TYPES.map((service) => service.title),
+    knowsAbout: [
+      "Redovito čišćenje",
+      "Redovito održavanje okućnice",
+      "Redovita košnja trave",
+      "Održavanje kuće",
+      ...SERVICE_TYPES.map((service) => service.title),
+    ],
   };
 }
 
@@ -103,7 +109,7 @@ export function getWebSiteSchema() {
     url: getSiteUrl(),
     inLanguage: "hr-HR",
     description:
-      "Čišćenje stanova i kuća u Dugom Selu i okolici. Kalkulator cijene i kontakt na jednom mjestu.",
+      "Održavanje kuće i okućnice u Dugom Selu i okolici. Kalkulator cijene i kontakt na jednom mjestu.",
     publisher: { "@id": businessId() },
   };
 }

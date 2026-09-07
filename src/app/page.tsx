@@ -4,20 +4,17 @@ import Footer from '@/components/Footer';
 import MobileStickyCTA from '@/components/MobileStickyCTA';
 import Hero from '@/components/Hero';
 import Section from '@/components/Section';
-import ServiceTypes from '@/components/ServiceTypes';
 import ServiceCards from '@/components/ServiceCards';
-import ServiceComparisonTable from '@/components/ServiceComparisonTable';
 import PriceCalculator from '@/components/PriceCalculator';
 import Steps from '@/components/Steps';
 import AboutSection from '@/components/AboutSection';
-import PartnersSection from '@/components/PartnersSection';
-import WhyUs from '@/components/WhyUs';
 import BeforeAfterSection from '@/components/BeforeAfterSection';
 import GoogleReviewsSection from '@/components/GoogleReviewsSection';
 import LocalAreaSection from '@/components/LocalAreaSection';
 import FAQ from '@/components/FAQ';
 import ContactSection from '@/components/ContactSection';
 import JsonLd from '@/components/JsonLd';
+import ServicePillars from '@/components/ServicePillars';
 import { INTRO_TEXT } from '@/lib/constants';
 import { getHomePageSchemas } from '@/lib/schema';
 import { HOME_METADATA } from '@/lib/seo';
@@ -31,27 +28,29 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero
-          title="Čišćenje stanova i kuća Dugo Selo"
-          subtitle="Redovno, jednokratno i generalno čišćenje. Okvirnu cijenu dobijete u kalkulatoru — Dugo Selo i okolica."
+          title="Održavanje kuće i okućnice"
+          subtitle="Čišćenje i održavanje dvorišta po dogovorenom rasporedu"
           highlightCalculator
         />
-        <Section title="O usluzi">
+        <Section title="Ukratko">
           <Reveal>
-            <p className="max-w-2xl text-lg leading-relaxed text-gray-700 sm:text-xl">
+            <p className="max-w-3xl text-xl leading-relaxed text-gray-700 sm:text-2xl">
               {INTRO_TEXT}
             </p>
           </Reveal>
         </Section>
+        <Section id="usluge" title="Usluge koje nudimo" subtitle="">
+          <ServicePillars />
+        </Section>
         <Section
-          title="Čišćenje u Dugom Selu i okolici"
-          subtitle="Dolazimo u Dugo Selo, Sesvete, Vrbovec, Rugvicu i okolna mjesta."
-          className="section-alt"
+          title="Područje rada"
+          subtitle="Dugo Selo, Sesvete, Vrbovec, Rugvica, Božjakovina i Brckovljani."
         >
           <LocalAreaSection />
         </Section>
         <Section
           title="Kalkulator cijene"
-          subtitle="Odgovorite na pitanja o prostoru i usluzi — dobit ćete okvirnu cijenu prije nego nas kontaktirate."
+          subtitle="Odgovorite na nekoliko pitanja i dobit ćete okvirnu cijenu održavanja kuće i okućnice."
           className="section-alt"
         >
           <div id="kalkulator">
@@ -59,63 +58,38 @@ export default function HomePage() {
           </div>
         </Section>
         <Section
-          id="vrste-ciscenja"
-          title="Koja vam treba usluga?"
-          subtitle="Tri vrste čišćenja razlikuju se po tome koliko često dolazimo i koliko detaljno čistimo."
-        >
-          <ServiceTypes />
-        </Section>
-        <Section
-          title="Usporedba usluga"
-          subtitle="Brzi pregled što je uključeno u redovno, jednokratno i generalno čišćenje."
-          className="section-alt"
-        >
-          <ServiceComparisonTable />
-        </Section>
-        <Section
-          id="usluge"
-          title="Sve usluge"
-          subtitle="Osim stanova, čistimo i kuće, peremo prozore i dolazimo nakon selidbe."
+          title="Naše usluge"
+          subtitle="Sve što nudimo u okviru redovitog održavanja."
         >
           <ServiceCards />
         </Section>
-        <Section title="Kako radimo" className="section-alt">
+        <Section title="Kako surađujemo" className="section-alt">
           <Steps />
         </Section>
         <Section
           title="Prije i poslije"
-          subtitle="Stvarni rezultati našeg rada u Dugom Selu — na svakoj slici lijevo je prije, desno poslije čišćenja."
+          subtitle="Fotografije s naših poslova."
         >
           <BeforeAfterSection />
         </Section>
         <Section
           title="Recenzije na Googleu"
-          subtitle="Stvarne ocjene klijenata — ne izmišljene citate na stranici."
+          subtitle="Što klijenti pišu o nama."
           className="section-alt"
         >
           <GoogleReviewsSection />
         </Section>
-        <Section id="o-nama" title="O nama" subtitle="">
+        <Section id="o-nama" title="O nama">
           <AboutSection />
         </Section>
-        <Section
-          id="suradnici"
-          title="Naši suradnici"
-          subtitle=""
-          className="section-alt"
-        >
-          <PartnersSection />
-        </Section>
-        <Section title="Zašto odabrati nas">
-          <WhyUs />
-        </Section>
+
         <Section id="faq" title="Česta pitanja" className="section-surface">
           <FAQ />
         </Section>
         <Section
           id="kontakt"
           title="Kontakt"
-          subtitle="Imate pitanje ili želite opći upit? Ispunite formu ili nam se javite izravno."
+          subtitle="Javite se putem forme, WhatsAppa ili telefona."
           className="section-surface"
         >
           <ContactSection />

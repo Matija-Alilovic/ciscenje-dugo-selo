@@ -1,17 +1,25 @@
-import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import MobileStickyCTA, { CTAButtons } from "@/components/MobileStickyCTA";
-import CalculatorHint from "@/components/CalculatorHint";
-import Section from "@/components/Section";
-import PriceCalculator from "@/components/PriceCalculator";
-import Checklist from "@/components/Checklist";
-import FAQ from "@/components/FAQ";
-import ContactSection from "@/components/ContactSection";
-import JsonLd from "@/components/JsonLd";
-import { AREA_LINKS, BASIC_CLEANING, SERVICE_PAGES } from "@/lib/constants";
-import { getLandingPageSchemas } from "@/lib/schema";
+import Link from 'next/link';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import MobileStickyCTA, { CTAButtons } from '@/components/MobileStickyCTA';
+import CalculatorHint from '@/components/CalculatorHint';
+import Section from '@/components/Section';
+import PriceCalculator from '@/components/PriceCalculator';
+import Checklist from '@/components/Checklist';
+import FAQ from '@/components/FAQ';
+import ContactSection from '@/components/ContactSection';
+import JsonLd from '@/components/JsonLd';
+import {
+  AREA_LINKS,
+  ALL_SERVICES_CHECKLIST,
+  SERVICE_PAGES,
+} from '@/lib/constants';
+import { getLandingPageSchemas } from '@/lib/schema';
+import type {
+  CalculatorCategory,
+  YardCalculatorInput,
+} from '@/lib/yardCalculator';
 
 type LandingPageProps = {
   title: string;
@@ -24,6 +32,10 @@ type LandingPageProps = {
   }[];
   showPricing?: boolean;
   showBasicChecklist?: boolean;
+  checklistTitle?: string;
+  checklistItems?: readonly string[];
+  calculatorCategory?: CalculatorCategory;
+  calculatorYard?: Partial<YardCalculatorInput>;
   showFaq?: boolean;
   showContact?: boolean;
 };
@@ -36,6 +48,10 @@ export function LandingPage({
   sections,
   showPricing = true,
   showBasicChecklist = true,
+  checklistTitle = 'Usluge koje obavljamo',
+  checklistItems = ALL_SERVICES_CHECKLIST,
+  calculatorCategory,
+  calculatorYard,
   showFaq = true,
   showContact = true,
 }: LandingPageProps) {
@@ -50,18 +66,15 @@ export function LandingPage({
       />
       <Header />
       <main>
-        <section className="mesh-bg py-12 sm:py-20">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <section className="mesh-bg py-14 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <Breadcrumbs
-              items={[
-                { label: "Početna", href: "/" },
-                { label: title },
-              ]}
+              items={[{ label: 'Početna', href: '/' }, { label: title }]}
             />
-            <h1 className="hero-fade hero-delay-1 max-w-3xl text-3xl font-bold leading-tight text-gray-900 sm:text-5xl">
+            <h1 className="hero-fade hero-delay-1 max-w-4xl text-4xl font-bold leading-tight text-gray-900 sm:text-5xl lg:text-6xl">
               {title}
             </h1>
-            <p className="hero-fade hero-delay-2 mt-4 max-w-2xl text-lg leading-relaxed text-gray-600 sm:mt-5 sm:text-xl">
+            <p className="hero-fade hero-delay-2 mt-5 max-w-3xl text-xl leading-relaxed text-gray-600 sm:mt-6 sm:text-2xl">
               {subtitle}
             </p>
             {showPricing && (
@@ -75,7 +88,7 @@ export function LandingPage({
         </section>
 
         <Section title="O usluzi">
-          <div className="max-w-2xl space-y-4 text-lg leading-relaxed text-gray-700">
+          <div className="max-w-3xl space-y-5 text-xl leading-relaxed text-gray-700">
             {intro.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
             ))}
@@ -86,15 +99,15 @@ export function LandingPage({
           <Section
             key={section.title}
             title={section.title}
-            className={index % 2 === 1 ? "section-alt" : ""}
+            className={index % 2 === 1 ? 'section-alt' : ''}
           >
             {section.content}
           </Section>
         ))}
 
         {showBasicChecklist && (
-          <Section title="Što je uključeno u osnovno čišćenje">
-            <Checklist items={BASIC_CLEANING} />
+          <Section title={checklistTitle}>
+            <Checklist items={[...checklistItems]} />
           </Section>
         )}
 
@@ -102,9 +115,12 @@ export function LandingPage({
           <Section
             id="kalkulator"
             title="Kalkulator cijene"
-            subtitle="Odgovorite na pitanja i dobit ćete okvirnu cijenu prije kontakta."
+            subtitle="Odgovorite na nekoliko pitanja i dobit ćete okvirnu cijenu održavanja kuće i okućnice."
           >
-            <PriceCalculator />
+            <PriceCalculator
+              initialCategory={calculatorCategory}
+              initialYard={calculatorYard}
+            />
           </Section>
         )}
 
@@ -126,14 +142,14 @@ export function LandingPage({
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-lg border border-gray-200 px-4 py-2.5 text-base text-gray-700 hover:border-brand-300 hover:text-brand-700"
+                className="rounded-lg border border-gray-200 px-5 py-3 text-lg text-gray-700 hover:border-brand-300 hover:text-brand-700"
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/"
-              className="rounded-lg border border-gray-200 px-4 py-2.5 text-base text-gray-700 hover:border-brand-300 hover:text-brand-700"
+              className="rounded-lg border border-gray-200 px-5 py-3 text-lg text-gray-700 hover:border-brand-300 hover:text-brand-700"
             >
               Početna
             </Link>
@@ -146,7 +162,7 @@ export function LandingPage({
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-lg border border-gray-200 px-4 py-2.5 text-base text-gray-700 hover:border-brand-300 hover:text-brand-700"
+                className="rounded-lg border border-gray-200 px-5 py-3 text-lg text-gray-700 hover:border-brand-300 hover:text-brand-700"
               >
                 {link.label}
               </Link>

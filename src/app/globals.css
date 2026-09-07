@@ -6,27 +6,37 @@
   --font-sans: var(--font-source-sans), "Segoe UI", Tahoma, sans-serif;
   --font-heading: var(--font-lora), Georgia, "Times New Roman", serif;
 
-  --color-surface: #ffffff;
+  --color-surface: #fffdf8;
 
-  --color-gray-50: #faf8f4;
-  --color-gray-100: #f2ede6;
-  --color-gray-200: #e4ddd3;
-  --color-gray-300: #cfc6b8;
-  --color-gray-400: #a09588;
-  --color-gray-500: #7d7368;
-  --color-gray-600: #5e564d;
-  --color-gray-700: #4a433c;
-  --color-gray-800: #362f29;
-  --color-gray-900: #2a2420;
+  --color-gray-50: #f6f3ec;
+  --color-gray-100: #ebe6db;
+  --color-gray-200: #d8d0c2;
+  --color-gray-300: #c2b8a6;
+  --color-gray-400: #9a8f7c;
+  --color-gray-500: #746b5c;
+  --color-gray-600: #564e42;
+  --color-gray-700: #423c33;
+  --color-gray-800: #2f2a24;
+  --color-gray-900: #231e18;
 
-  --color-brand-50: #edf7f0;
-  --color-brand-100: #d4eadc;
-  --color-brand-200: #a8d4b8;
-  --color-brand-400: #4a9468;
-  --color-brand-500: #3d8260;
-  --color-brand-600: #2f6f52;
-  --color-brand-700: #266045;
-  --color-brand-800: #1f4f38;
+  --color-brand-50: #eef3f8;
+  --color-brand-100: #d4e0ec;
+  --color-brand-200: #a8c0d6;
+  --color-brand-300: #7a9db8;
+  --color-brand-400: #4d7a9a;
+  --color-brand-500: #355f80;
+  --color-brand-600: #2a4d6b;
+  --color-brand-700: #213c54;
+  --color-brand-800: #182c3e;
+
+  --color-accent-50: #fbf3eb;
+  --color-accent-100: #f3e0cc;
+  --color-accent-200: #e4c09a;
+  --color-accent-300: #dba46c;
+  --color-accent-400: #d08a4a;
+  --color-accent-500: #c4783a;
+  --color-accent-600: #b05f24;
+  --color-accent-700: #8c4a1b;
 
   --animate-fade-up: fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   --animate-slide-up: slide-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -34,27 +44,37 @@
 }
 
 .dark {
-  --color-surface: #1c211e;
+  --color-surface: #16191e;
 
-  --color-gray-50: #121614;
-  --color-gray-100: #1a201d;
-  --color-gray-200: #2a332e;
-  --color-gray-300: #3d4842;
-  --color-gray-400: #6b7870;
-  --color-gray-500: #8f9a93;
-  --color-gray-600: #b0bab3;
-  --color-gray-700: #c8d0cb;
-  --color-gray-800: #dde4e0;
-  --color-gray-900: #eef2ef;
+  --color-gray-50: #12151a;
+  --color-gray-100: #181b21;
+  --color-gray-200: #2a2e36;
+  --color-gray-300: #3d4350;
+  --color-gray-400: #6f7684;
+  --color-gray-500: #949aa6;
+  --color-gray-600: #b6bbc4;
+  --color-gray-700: #ced1d8;
+  --color-gray-800: #e4e6ea;
+  --color-gray-900: #f3f4f6;
 
-  --color-brand-50: #1a2822;
-  --color-brand-100: #24352c;
-  --color-brand-200: #3d5c4a;
-  --color-brand-400: #5cb07f;
-  --color-brand-500: #4a9a6d;
-  --color-brand-600: #3d8a60;
-  --color-brand-700: #4fa872;
-  --color-brand-800: #6bc08a;
+  --color-brand-50: #141a22;
+  --color-brand-100: #1a222c;
+  --color-brand-200: #2a3646;
+  --color-brand-300: #3d5168;
+  --color-brand-400: #6b8aab;
+  --color-brand-500: #5a7c9c;
+  --color-brand-600: #4a6c8a;
+  --color-brand-700: #7a96b4;
+  --color-brand-800: #9bb0c8;
+
+  --color-accent-50: #2a2118;
+  --color-accent-100: #3a2c1c;
+  --color-accent-200: #5c4228;
+  --color-accent-300: #8a5e32;
+  --color-accent-400: #e09a58;
+  --color-accent-500: #d08a4a;
+  --color-accent-600: #c4783a;
+  --color-accent-700: #e4b07a;
 }
 
 @keyframes fade-up {
@@ -96,14 +116,14 @@
   100% {
     filter: brightness(1);
     box-shadow:
-      0 0 0 0 rgba(45, 122, 78, 0.2),
-      0 4px 14px rgba(45, 122, 78, 0.18);
+      0 0 0 0 rgba(42, 77, 107, 0.2),
+      0 4px 14px rgba(176, 95, 36, 0.18);
   }
   50% {
     filter: brightness(1.18);
     box-shadow:
-      0 0 0 4px rgba(45, 122, 78, 0.28),
-      0 0 28px 10px rgba(45, 122, 78, 0.42);
+      0 0 0 4px rgba(42, 77, 107, 0.28),
+      0 0 28px 10px rgba(176, 95, 36, 0.38);
   }
 }
 
@@ -141,7 +161,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
   scroll-padding-bottom: 1rem;
-  font-size: 100%;
+  font-size: 112.5%;
   -webkit-text-size-adjust: 100%;
   color-scheme: light;
   transition:
@@ -180,7 +200,7 @@ html.dark {
 
 @media (min-width: 640px) {
   html {
-    font-size: 106.25%;
+    font-size: 118.75%;
   }
 }
 
@@ -246,8 +266,8 @@ body {
   left: 28%;
   width: min(64vw, 440px);
   height: min(64vw, 440px);
-  background: color-mix(in srgb, var(--color-brand-50) 95%, white);
-  opacity: 0.5;
+  background: color-mix(in srgb, var(--color-accent-100) 80%, transparent);
+  opacity: 0.45;
 }
 
 .dark .page-ambient-glow--primary {
@@ -472,7 +492,7 @@ footer {
 }
 
 .card-modern {
-  @apply rounded-lg border border-gray-200/90 bg-surface/95 shadow-sm backdrop-blur-sm;
+  @apply rounded-xl border border-gray-200/90 bg-surface/95 shadow-sm backdrop-blur-sm;
   transition:
     background-color 0.28s ease,
     border-color 0.28s ease,
@@ -557,7 +577,7 @@ footer {
 }
 
 .btn-primary {
-  @apply inline-flex min-h-11 items-center justify-center rounded-lg bg-brand-600 px-6 py-3 text-base font-semibold text-white transition-colors duration-300 hover:bg-brand-700;
+  @apply inline-flex min-h-12 items-center justify-center rounded-lg bg-brand-600 px-7 py-3.5 text-lg font-semibold text-white transition-colors duration-300 hover:bg-brand-700;
 }
 
 .btn-cta-hint {
@@ -581,34 +601,34 @@ footer {
   100% {
     filter: brightness(1);
     box-shadow:
-      0 0 0 0 rgba(111, 192, 138, 0.15),
-      0 4px 14px rgba(45, 122, 78, 0.22);
+      0 0 0 0 rgba(208, 138, 74, 0.16),
+      0 4px 14px rgba(42, 77, 107, 0.22);
   }
   50% {
     filter: brightness(1.28);
     box-shadow:
-      0 0 0 4px rgba(111, 192, 138, 0.22),
-      0 0 32px 12px rgba(79, 168, 114, 0.38);
+      0 0 0 4px rgba(208, 138, 74, 0.22),
+      0 0 32px 12px rgba(107, 138, 171, 0.32);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .btn-cta-hint {
     animation: none;
-    box-shadow: 0 0 0 3px rgba(45, 122, 78, 0.35);
+    box-shadow: 0 0 0 3px rgba(42, 77, 107, 0.35);
   }
 
   .dark .btn-cta-hint {
-    box-shadow: 0 0 0 3px rgba(111, 192, 138, 0.3);
+    box-shadow: 0 0 0 3px rgba(208, 138, 74, 0.3);
   }
 }
 
 .btn-outline {
-  @apply inline-flex min-h-11 items-center justify-center rounded-lg border-2 border-brand-600 bg-surface px-6 py-3 text-base font-semibold text-brand-700 transition-colors duration-300 hover:bg-brand-50;
+  @apply inline-flex min-h-12 items-center justify-center rounded-lg border-2 border-brand-600 bg-surface px-7 py-3.5 text-lg font-semibold text-brand-700 transition-colors duration-300 hover:bg-brand-50;
 }
 
 .btn-muted {
-  @apply inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 bg-surface px-6 py-3 text-base font-semibold text-gray-800 transition-colors duration-300 hover:bg-gray-100;
+  @apply inline-flex min-h-12 items-center justify-center rounded-lg border border-gray-300 bg-surface px-7 py-3.5 text-lg font-semibold text-gray-800 transition-colors duration-300 hover:bg-gray-100;
 }
 
 .faq-body {
@@ -627,8 +647,9 @@ details[open] .faq-body {
 
 .mesh-bg {
   background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--color-brand-50) 55%, transparent) 0%,
+    165deg,
+    color-mix(in srgb, var(--color-brand-50) 70%, transparent) 0%,
+    color-mix(in srgb, var(--color-accent-50) 35%, transparent) 42%,
     transparent 100%
   );
   transition: background 0.28s ease;
@@ -675,6 +696,28 @@ body.employee-checklist-page {
 #kalkulator {
   scroll-margin-top: 5.5rem;
   scroll-margin-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+.calc-header {
+  background: linear-gradient(
+    145deg,
+    #182c3e 0%,
+    #213c54 62%,
+    #2a4d6b 100%
+  );
+  color: #fffdf8;
+}
+
+.calc-category-card {
+  @apply rounded-xl border border-gray-200 bg-surface p-4 text-left transition-all min-h-11;
+}
+
+.calc-category-card:hover {
+  @apply border-brand-300 bg-brand-50/60;
+}
+
+.calc-category-card.is-selected {
+  @apply border-brand-600 bg-brand-50 shadow-sm;
 }
 
 @media (hover: hover) and (pointer: fine) {

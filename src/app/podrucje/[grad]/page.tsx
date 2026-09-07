@@ -30,7 +30,7 @@ export default async function AreaCleaningPage({ params }: PageProps) {
   if (!area) notFound();
 
   const pagePath = getAreaPagePath(area.slug);
-  const title = `Čišćenje stanova ${area.name}`;
+  const title = `Redovito čišćenje stanova ${area.name}`;
 
   return (
     <LandingPage
@@ -39,26 +39,25 @@ export default async function AreaCleaningPage({ params }: PageProps) {
       subtitle={area.tagline}
       intro={[
         area.intro,
-        `Dolazimo u ${area.nameLocative} za redovno čišćenje, jednokratne dolazke i generalno čišćenje. Cijenu dogovorimo prije dolaska — bez iznenađenja.`,
-        `Bazirani smo u Dugom Selu i ${area.name} su u našem redovnom području rada. Za brzu procjenu koristite kalkulator cijene ili nas kontaktirajte na WhatsApp.`,
+        "Cijenu i dan u tjednu dogovaramo prije početka suradnje. Možete koristiti kalkulator ili WhatsApp — što vam je jednostavnije.",
       ]}
       sections={[
         {
-          title: `Redovno čišćenje u ${area.nameLocative}`,
+          title: `Redovito čišćenje u ${area.nameLocative}`,
           content: (
-            <p className="max-w-2xl text-lg leading-relaxed text-gray-700">
-              Dolazimo jednom tjedno ili na dva tjedna, čistimo prašinu, podove,
-              kuhinju, kupaonicu i WC. Za stalne klijente držimo fiksni termin.
+            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+              Dolazimo isti dan svaki tjedan ili svaka dva tjedna. Brišemo
+              prašinu, peremo podove te čistimo kuhinju i kupaonicu. Ne nudimo
+              jednokratne poslove jednom godišnje.
             </p>
           ),
         },
         {
-          title: `Generalno čišćenje u ${area.nameLocative}`,
+          title: "Redovita košnja uz čišćenje",
           content: (
-            <p className="max-w-2xl text-lg leading-relaxed text-gray-700">
-              Temeljito čistimo cijeli stan ili kuću — kuhinju, kupaonicu,
-              kamenac, lajsne i paučinu. Idealno prije useljenja, nakon
-              renovacije ili kad je dugo bilo zanemareno.
+            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+              Uz redovito čišćenje možemo dogovoriti i redovitu košnju u istom
+              tjednu. Jedan dogovor, isti ritam kroz sezonu.
             </p>
           ),
         },
