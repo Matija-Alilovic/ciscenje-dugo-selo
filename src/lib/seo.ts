@@ -17,8 +17,6 @@ export const SEO_KEYWORDS = [
   "čišćenje Dugo Selo i okolica",
   "redovito čišćenje stanova Dugo Selo",
   "čišćenje stanova Sesvete",
-  "čišćenje stanova Vrbovec",
-  "čišćenje stanova Rugvica",
   "usluga čišćenja Dugo Selo",
 ] as const;
 
@@ -86,7 +84,7 @@ export const HOME_METADATA = createPageMetadata({
     "Održavanje kuće i okućnice Dugo Selo | Održavanje Dugo Selo",
   title: "Održavanje kuće i okućnice Dugo Selo",
   description:
-    "Obrt iz Dugog Sela za redovito čišćenje i redovitu košnju. Dolazimo isti dan svaki tjedan ili svaka dva tjedna — Dugo Selo, Sesvete, Vrbovec i okolica.",
+    "Obrt iz Dugog Sela za redovito čišćenje i redovitu košnju. Dolazimo isti dan svaki tjedan ili svaka dva tjedna — Dugo Selo i Sesvete.",
   path: "/",
 });
 

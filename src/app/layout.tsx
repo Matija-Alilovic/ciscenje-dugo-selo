@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     template: "%s | Održavanje Dugo Selo",
   },
   description:
-    "Redovito čišćenje i redovita košnja u Dugom Selu i okolici. Dolazimo isti dan svaki tjedan ili svaka dva tjedna.",
+    "Redovito čišćenje i redovita košnja u Dugom Selu i Sesvetama. Dolazimo isti dan svaki tjedan ili svaka dva tjedna.",
   keywords: [...SEO_KEYWORDS],
   authors: [{ name: SITE.name, url: getSiteUrl() }],
   creator: SITE.name,
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     url: getSiteUrl(),
     title: "Održavanje kuće i okućnice Dugo Selo",
     description:
-      "Redovito čišćenje i redovita košnja u Dugom Selu i okolici. Dolazimo isti dan svaki tjedan ili svaka dva tjedna.",
+      "Redovito čišćenje i redovita košnja u Dugom Selu i Sesvetama. Dolazimo isti dan svaki tjedan ili svaka dva tjedna.",
   },
   twitter: {
     card: "summary_large_image",

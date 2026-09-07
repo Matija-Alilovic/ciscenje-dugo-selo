@@ -4,7 +4,6 @@ import Footer from '@/components/Footer';
 import MobileStickyCTA from '@/components/MobileStickyCTA';
 import Hero from '@/components/Hero';
 import Section from '@/components/Section';
-import ServiceCards from '@/components/ServiceCards';
 import Steps from '@/components/Steps';
 import AboutSection from '@/components/AboutSection';
 import BeforeAfterSection from '@/components/BeforeAfterSection';
@@ -53,7 +52,7 @@ export default function HomePage() {
         </Section>
         <Section
           title="Područje rada"
-          subtitle="Dugo Selo, Sesvete, Vrbovec, Rugvica, Božjakovina i Brckovljani."
+          subtitle="Dugo Selo i Sesvete."
         >
           <LocalAreaSection />
         </Section>
@@ -66,13 +65,7 @@ export default function HomePage() {
             <PriceCalculator />
           </div>
         </Section>
-        <Section
-          title="Naše usluge"
-          subtitle="Sve što nudimo u okviru redovitog održavanja."
-        >
-          <ServiceCards />
-        </Section>
-        <Section title="Kako surađujemo" className="section-alt">
+        <Section title="Kako funkcioniramo" className="section-alt">
           <Steps />
         </Section>
         <Section

@@ -29,8 +29,7 @@ export default function KosnjaTravePage() {
           title: "Gdje kosimo",
           content: (
             <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl">
-              Dolazimo u Dugo Selo, Božjakovinu, Rugvicu, Brckovljane, Sesvete i
-              Vrbovec.
+              Dolazimo u Dugo Selo i Sesvete.
             </p>
           ),
         },

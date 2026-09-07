@@ -6,8 +6,8 @@ export const SITE = {
   phone: '+385976083278',
   phoneDisplay: '+385 97 608 3278',
   whatsapp: '+385976083278',
-  area: 'Dugo Selo, Božjakovina, Sesvete, Vrbovec i okolica',
-  tagline: 'Dugo Selo i okolica',
+  area: 'Dugo Selo i Sesvete',
+  tagline: 'Dugo Selo i Sesvete',
 } as const;
 
 export const CALCULATOR_DURATION_HINT = 'Procjena u ~1 min';
@@ -27,7 +27,7 @@ export const INTRO_TEXT =
   'Održavanje Dugo Selo je obrt specijaliziran za pouzdano i redovito održavanje kuća i okućnica, s naglaskom na dugoročnu suradnju i brigu o vašem prostoru.';
 
 export const LOCAL_SEO_TEXT =
-  'Dolazimo u Sesvete, Dugo Selo i Vrbovec. Svakom klijentu pristupamo individualno, s ciljem dugoročne suradnje i transparentne komunikacije.';
+  'Dolazimo u Dugo Selo i Sesvete. Svakom klijentu pristupamo individualno, s ciljem dugoročne suradnje i transparentne komunikacije.';
 
 export const GOOGLE_BUSINESS = {
   mapsSearchUrl:
@@ -47,43 +47,11 @@ export const AREA_PAGES = [
     intro:
       'U Sesvetama nudimo redovito čišćenje stanova i kuća. Na rubu naselja dogovaramo i redovito održavanje okućnice, uvijek na isti dan.',
   },
-  {
-    slug: 'vrbovec',
-    name: 'Vrbovec',
-    nameLocative: 'Vrbovcu',
-    tagline: 'Redovito čišćenje i održavanje okućnice u Vrbovcu',
-    intro:
-      'U Vrbovcu često radimo u kućama s okućnicom. Klijenti dogovaraju redovito čišćenje i košnju u istom tjednu, kako bi sve bilo riješeno jednim dogovorom.',
-  },
-  {
-    slug: 'rugvica',
-    name: 'Rugvica',
-    nameLocative: 'Rugvici',
-    tagline: 'Redovito čišćenje i održavanje okućnice u Rugvici',
-    intro:
-      'U Rugvici nudimo redovito čišćenje stanova i kuća te redovito održavanje okućnice. Recite nam kvadraturu i što trebate — unutra, vani ili oboje — pa ćemo dogovoriti ritam i okvirnu cijenu.',
-  },
-  {
-    slug: 'bozjakovina',
-    name: 'Božjakovina',
-    nameLocative: 'Božjakovini',
-    tagline: 'Redovito čišćenje i održavanje u Božjakovini',
-    intro:
-      'Božjakovina se nalazi neposredno uz Dugo Selo. Ako ste tu, brzo možemo potvrditi redoviti termin dolaska.',
-  },
-  {
-    slug: 'brckovljani',
-    name: 'Brckovljani',
-    nameLocative: 'Brckovljanima',
-    tagline: 'Redovito čišćenje i održavanje u Brckovljanima',
-    intro:
-      'Brckovljani su susjedno mjesto. Dolazimo na redovito čišćenje i košnju, uz osobni pristup i jasnu komunikaciju.',
-  },
 ] as const;
 
 export const BOOKING_AREAS = [
   'Dugo Selo',
-  ...AREA_PAGES.map((area) => area.name),
+  'Sesvete',
   'Okolica / drugo',
 ] as const;
 
@@ -96,7 +64,7 @@ export const BOOKING_TIME_SLOTS = [
 
 export const HERO_STATS = [
   'Dugoročna suradnja',
-  'Dugo Selo i okolica',
+  'Dugo Selo i Sesvete',
 ] as const;
 
 export const SERVICE_PILLARS = [
@@ -110,19 +78,11 @@ export const SERVICE_PILLARS = [
   },
   {
     title: 'Redovito održavanje okućnice',
-    tagline: 'Kosimo travu, flancamo i održavamo živicu',
+    tagline: 'Kosimo travu i održavamo živicu',
     description:
       'Košnja i održavanje travnjaka, trimanje rubova, živica, cvjetnjaci, gredice, lišće, terase i sezonski poslovi. Dogovaramo ritam i držimo ga kroz sezonu.',
     href: '/odrzavanje-dvorista-dugo-selo',
     calculatorType: 'dvoriste',
-  },
-  {
-    title: 'Komplet',
-    tagline: 'Unutra i vani, isti tjedan',
-    description:
-      'Redovito čišćenje i redovita košnja jednim dogovorom. Idealno za kuće koje žele uredan dom i okućnicu bez ponovnog dogovaranja svaki put.',
-    href: '/#kalkulator',
-    calculatorType: 'ciscenje',
   },
 ] as const;
 
@@ -209,8 +169,6 @@ export const SERVICE_PAGES = [
 
 export const AREA_LINKS = [
   { href: '/ciscenje-sesvete', label: 'Sesvete' },
-  { href: '/ciscenje-bozjakovina', label: 'Božjakovina' },
-  { href: '/ciscenje-brckovljani', label: 'Brckovljani' },
 ] as const;
 
 export const NAV_LINKS = [
@@ -238,19 +196,13 @@ export const ABOUT_US = {
   highlights: [
     'Isti dan svaki tjedan',
     'Dugoročna suradnja',
-    'Dugo Selo, Sesvete, Vrbovec i okolica',
+    'Dugo Selo i Sesvete',
     'Cijena poznata prije početka suradnje',
     'Koristimo vašu opremu i sredstva',
   ],
 } as const;
 
 export const SERVICES = [
-  {
-    title: 'Redovito čišćenje stanova',
-    description:
-      'Dolazimo isti dan svaki tjedan ili svaka dva tjedna. Zapamtimo vaše preferencije, pa ne morate svaki put počinjati ispočetka.',
-    href: '/ciscenje-stanova-dugo-selo',
-  },
   {
     title: 'Redovito čišćenje kuća',
     description:
@@ -372,7 +324,7 @@ export const FAQ_ITEMS = [
   {
     question: 'Gdje se nalazite i dolazite li u Dugo Selo?',
     answer:
-      'Sjedište nam je u ulici Dragutina Domjanića 12B u Dugom Selu. Odatle redovito dolazimo u Sesvete, Vrbovec, Rugvicu, Božjakovinu i Brckovljane. Pošaljite nam ulicu — reći ćemo možemo li doći i koji dan.',
+      'Sjedište nam je u ulici Dragutina Domjanića 12B u Dugom Selu. Odatle redovito dolazimo u Sesvete. Pošaljite nam ulicu — reći ćemo možemo li doći i koji dan.',
   },
   {
     question: 'Kako naručiti redovito održavanje?',
@@ -412,7 +364,7 @@ export const FAQ_ITEMS = [
   {
     question: 'Radite li u Sesvetama i okolici Dugog Sela?',
     answer:
-      'Da. Redovito radimo u Dugom Selu, Sesvetama, Vrbovcu, Rugvici, Božjakovini i Brckovljanima. Pošaljite ulicu — reći ćemo možemo li doći i koji dan.',
+      'Da. Redovito radimo u Dugom Selu i Sesvetama. Pošaljite ulicu — reći ćemo možemo li doći i koji dan.',
   },
   {
     question: 'Može li prvi dolazak biti dok sam doma?',
@@ -469,7 +421,6 @@ export const LAWN_CHECKLIST = [
 
 export const HOUSE_WORK_CHECKLIST = [
   'Montaža polica i sitnog namještaja',
-  'Popravak vrata, kvaka i šarki',
   'Zamjena slavine ili sitni vodoinstalaterski zahvat',
   'Bojanje jedne sobe ili zida',
   'Sitni popravci oko kuće po dogovoru',

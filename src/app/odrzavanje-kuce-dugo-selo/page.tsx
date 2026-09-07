@@ -25,10 +25,6 @@ export default function OdrzavanjeKucePage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
-                Popravak vrata, kvaka i šarki
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
                 Zamjena slavine i slični sitni zahvati
               </li>
               <li className="flex items-start gap-3">

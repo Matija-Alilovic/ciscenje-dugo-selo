@@ -45,13 +45,6 @@ export const WORK_JOB_OPTIONS = [
     max: 50,
   },
   {
-    value: "vrata",
-    label: "Vrata, kvake i šarke",
-    hint: "Poravnati, podmazati ili zamijeniti kvaku",
-    min: 25,
-    max: 45,
-  },
-  {
     value: "slavina",
     label: "Zamjena slavine",
     hint: "Sitni zahvat, bez većih cijevi",

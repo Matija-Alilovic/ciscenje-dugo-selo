@@ -5,17 +5,10 @@ import Reveal from "./Reveal";
 
 const PILLAR_ICONS = [
   "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z",
-  "M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z",
   "M12 3c2 2 6 3 9 3 0 7-3 12-9 15-6-3-9-8-9-15 3 0 7-1 9-3z",
-  "M4 6h16M4 10h16M8 14h.01M8 18h.01M12 14h8M12 18h8",
 ] as const;
 
-const PILLAR_TONES = [
-  "bg-brand-600",
-  "bg-accent-600",
-  "bg-brand-700",
-  "bg-accent-500",
-] as const;
+const PILLAR_TONES = ["bg-brand-600", "bg-accent-600"] as const;
 
 export default function ServicePillars() {
   return (

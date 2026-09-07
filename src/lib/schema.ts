@@ -52,11 +52,7 @@ export function getLocalBusinessSchema() {
     },
     areaServed: [
       { "@type": "City", name: "Dugo Selo" },
-      { "@type": "City", name: "Božjakovina" },
-      { "@type": "City", name: "Rugvica" },
-      { "@type": "City", name: "Brckovljani" },
       { "@type": "City", name: "Sesvete" },
-      { "@type": "City", name: "Vrbovec" },
     ],
     openingHoursSpecification: [
       {
