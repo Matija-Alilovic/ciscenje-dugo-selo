@@ -374,7 +374,7 @@ export const FAQ_ITEMS = [
   {
     question: 'Treba li netko biti doma?',
     answer:
-      'Prvi put je zgodno da netko pokaže što je važno. Kasnije možete otići ako ostavite ključ ili drugačije dogovorimo pristup.',
+      'Prvi put je zgodno da netko pokaže što je važno. Kasnije možete otići ostavite ključ ili drugačije dogovorimo pristup.',
   },
   {
     question: 'Čistite li samo stanove ili i kuće?',
