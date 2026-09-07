@@ -1,6 +1,6 @@
 "use client";
 
-import { COMPANY, GOOGLE_BUSINESS, SITE } from "@/lib/constants";
+import { GOOGLE_BUSINESS, SITE } from "@/lib/constants";
 import { getGoogleReviewUrl } from "@/lib/site";
 import { getPhoneHref, getWhatsAppHref } from "@/lib/utils";
 import { showToast } from "@/lib/toast";
@@ -53,12 +53,10 @@ export default function ContactSection() {
 
           <div className="card-modern p-4">
             <h3 className="text-base font-semibold uppercase tracking-wide text-gray-500">
-              Adresa
+              Područje rada
             </h3>
-            <p className="mt-1 text-base leading-relaxed text-gray-700">
-              {COMPANY.address}
-              <br />
-              {COMPANY.city}
+            <p className="mt-1 text-base leading-relaxed text-gray-700 sm:text-lg">
+              {SITE.area}
             </p>
             <a
               href={GOOGLE_BUSINESS.mapsSearchUrl}
@@ -78,13 +76,6 @@ export default function ContactSection() {
                 Ocijenite nas na Googleu
               </a>
             )}
-          </div>
-
-          <div className="card-modern p-4">
-            <h3 className="text-base font-semibold uppercase tracking-wide text-gray-500">
-              Područje rada
-            </h3>
-            <p className="mt-1 text-base leading-relaxed text-gray-700 sm:text-lg">{SITE.area}</p>
           </div>
 
           <GoogleMapEmbed />

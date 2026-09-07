@@ -8,7 +8,7 @@ export default function GoogleMapEmbed() {
   return (
     <div className="overflow-hidden rounded-lg border border-gray-200">
       <iframe
-        title={`Lokacija — ${COMPANY.name}, ${COMPANY.address}, ${COMPANY.city}`}
+        title={`Lokacija — ${COMPANY.name}, ${COMPANY.city}`}
         src={src}
         className="h-56 w-full sm:h-64"
         loading="lazy"

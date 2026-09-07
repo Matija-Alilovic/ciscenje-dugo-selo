@@ -306,85 +306,80 @@ export const WHY_US = [
   'Pouzdano izvršavanje dogovorenih termina',
   'Cijena poznata prije početka suradnje',
   'Koristimo vašu opremu i sredstva',
-  'Čišćenje i okućnica mogu isti tjedan',
+  'Čišćenje i okućnica u istom tjednu',
   'Radimo lokalno, iz Dugog Sela',
 ] as const;
 
 export const FAQ_ITEMS = [
   {
-    question: 'Što nudite — jednokratno ili redovito?',
+    question: 'Što točno nudite?',
     answer:
-      'Nudimo isključivo redovito održavanje: čišćenje tjedno ili svaka dva tjedna te košnju kroz sezonu. Ne radimo jednokratne poslove jednom godišnje. Ako tražite dugoročnu suradnju i isti dan svaki tjedan — tu smo.',
+      'Redovito čišćenje (stan ili kuća), redovito održavanje okućnice (košnja, živica, terasa) i, uz redoviti dolazak, sitne popravke ili bojanje po dogovoru. Sve je dugoročna suradnja — isti dan, tjedno ili svaka dva tjedna.',
   },
   {
-    question: 'Koliko košta redovito čišćenje stana u Dugom Selu?',
+    question: 'Radite li jednokratne poslove?',
     answer:
-      'Redovito čišćenje je 13 €/h. Za stan od oko 65 m² obično iznosi 45–60 € po dolasku. Točan iznos potvrdimo kada znamo prostor i ritam (tjedno ili svaka dva tjedna).',
+      'Ne. Ne radimo „jednom godišnje“ akcije. Fokus je na klijentima koji žele redoviti ritam cijelu godinu (ili kroz sezonu za košnju).',
   },
   {
-    question: 'Gdje se nalazite i dolazite li u Dugo Selo?',
+    question: 'Koliko košta redovito čišćenje?',
     answer:
-      'Sjedište nam je u ulici Dragutina Domjanića 12B u Dugom Selu. Odatle redovito dolazimo u Sesvete. Pošaljite nam ulicu — reći ćemo možemo li doći i koji dan.',
+      '13 €/h. Za stan od oko 65 m² obično 45–60 € po dolasku. Točan iznos potvrdimo kad znamo prostor i ritam (tjedno ili svaka 2 tjedna).',
   },
   {
-    question: 'Kako naručiti redovito održavanje?',
+    question: 'Koliko košta košnja i okućnica?',
     answer:
-      'Najbrže je kroz kalkulator i zatim WhatsApp. Možete nas i nazvati na +385 97 608 3278 ili ispuniti formu na dnu stranice. Dogovorimo dan u tjednu i držimo ga.',
+      'Košnja je otprilike 0,15–0,30 €/m², od 35 € po dolasku. Tipično dvorište često izađe 50–80 €. Živica, lišće ili pranje terase dodaju se na to — najbrže kroz kalkulator.',
+  },
+  {
+    question: 'Mogu li čišćenje i okućnica biti u istom tjednu?',
+    answer:
+      'Može. Većina klijenata s kućom tako radi. U kalkulatoru označite oboje ili nam na WhatsAppu napišite što trebate — dogovorimo jedan dan ili isti tjedan.',
+  },
+  {
+    question: 'Kad se kosi trava?',
+    answer:
+      'Od ožujka do studenoga, otprilike svaka dva tjedna, ovisno o rastu. Dogovorimo ritam na početku sezone i držimo ga.',
+  },
+  {
+    question: 'Što je uključeno u održavanje okućnice?',
+    answer:
+      'Osnovno je košnja i rubovi. Po dogovoru: živica, lišće, gredice, pranje terase i slični sezonski poslovi. Recite što želite redovito, a što povremeno.',
+  },
+  {
+    question: 'Radite li sitne popravke ili bojanje?',
+    answer:
+      'Da, uz redoviti dolazak — npr. montaža polica, zamjena slavine, sastavljanje namještaja ili bojanje sobe. Nismo građevinska firma; veće zahvate ne radimo.',
+  },
+  {
+    question: 'Gdje dolazite?',
+    answer:
+      'Redovito radimo u Dugom Selu i Sesvetama. Pošaljite ulicu — potvrdimo možemo li i koji dan.',
+  },
+  {
+    question: 'Kako naručiti i dogovoriti cijenu?',
+    answer:
+      'Najbrže: kalkulator na stranici, pa WhatsApp. Ili nazovite +385 97 608 3278 / forma na dnu. Kažete kvadraturu, ritam i što trebate — potvrdimo cijenu prije prvog dolaska.',
   },
   {
     question: 'Koliko često dolazite?',
     answer:
-      'Najčešće tjedno ili svaka dva tjedna. Za čišćenje držimo isti dan cijelu godinu. Za košnju dolazimo od ožujka do studenoga, otprilike svaka dva tjedna.',
+      'Čišćenje: tjedno ili svaka 2 tjedna, isti dan cijelu godinu. Okućnica: kroz sezonu, obično svaka 2 tjedna. Ritam dogovorimo unaprijed.',
   },
   {
-    question: 'Koliko traje redovito čišćenje stana?',
+    question: 'Moram li imati opremu i sredstva?',
     answer:
-      'Manji stan obično traje oko 3–4 sata. Prije početka suradnje kažemo koliko računamo, da znate što očekivati.',
+      'Za čišćenje da — usisivač, mop, krpe i sredstva. Za okućnicu opremom se dogovorimo (vaša ili naša, ovisno o poslu). Recite unaprijed što imate.',
   },
   {
-    question: 'Moram li imati sredstva i opremu za čišćenje?',
+    question: 'Treba li netko biti doma?',
     answer:
-      'Da. Radimo s vašom opremom i sredstvima — usisivač, mop, krpe i sredstva za čišćenje. Recite unaprijed što imate kod kuće, pa se dogovorimo prije prvog dolaska.',
+      'Prvi put je zgodno da netko pokaže što je važno. Kasnije možete otići ako ostavite ključ ili drugačije dogovorimo pristup.',
   },
   {
-    question: 'Zašto je redovito čišćenje jeftinije od jednokratnog?',
+    question: 'Čistite li samo stanove ili i kuće?',
     answer:
-      'Redovito je 13 €/h, a jednokratno 14 €/h. Redoviti klijenti su naša osnovica — isti dan, ista ekipa, bez ponovnog dogovaranja svaki put.',
-  },
-  {
-    question: 'Radite li generalno čišćenje ili čišćenje nakon selidbe?',
-    answer:
-      'To nije naša osnovna usluga. Fokusiramo se na redovito tjedno održavanje. Ako trebate jednokratni temeljiti dolazak, javite se — rješavamo to samo iznimno i samo ako stignemo uz redovite klijente.',
-  },
-  {
-    question: 'Čistite li kuće ili samo stanove?',
-    answer:
-      'Čistimo i stanove i kuće, uvijek kao redovito održavanje. Kuća obično ima više hodnika i kupaonica, pa cijenu i ritam dogovaramo prema konkretnom prostoru.',
-  },
-  {
-    question: 'Radite li u Sesvetama i okolici Dugog Sela?',
-    answer:
-      'Da. Redovito radimo u Dugom Selu i Sesvetama. Pošaljite ulicu — reći ćemo možemo li doći i koji dan.',
-  },
-  {
-    question: 'Može li prvi dolazak biti dok sam doma?',
-    answer:
-      'Može. Većina klijenata prvi put ostane kod kuće kako bi pokazala što je važno. Kasnije možete i otići, ako nam ostavite ključ ili drugačije dogovorimo.',
-  },
-  {
-    question: 'Kako se dogovara cijena?',
-    answer:
-      'Kroz kalkulator ili WhatsApp: kvadratura, ritam i gdje ste. Redovito čišćenje je 13 €/h, košnja od 35 € po dolasku. Ako je stanje prostora drugačije od opisanog, javimo prije početka rada.',
-  },
-  {
-    question: 'Radite li redovitu košnju u Dugom Selu?',
-    answer:
-      'Da. To je naša druga osnovna usluga uz čišćenje. Kosimo travu i orezujemo živicu kroz sezonu. Košnja je 0,15–0,30 €/m², od 35 € po dolasku. Tipično dvorište obično iznosi 50–80 €.',
-  },
-  {
-    question: 'Može li čišćenje i okućnica u istom tjednu?',
-    answer:
-      'Može. Tako radi većina klijenata s kućom. U kalkulatoru krenite od čišćenja i u poruci napišite da treba i košnja — ili nam odmah pošaljite WhatsApp s onim što trebate.',
+      'I stanove i kuće, uvijek kao redovito održavanje. Kod kuće cijenu i vrijeme dogovaramo prema broju soba, kupaonica i okućnici ako je ima.',
   },
 ] as const;
 

@@ -81,9 +81,7 @@ export default function Footer() {
         <div className="mt-10 border-t border-gray-200 pt-8">
           <address className="not-italic text-center text-sm leading-relaxed text-gray-600">
             <span className="block font-medium text-gray-800">{COMPANY.legalName}</span>
-            <span className="mt-1 block">
-              {COMPANY.address}, {COMPANY.city}
-            </span>
+            <span className="mt-1 block">{COMPANY.city}</span>
           </address>
           <p className="mt-4 text-center text-sm text-gray-500">
             © {new Date().getFullYear()} {COMPANY.legalName}. Sva prava pridržana.

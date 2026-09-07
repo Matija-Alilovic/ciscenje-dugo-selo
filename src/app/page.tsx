@@ -8,7 +8,6 @@ import Steps from '@/components/Steps';
 import AboutSection from '@/components/AboutSection';
 import BeforeAfterSection from '@/components/BeforeAfterSection';
 import GoogleReviewsSection from '@/components/GoogleReviewsSection';
-import LocalAreaSection from '@/components/LocalAreaSection';
 import FAQ from '@/components/FAQ';
 import ContactSection from '@/components/ContactSection';
 import JsonLd from '@/components/JsonLd';
@@ -49,12 +48,6 @@ export default function HomePage() {
         </Section>
         <Section id="usluge" title="Usluge koje nudimo" subtitle="">
           <ServicePillars />
-        </Section>
-        <Section
-          title="Područje rada"
-          subtitle="Dugo Selo i Sesvete."
-        >
-          <LocalAreaSection />
         </Section>
         <Section
           title="Kalkulator cijene"

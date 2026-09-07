@@ -17,7 +17,7 @@ export default function OdrzavanjeDvoristaPage() {
       ]}
       sections={[
         {
-          title: "Što radimo u okućnici",
+          title: "Što radimo",
           content: <Checklist items={[...YARD_CHECKLIST]} />,
         },
         {
