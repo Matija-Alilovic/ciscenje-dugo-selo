@@ -45,8 +45,8 @@ export default function BackToTop() {
       className={cn(
         "fixed z-40 flex h-11 w-11 items-center justify-center rounded-lg border border-gray-300 bg-surface text-gray-800 shadow-md",
         ctaVisible
-          ? "bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] left-4 md:left-auto md:right-6"
-          : "bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))] left-4 md:left-auto md:right-6",
+          ? "bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] right-3 left-auto"
+          : "bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))] right-3 left-auto md:right-6",
         "hover:border-brand-300 hover:text-brand-700",
         "dark:border-gray-500 dark:bg-gray-900 dark:text-gray-100 dark:hover:border-brand-400 dark:hover:text-brand-600",
       )}

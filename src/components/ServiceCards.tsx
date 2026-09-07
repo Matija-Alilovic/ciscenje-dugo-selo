@@ -18,22 +18,22 @@ const SERVICE_ICONS = [
 
 export default function ServiceCards() {
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
       {SERVICES.map((service, index) => (
         <Reveal key={service.title} delay={index * 80}>
           <Link
             href={service.href}
-            className="card-modern group flex h-full flex-col p-6 transition-colors hover:border-brand-300"
+            className="card-modern group flex h-full flex-col p-4 transition-colors hover:border-brand-300 sm:p-6"
           >
-            <span className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-md bg-brand-100 text-brand-700">
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+            <span className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-brand-100 text-brand-700 sm:mb-4 sm:h-11 sm:w-11">
+              <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d={SERVICE_ICONS[index % SERVICE_ICONS.length]} />
               </svg>
             </span>
-            <h3 className="text-xl font-semibold text-gray-900 group-hover:text-brand-700">
+            <h3 className="text-base font-semibold text-gray-900 group-hover:text-brand-700 sm:text-xl">
               {service.title}
             </h3>
-            <p className="mt-3 flex-1 text-base leading-relaxed text-gray-600">
+            <p className="mt-2 flex-1 text-sm leading-relaxed text-gray-600 sm:mt-3 sm:text-base">
               {service.description}
             </p>
           </Link>

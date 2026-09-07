@@ -220,7 +220,7 @@ function FieldLabel({
         {children}
       </label>
       {hint && (
-        <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-600">
+        <p className="mt-0.5 hidden text-sm text-gray-500 sm:block dark:text-gray-600">
           {hint}
         </p>
       )}
@@ -247,7 +247,7 @@ function ChoiceButton({
       type="button"
       onClick={handleClick}
       className={cn(
-        'rounded-lg border px-4 py-3.5 text-left text-base transition-colors min-h-11',
+        'rounded-lg border px-3 py-2.5 text-left text-sm transition-colors min-h-10 sm:rounded-lg sm:px-4 sm:py-3.5 sm:text-base sm:min-h-11',
         selected
           ? 'border-brand-600 bg-brand-50 text-brand-800 shadow-sm ring-1 ring-brand-600/15'
           : 'border-gray-300 bg-surface text-gray-700 hover:border-brand-300 hover:bg-brand-50/50',
@@ -275,7 +275,7 @@ export default function PriceCalculator({
   const [step, setStep] = useState(0);
   const [input, setInput] = useState<CalculatorInput>(DEFAULT_CALCULATOR_INPUT);
   const [pricePulse, setPricePulse] = useState(false);
-  const [soundsMuted, setSoundsMuted] = useState(false);
+  const [soundsMuted, setSoundsMuted] = useState(true);
   const prevPriceKey = useRef('');
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -346,6 +346,8 @@ export default function PriceCalculator({
     const priceKey = `${combinedEstimate.min}-${combinedEstimate.max}-${combinedEstimate.summary.join('|')}`;
     if (priceKey !== prevPriceKey.current) {
       prevPriceKey.current = priceKey;
+      // Skip pulse animation on touch — less main-thread work
+      if (window.matchMedia('(pointer: coarse)').matches) return;
       setPricePulse(true);
       const timer = window.setTimeout(() => setPricePulse(false), 450);
       return () => window.clearTimeout(timer);
@@ -882,9 +884,9 @@ export default function PriceCalculator({
 
   function renderPickStep() {
     return (
-      <div className="space-y-5">
+      <div className="space-y-3 sm:space-y-5">
         <FieldLabel hint={PICK_HINT}>Što vam treba?</FieldLabel>
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid gap-2 sm:grid-cols-2 sm:gap-3">
           {CALCULATOR_CATEGORIES.map((option) => {
             const selected = categories.includes(option.value);
             return (
@@ -893,13 +895,13 @@ export default function PriceCalculator({
                 type="button"
                 onClick={() => toggleCategory(option.value)}
                 className={cn(
-                  'calc-category-card group text-left',
+                  'calc-category-card group flex items-start gap-3 text-left sm:block',
                   selected && 'is-selected',
                 )}
               >
                 <span
                   className={cn(
-                    'mb-3 inline-flex h-11 w-11 items-center justify-center rounded-lg text-white',
+                    'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-white sm:mb-3 sm:h-11 sm:w-11',
                     option.value === 'ciscenje' && 'bg-brand-600',
                     option.value === 'dvoriste' && 'bg-brand-700',
                     option.value === 'radovi' && 'bg-accent-600',
@@ -952,18 +954,20 @@ export default function PriceCalculator({
                     </svg>
                   )}
                 </span>
-                <span
-                  className={cn(
-                    'block text-base font-semibold sm:text-lg',
-                    selected
-                      ? 'text-brand-800'
-                      : 'text-gray-900 group-hover:text-brand-800',
-                  )}
-                >
-                  {option.label}
-                </span>
-                <span className="mt-1 block text-sm leading-relaxed text-gray-600">
-                  {option.hint}
+                <span className="min-w-0 flex-1">
+                  <span
+                    className={cn(
+                      'block text-sm font-semibold sm:text-lg',
+                      selected
+                        ? 'text-brand-800'
+                        : 'text-gray-900 group-hover:text-brand-800',
+                    )}
+                  >
+                    {option.label}
+                  </span>
+                  <span className="mt-0.5 block text-xs leading-snug text-gray-600 sm:mt-1 sm:text-sm sm:leading-relaxed">
+                    {option.hint}
+                  </span>
                 </span>
               </button>
             );
@@ -980,7 +984,7 @@ export default function PriceCalculator({
           <p className="text-sm font-semibold uppercase tracking-wide text-brand-700">
             Okvirna cijena
           </p>
-          <p className="mt-2 text-3xl font-bold text-gray-900 sm:text-4xl">
+          <p className="mt-2 text-2xl font-bold text-gray-900 sm:text-4xl">
             {combinedEstimate.min}–{combinedEstimate.max} €
           </p>
           <ul className="mt-4 space-y-1 text-sm text-gray-600">
@@ -1045,64 +1049,84 @@ export default function PriceCalculator({
     );
 
   return (
-    <div ref={cardRef} className="card-modern overflow-hidden">
-      <div className="calc-header px-4 py-5 text-[#fffdf8] sm:px-6">
-        <div className="flex items-start justify-between gap-3">
-          <p className="text-sm font-semibold uppercase tracking-wide text-[#f4d4b0]">
-            Kalkulator cijene
-          </p>
-          <button
-            type="button"
-            onClick={toggleSounds}
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/25 bg-white/10 text-white transition-colors hover:bg-white/20"
-            aria-label={soundsMuted ? 'Uključi zvukove' : 'Isključi zvukove'}
-            aria-pressed={!soundsMuted}
-            title={soundsMuted ? 'Uključi zvukove' : 'Isključi zvukove'}
-          >
-            {soundsMuted ? (
-              <svg
-                className="h-4 w-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M11 5L6 9H3v6h3l5 4V5z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 9l4 4m0-4l-4 4"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="h-4 w-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M11 5L6 9H3v6h3l5 4V5z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.54 8.46a5 5 0 010 7.08M18.36 5.64a9 9 0 010 12.72"
-                />
-              </svg>
+    <div ref={cardRef} className="card-modern">
+      <div className="calc-header overflow-hidden rounded-t-lg px-3 py-3 text-[#fffdf8] sm:rounded-t-xl sm:px-6 sm:py-5">
+        <div className="flex items-center justify-between gap-2">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#f4d4b0] sm:text-sm">
+              Kalkulator
+            </p>
+            {!isLastStep && (
+              <p className="mt-0.5 truncate text-sm font-semibold text-white sm:hidden">
+                {step + 1}/{flowSteps.length} · {currentStep?.label}
+              </p>
             )}
-          </button>
+          </div>
+          <div className="flex shrink-0 items-center gap-2">
+            <p
+              className={cn(
+                'text-base font-bold tabular-nums text-white sm:hidden',
+                pricePulse && 'text-[#f4d4b0]',
+              )}
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              {priceLabel}
+            </p>
+            <button
+              type="button"
+              onClick={toggleSounds}
+              className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/25 bg-white/10 text-white transition-colors hover:bg-white/20 sm:inline-flex"
+              aria-label={soundsMuted ? 'Uključi zvukove' : 'Isključi zvukove'}
+              aria-pressed={!soundsMuted}
+              title={soundsMuted ? 'Uključi zvukove' : 'Isključi zvukove'}
+            >
+              {soundsMuted ? (
+                <svg
+                  className="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M11 5L6 9H3v6h3l5 4V5z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 9l4 4m0-4l-4 4"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M11 5L6 9H3v6h3l5 4V5z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.54 8.46a5 5 0 010 7.08M18.36 5.64a9 9 0 010 12.72"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
-        <p className="mt-1 text-sm text-white/90 sm:text-base">
+
+        <p className="mt-2 hidden text-sm text-white/90 sm:mt-1 sm:block sm:text-base">
           Odgovorite na nekoliko pitanja i dobit ćete okvirnu cijenu održavanja
           kuće i okućnice.
           <span className="font-medium text-[#f4d4b0]">
@@ -1110,18 +1134,13 @@ export default function PriceCalculator({
           </span>
         </p>
         {!isLastStep && (
-          <p className="mt-2 text-sm font-medium text-white/90">{stepHint}</p>
+          <p className="mt-2 hidden text-sm font-medium text-white/90 sm:block">
+            {stepHint}
+          </p>
         )}
-        <p className="mt-3 text-sm font-semibold text-white sm:hidden">
-          Korak {step + 1} od {flowSteps.length}: {currentStep?.label}
-          {stepsRemaining > 0 && (
-            <span className="ml-1 font-normal text-white/70">
-              · {remainingStepsLabel(stepsRemaining)}
-            </span>
-          )}
-        </p>
+
         <div
-          className="mt-3 h-2 w-full overflow-hidden rounded-full bg-white/20"
+          className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-white/20 sm:mt-3 sm:h-2"
           role="progressbar"
           aria-valuenow={step + 1}
           aria-valuemin={1}
@@ -1129,19 +1148,19 @@ export default function PriceCalculator({
           aria-label={`Korak ${step + 1} od ${flowSteps.length}`}
         >
           <div
-            className="h-full rounded-full bg-accent-400 transition-all duration-300 ease-out"
+            className="h-full rounded-full bg-accent-400 transition-[width] duration-200 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
 
-        <div className="mt-4 rounded-xl border border-white/20 bg-white/10 px-3 py-3 sm:px-4">
+        <div className="mt-3 hidden rounded-xl border border-white/20 bg-white/10 px-4 py-3 sm:block">
           <div className="flex items-center justify-between gap-3">
-            <p className="text-xs font-semibold uppercase tracking-wide text-white/80 sm:text-sm">
+            <p className="text-sm font-semibold uppercase tracking-wide text-white/80">
               Okvirno sada
             </p>
             <p
               className={cn(
-                'text-lg font-bold tabular-nums text-white transition-transform duration-300 sm:text-xl',
+                'text-xl font-bold tabular-nums text-white transition-transform duration-300',
                 pricePulse && 'scale-105 text-[#f4d4b0]',
               )}
               aria-live="polite"
@@ -1179,29 +1198,31 @@ export default function PriceCalculator({
         </div>
       </div>
 
-      <div className="space-y-6 p-4 sm:p-6">
+      <div className="space-y-3 p-4 sm:space-y-6 sm:p-6">
         {renderStep()}
 
-        <div className="flex flex-col gap-3 border-t border-gray-200 pt-5 sm:flex-row sm:flex-wrap">
-          {canGoNext && (
-            <button
-              type="button"
-              onClick={goNext}
-              className="btn-primary order-2 w-full sm:order-1 sm:w-auto"
-            >
-              Dalje
-            </button>
-          )}
-          {step > 0 && (
-            <button
-              type="button"
-              onClick={goBack}
-              className="btn-muted order-1 w-full sm:order-2 sm:w-auto"
-            >
-              Natrag
-            </button>
-          )}
-        </div>
+        {(canGoNext || step > 0) && (
+          <div className="sticky bottom-0 z-10 -mx-4 flex gap-2 border-t border-gray-200 bg-surface px-4 py-3 sm:static sm:z-auto sm:mx-0 sm:flex-row sm:flex-wrap sm:gap-3 sm:border-t sm:bg-transparent sm:px-0 sm:pt-5">
+            {canGoNext && (
+              <button
+                type="button"
+                onClick={goNext}
+                className="btn-primary order-2 min-h-11 flex-1 sm:order-1 sm:w-auto sm:flex-none"
+              >
+                Dalje
+              </button>
+            )}
+            {step > 0 && (
+              <button
+                type="button"
+                onClick={goBack}
+                className="btn-muted order-1 min-h-11 flex-1 sm:order-2 sm:w-auto sm:flex-none"
+              >
+                Natrag
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

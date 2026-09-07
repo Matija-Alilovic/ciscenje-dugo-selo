@@ -3,17 +3,17 @@ import Reveal from "./Reveal";
 
 export default function Steps() {
   return (
-    <div className="grid gap-6 sm:grid-cols-3">
+    <div className="grid gap-3 sm:grid-cols-3 sm:gap-6">
       {STEPS.map((step, index) => (
         <Reveal key={step.step} delay={index * 100}>
-          <div className="card-modern relative h-full p-6">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-brand-600 text-sm font-bold text-white">
+          <div className="card-modern relative h-full p-4 sm:p-6">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-brand-600 text-xs font-bold text-white sm:h-10 sm:w-10 sm:text-sm">
               {step.step}
             </span>
-            <h3 className="mt-4 text-xl font-semibold text-gray-900">
+            <h3 className="mt-3 text-base font-semibold text-gray-900 sm:mt-4 sm:text-xl">
               {step.title}
             </h3>
-            <p className="mt-2 text-base leading-relaxed text-gray-600">
+            <p className="mt-1.5 text-sm leading-relaxed text-gray-600 sm:mt-2 sm:text-base">
               {step.description}
             </p>
           </div>

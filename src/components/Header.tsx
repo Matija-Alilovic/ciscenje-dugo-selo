@@ -139,17 +139,20 @@ export default function Header() {
       <header
         ref={headerRef}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 border-b border-gray-200/60 bg-surface/95 backdrop-blur-md transition-[transform,box-shadow] duration-300 ease-out dark:border-gray-300/50 dark:bg-gray-100/98",
+          "fixed inset-x-0 top-0 z-50 border-b border-gray-200/60 bg-surface transition-[transform,box-shadow] duration-200 ease-out dark:border-gray-300/50 dark:bg-gray-100 sm:bg-surface/95 sm:backdrop-blur-md dark:sm:bg-gray-100/98",
           scrolled && "shadow-sm dark:shadow-black/40",
           !headerVisible && !menuOpen && "-translate-y-full",
         )}
       >
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3.5 sm:gap-4 sm:px-6 sm:py-4 lg:px-8">
+        <div className="page-pad mx-auto flex max-w-6xl items-center justify-between gap-3 py-2.5 sm:gap-4 sm:py-4">
           <Link href="/" className="group min-w-0 flex-1">
-            <span className="block font-heading text-lg font-bold leading-tight text-gray-900 dark:text-gray-900 sm:text-2xl">
-              <LetterHoverText text={SITE.serviceHeadline} />
+            <span className="block truncate font-heading text-base font-bold leading-tight text-gray-900 dark:text-gray-900 sm:text-2xl">
+              <span className="sm:hidden">{SITE.name}</span>
+              <span className="hidden sm:inline">
+                <LetterHoverText text={SITE.serviceHeadline} />
+              </span>
             </span>
-            <span className="hidden min-[380px]:block truncate text-sm text-gray-500 transition-colors group-hover:text-brand-600 dark:text-gray-500 dark:group-hover:text-brand-400 sm:text-base">
+            <span className="hidden truncate text-xs text-gray-500 transition-colors group-hover:text-brand-600 dark:text-gray-500 dark:group-hover:text-brand-400 sm:block sm:text-base">
               {SITE.name}
             </span>
           </Link>
@@ -189,7 +192,7 @@ export default function Header() {
 
             <button
               type="button"
-              className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 lg:hidden dark:border-gray-400 dark:text-gray-700 dark:hover:bg-gray-200/10"
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 lg:hidden dark:border-gray-400 dark:text-gray-700 dark:hover:bg-gray-200/10"
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
               aria-label={menuOpen ? "Zatvori izbornik" : "Otvori izbornik"}

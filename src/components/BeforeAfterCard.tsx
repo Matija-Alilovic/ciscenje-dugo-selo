@@ -46,8 +46,9 @@ export default function BeforeAfterCard({ title, src, caption }: BeforeAfterCard
             alt={`${title} — prije i poslije čišćenja, Dugo Selo`}
             width={1600}
             height={900}
-            className="h-auto w-full transition-transform duration-300 group-hover:scale-[1.02]"
+            className="h-auto w-full sm:transition-transform sm:duration-300 sm:group-hover:scale-[1.02]"
             sizes="(max-width: 768px) 100vw, 50vw"
+            loading="lazy"
           />
 
           <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-between px-3 sm:top-4 sm:px-4">

@@ -27,14 +27,16 @@ const sourceSans = Source_Sans_3({
   subsets: ["latin", "latin-ext"],
   variable: "--font-source-sans",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
+  preload: true,
 });
 
 const lora = Lora({
   subsets: ["latin", "latin-ext"],
   variable: "--font-lora",
   display: "swap",
-  weight: ["500", "600", "700"],
+  weight: ["600", "700"],
+  preload: true,
 });
 
 const themeInitScript = `

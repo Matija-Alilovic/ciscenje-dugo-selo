@@ -8,6 +8,7 @@ const INTERACTIVE_SELECTOR =
 
 export default function CustomCursor() {
   const [mounted, setMounted] = useState(false);
+  const [enabled, setEnabled] = useState(false);
   const layerRef = useRef<HTMLDivElement>(null);
   const blobRef = useRef<HTMLDivElement>(null);
   const state = useRef({
@@ -18,11 +19,14 @@ export default function CustomCursor() {
   });
 
   useEffect(() => {
+    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!fine) return;
+    setEnabled(true);
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || !enabled) return;
 
     const canUseCustomCursor = window.matchMedia("(hover: hover) and (pointer: fine)");
 
@@ -102,9 +106,9 @@ export default function CustomCursor() {
       document.documentElement.removeEventListener("mouseleave", onLeave);
       canUseCustomCursor.removeEventListener("change", onPointerChange);
     };
-  }, [mounted]);
+  }, [mounted, enabled]);
 
-  if (!mounted) {
+  if (!mounted || !enabled) {
     return null;
   }
 

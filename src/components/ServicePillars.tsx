@@ -19,15 +19,15 @@ const PILLAR_TONES = [
 
 export default function ServicePillars() {
   return (
-    <div className="grid gap-5 sm:grid-cols-2">
+    <div className="grid gap-3 sm:grid-cols-2 sm:gap-5">
       {SERVICE_PILLARS.map((pillar, index) => (
         <Reveal key={pillar.title} delay={index * 80}>
-          <article className="card-modern flex h-full flex-col overflow-hidden p-6">
+          <article className="card-modern flex h-full flex-col overflow-hidden p-4 sm:p-6">
             <span
-              className={`mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg text-white ${PILLAR_TONES[index]}`}
+              className={`mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg text-white sm:mb-4 sm:h-11 sm:w-11 ${PILLAR_TONES[index]}`}
               aria-hidden="true"
             >
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}>
+              <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}>
                 <path strokeLinecap="round" strokeLinejoin="round" d={PILLAR_ICONS[index]} />
               </svg>
             </span>
@@ -35,13 +35,13 @@ export default function ServicePillars() {
               href={pillar.href}
               className="flex flex-1 flex-col transition-colors hover:text-brand-700"
             >
-              <p className="text-sm font-semibold uppercase tracking-wide text-brand-700">
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-700 sm:text-sm">
                 {pillar.title}
               </p>
-              <h3 className="mt-2 text-xl font-semibold text-gray-900">
+              <h3 className="mt-1.5 text-base font-semibold text-gray-900 sm:mt-2 sm:text-xl">
                 {pillar.tagline}
               </h3>
-              <p className="mt-3 flex-1 text-base leading-relaxed text-gray-600">
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-gray-600 sm:mt-3 sm:text-base">
                 {pillar.description}
               </p>
             </Link>

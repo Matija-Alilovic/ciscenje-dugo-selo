@@ -6,8 +6,12 @@ let audioContext: AudioContext | null = null;
 let masterGain: GainNode | null = null;
 
 export function areUiSoundsMuted(): boolean {
-  if (typeof window === "undefined") return false;
-  return localStorage.getItem(STORAGE_KEY) === "off";
+  if (typeof window === "undefined") return true;
+  const stored = localStorage.getItem(STORAGE_KEY);
+  if (stored === "off") return true;
+  if (stored === "on") return false;
+  // Default: mute on touch devices for snappier UX
+  return window.matchMedia("(pointer: coarse)").matches;
 }
 
 export function setUiSoundsMuted(muted: boolean) {

@@ -12,7 +12,7 @@ export default function ThemeToggle({ className }: { className?: string }) {
       type="button"
       onClick={toggleTheme}
       className={cn(
-        "theme-toggle relative inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border-2 shadow-sm",
+        "theme-toggle relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border-2 shadow-sm sm:h-12 sm:w-12",
         "border-brand-300 bg-brand-50 text-brand-700 hover:bg-brand-100",
         "dark:border-brand-400 dark:bg-brand-800/80 dark:text-brand-100 dark:shadow-black/20 dark:hover:bg-brand-700/80",
         className,

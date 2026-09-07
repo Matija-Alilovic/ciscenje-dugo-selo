@@ -159,9 +159,9 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 4.5rem;
   scroll-padding-bottom: 1rem;
-  font-size: 100%;
+  font-size: 87.5%;
   -webkit-text-size-adjust: 100%;
   color-scheme: light;
   transition:
@@ -200,13 +200,14 @@ html.dark {
 
 @media (min-width: 640px) {
   html {
-    font-size: 106.25%;
+    font-size: 100%;
+    scroll-padding-top: 5.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   html {
-    font-size: 112.5%;
+    font-size: 106.25%;
   }
 }
 
@@ -219,13 +220,18 @@ h3 {
 }
 
 body {
-  @apply overflow-x-hidden text-gray-800 leading-relaxed;
+  @apply overflow-x-clip text-gray-800 leading-relaxed;
   min-height: 100dvh;
   background-color: var(--color-gray-50);
   font-optical-sizing: auto;
   transition:
     background-color 0.28s ease,
     color 0.28s ease;
+}
+
+/* Shared horizontal gutters — keeps hero, sections, header aligned */
+.page-pad {
+  @apply px-4 sm:px-6 lg:px-8;
 }
 
 .page-ambient {
@@ -430,6 +436,10 @@ footer {
     transition: none;
   }
 
+  .page-ambient {
+    display: none !important;
+  }
+
   .reveal {
     opacity: 1;
     transform: none;
@@ -443,6 +453,7 @@ footer {
 
   .page-ambient-glow {
     animation: none !important;
+    will-change: auto;
   }
 
   .card-modern,
@@ -463,11 +474,11 @@ footer {
   header {
     transition: none;
     backdrop-filter: none;
-    @apply bg-surface/96;
+    @apply bg-surface;
   }
 
   .card-modern {
-    @apply bg-surface backdrop-blur-none;
+    @apply bg-surface backdrop-blur-none shadow-none;
   }
 
   .section-alt {
@@ -476,16 +487,11 @@ footer {
   }
 
   .section-surface {
-    @apply bg-surface/92 backdrop-blur-none;
+    @apply bg-surface backdrop-blur-none;
   }
 
-  .page-ambient-glow {
-    filter: blur(52px);
-    opacity: 0.38;
-  }
-
-  .page-ambient-grid {
-    opacity: 0.22;
+  .mesh-bg {
+    background-attachment: scroll;
   }
 
   .btn-primary,
@@ -498,7 +504,7 @@ footer {
 }
 
 .card-modern {
-  @apply rounded-xl border border-gray-200/90 bg-surface/95 shadow-sm backdrop-blur-sm;
+  @apply rounded-lg border border-gray-200/90 bg-surface/95 shadow-sm backdrop-blur-sm sm:rounded-xl;
   transition:
     background-color 0.28s ease,
     border-color 0.28s ease,
@@ -556,7 +562,7 @@ footer {
 }
 
 .form-label {
-  @apply mb-1 block text-sm font-medium text-gray-700 sm:text-base;
+  @apply mb-0.5 block text-xs font-medium text-gray-700 sm:mb-1 sm:text-base;
 }
 
 .dark .form-label {
@@ -564,7 +570,7 @@ footer {
 }
 
 .form-field {
-  @apply w-full rounded-lg border border-gray-300 bg-surface px-3 py-2 text-sm text-gray-900 outline-none transition-colors sm:px-4 sm:py-2.5 sm:text-base;
+  @apply w-full rounded-lg border border-gray-300 bg-surface px-2.5 py-1.5 text-sm text-gray-900 outline-none transition-colors sm:px-4 sm:py-2.5 sm:text-base;
   @apply focus:border-brand-500 focus:ring-2 focus:ring-brand-100;
 }
 
@@ -583,7 +589,7 @@ footer {
 }
 
 .btn-primary {
-  @apply inline-flex min-h-11 items-center justify-center rounded-lg bg-brand-600 px-5 py-3 text-base font-semibold text-white transition-colors duration-300 hover:bg-brand-700 sm:min-h-12 sm:px-7 sm:py-3.5 sm:text-lg;
+  @apply inline-flex min-h-11 items-center justify-center rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-brand-700 sm:min-h-12 sm:px-7 sm:py-3.5 sm:text-lg;
 }
 
 .btn-cta-hint {
@@ -629,12 +635,40 @@ footer {
   }
 }
 
+@media (max-width: 767px), ((hover: none) and (pointer: coarse)) {
+  .btn-cta-hint {
+    animation: none;
+    filter: none;
+    box-shadow: none;
+  }
+}
+
 .btn-outline {
-  @apply inline-flex min-h-11 items-center justify-center rounded-lg border-2 border-brand-600 bg-surface px-5 py-3 text-base font-semibold text-brand-700 transition-colors duration-300 hover:bg-brand-50 sm:min-h-12 sm:px-7 sm:py-3.5 sm:text-lg;
+  @apply inline-flex min-h-11 items-center justify-center rounded-lg border-2 border-brand-600 bg-surface px-4 py-2.5 text-sm font-semibold text-brand-700 transition-colors duration-300 hover:bg-brand-50 sm:min-h-12 sm:px-7 sm:py-3.5 sm:text-lg;
 }
 
 .btn-muted {
-  @apply inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 bg-surface px-5 py-3 text-base font-semibold text-gray-800 transition-colors duration-300 hover:bg-gray-100 sm:min-h-12 sm:px-7 sm:py-3.5 sm:text-lg;
+  @apply inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 bg-surface px-4 py-2.5 text-sm font-semibold text-gray-800 transition-colors duration-300 hover:bg-gray-100 sm:min-h-12 sm:px-7 sm:py-3.5 sm:text-lg;
+}
+
+#mobile-sticky-cta .sticky-cta-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 2.5rem;
+  padding: 0.5rem 0.35rem;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 768px) {
+  #mobile-sticky-cta .sticky-cta-btn {
+    min-height: 3rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
 }
 
 .faq-body {
@@ -700,8 +734,14 @@ body.employee-checklist-page {
 }
 
 #kalkulator {
-  scroll-margin-top: 5.5rem;
-  scroll-margin-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+  scroll-margin-top: 4.5rem;
+  scroll-margin-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 640px) {
+  #kalkulator {
+    scroll-margin-top: 5.5rem;
+  }
 }
 
 .calc-header {
@@ -715,7 +755,7 @@ body.employee-checklist-page {
 }
 
 .calc-category-card {
-  @apply rounded-xl border border-gray-200 bg-surface p-4 text-left transition-all min-h-11;
+  @apply rounded-lg border border-gray-200 bg-surface p-3 text-left transition-all min-h-10 sm:rounded-xl sm:p-4 sm:min-h-11;
 }
 
 .calc-category-card:hover {

@@ -5,7 +5,7 @@ import { getPhoneHref } from "@/lib/utils";
 export default function Footer() {
   return (
     <footer className="border-t border-gray-200/80 bg-surface/85 backdrop-blur-sm">
-      <div className="mx-auto max-w-6xl px-4 py-12 pb-[calc(3rem+env(safe-area-inset-bottom,0px))] sm:px-6 lg:px-8 md:pb-12">
+      <div className="page-pad mx-auto max-w-6xl py-12 pb-[calc(3rem+env(safe-area-inset-bottom,0px))] md:pb-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="sm:col-span-2 lg:col-span-2">
             <p className="font-heading text-xl font-bold text-gray-900">{SITE.name}</p>

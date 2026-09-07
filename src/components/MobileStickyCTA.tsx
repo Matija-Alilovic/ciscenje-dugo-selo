@@ -25,11 +25,13 @@ export function CTAButtons({
   calculatorHref?: string;
 }) {
   const whatsappHref = getWhatsAppHref();
+  const stack = cn("flex w-full max-w-full flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:gap-3", className);
+  const btn = "w-full max-w-full min-w-0 box-border sm:w-auto";
 
   if (leadWithCalculator) {
     return (
-      <div className={`flex flex-col gap-3 sm:flex-row sm:flex-wrap ${className}`}>
-        <CalculatorLink href={calculatorHref} className="btn-primary w-full sm:w-auto">
+      <div className={stack}>
+        <CalculatorLink href={calculatorHref} className={cn("btn-primary", btn)}>
           Izračunaj cijenu
         </CalculatorLink>
         <a
@@ -37,11 +39,11 @@ export function CTAButtons({
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => notifyWhatsAppOpen(whatsappHref)}
-          className="btn-outline w-full sm:w-auto"
+          className={cn("btn-outline", btn)}
         >
           Javi se na WhatsApp
         </a>
-        <a href={getPhoneHref()} className="btn-muted w-full sm:w-auto">
+        <a href={getPhoneHref()} className={cn("btn-muted", btn)}>
           Nazovi
         </a>
       </div>
@@ -49,8 +51,8 @@ export function CTAButtons({
   }
 
   return (
-    <div className={`flex flex-col gap-3 sm:flex-row sm:flex-wrap ${className}`}>
-      <a href={getPhoneHref()} className="btn-primary w-full sm:w-auto">
+    <div className={stack}>
+      <a href={getPhoneHref()} className={cn("btn-primary", btn)}>
         Nazovi
       </a>
       <a
@@ -58,11 +60,11 @@ export function CTAButtons({
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => notifyWhatsAppOpen(whatsappHref)}
-        className="btn-outline w-full sm:w-auto"
+        className={cn("btn-outline", btn)}
       >
         Javi se na WhatsApp
       </a>
-      <Link href="/#kontakt" className="btn-muted w-full sm:w-auto">
+      <Link href="/#kontakt" className={cn("btn-muted", btn)}>
         Zatraži ponudu
       </Link>
     </div>
@@ -120,17 +122,17 @@ export default function MobileStickyCTA() {
     <div
       id="mobile-sticky-cta"
       className={cn(
-        "fixed inset-x-0 bottom-0 z-50 bg-surface/95 px-3 pt-3 shadow-[0_-8px_32px_rgba(0,0,0,0.12)] backdrop-blur-md transition-[transform,opacity] duration-300 ease-out dark:shadow-[0_-8px_32px_rgba(0,0,0,0.45)]",
+        "fixed inset-x-0 bottom-0 z-50 max-w-[100vw] overflow-x-hidden bg-surface px-4 pt-2 shadow-[0_-8px_32px_rgba(0,0,0,0.12)] transition-[transform,opacity] duration-200 ease-out dark:shadow-[0_-8px_32px_rgba(0,0,0,0.45)]",
         showBar
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-full opacity-0",
       )}
       aria-hidden={!showBar}
     >
-      <div className="mx-auto flex max-w-3xl gap-2 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] md:gap-3 md:pb-5 md:pt-1">
+      <div className="mx-auto flex w-full max-w-3xl gap-1.5 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] sm:gap-2 md:gap-3 md:pb-5 md:pt-1">
         <CalculatorLink
           href="/#kalkulator"
-          className="btn-primary flex-1 px-2 py-3 text-center text-sm md:px-4 md:text-base"
+          className="btn-primary sticky-cta-btn"
         >
           <span className="md:hidden">Cijena</span>
           <span className="hidden md:inline">Izračunaj cijenu</span>
@@ -140,15 +142,12 @@ export default function MobileStickyCTA() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => notifyWhatsAppOpen(whatsappHref)}
-          className="btn-outline flex-1 px-2 py-3 text-center text-sm md:px-4 md:text-base"
+          className="btn-outline sticky-cta-btn"
         >
           <span className="md:hidden">WhatsApp</span>
           <span className="hidden md:inline">Javi se na WhatsApp</span>
         </a>
-        <a
-          href={getPhoneHref()}
-          className="btn-muted flex-1 px-2 py-3 text-center text-sm md:px-4 md:text-base"
-        >
+        <a href={getPhoneHref()} className="btn-muted sticky-cta-btn">
           Nazovi
         </a>
       </div>

@@ -5,7 +5,6 @@ import MobileStickyCTA from '@/components/MobileStickyCTA';
 import Hero from '@/components/Hero';
 import Section from '@/components/Section';
 import ServiceCards from '@/components/ServiceCards';
-import PriceCalculator from '@/components/PriceCalculator';
 import Steps from '@/components/Steps';
 import AboutSection from '@/components/AboutSection';
 import BeforeAfterSection from '@/components/BeforeAfterSection';
@@ -18,6 +17,16 @@ import ServicePillars from '@/components/ServicePillars';
 import { INTRO_TEXT } from '@/lib/constants';
 import { getHomePageSchemas } from '@/lib/schema';
 import { HOME_METADATA } from '@/lib/seo';
+import dynamic from 'next/dynamic';
+
+const PriceCalculator = dynamic(() => import('@/components/PriceCalculator'), {
+  loading: () => (
+    <div
+      className="card-modern h-64 animate-pulse bg-gray-100/80 sm:h-80"
+      aria-hidden="true"
+    />
+  ),
+});
 
 export const metadata = HOME_METADATA;
 
@@ -34,7 +43,7 @@ export default function HomePage() {
         />
         <Section title="Ukratko">
           <Reveal>
-            <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl md:text-2xl">
+            <p className="max-w-3xl text-sm leading-relaxed text-gray-700 sm:text-xl md:text-2xl">
               {INTRO_TEXT}
             </p>
           </Reveal>
@@ -50,7 +59,7 @@ export default function HomePage() {
         </Section>
         <Section
           title="Kalkulator cijene"
-          subtitle="Odgovorite na nekoliko pitanja i dobit ćete okvirnu cijenu održavanja kuće i okućnice."
+          subtitle="Nekoliko pitanja — okvirna cijena održavanja."
           className="section-alt"
         >
           <div id="kalkulator">

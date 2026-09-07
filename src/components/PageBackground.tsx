@@ -1,24 +1,28 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SMOOTHING = 0.07;
 const DEFAULT = { x: 0.42, y: 0.28 };
 
+/** Desktop-only ambient glow — skipped entirely on touch devices. */
 export default function PageBackground() {
   const rootRef = useRef<HTMLDivElement>(null);
   const target = useRef(DEFAULT);
   const current = useRef(DEFAULT);
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
+    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!fine || reduce) return;
+    setEnabled(true);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return;
     const root = rootRef.current;
     if (!root) return;
-
-    const canTrack = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (!canTrack) return;
-
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
 
     root.classList.add("page-ambient--interactive");
 
@@ -62,7 +66,9 @@ export default function PageBackground() {
       cancelAnimationFrame(frame);
       root.classList.remove("page-ambient--interactive");
     };
-  }, []);
+  }, [enabled]);
+
+  if (!enabled) return null;
 
   return (
     <div className="page-ambient" ref={rootRef} aria-hidden="true">
