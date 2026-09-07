@@ -161,7 +161,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
   scroll-padding-bottom: 1rem;
-  font-size: 112.5%;
+  font-size: 100%;
   -webkit-text-size-adjust: 100%;
   color-scheme: light;
   transition:
@@ -200,7 +200,13 @@ html.dark {
 
 @media (min-width: 640px) {
   html {
-    font-size: 118.75%;
+    font-size: 106.25%;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 112.5%;
   }
 }
 
@@ -550,7 +556,7 @@ footer {
 }
 
 .form-label {
-  @apply mb-1 block text-base font-medium text-gray-700;
+  @apply mb-1 block text-sm font-medium text-gray-700 sm:text-base;
 }
 
 .dark .form-label {
@@ -558,7 +564,7 @@ footer {
 }
 
 .form-field {
-  @apply w-full rounded-lg border border-gray-300 bg-surface px-4 py-2.5 text-base text-gray-900 outline-none transition-colors;
+  @apply w-full rounded-lg border border-gray-300 bg-surface px-3 py-2 text-sm text-gray-900 outline-none transition-colors sm:px-4 sm:py-2.5 sm:text-base;
   @apply focus:border-brand-500 focus:ring-2 focus:ring-brand-100;
 }
 
@@ -577,7 +583,7 @@ footer {
 }
 
 .btn-primary {
-  @apply inline-flex min-h-12 items-center justify-center rounded-lg bg-brand-600 px-7 py-3.5 text-lg font-semibold text-white transition-colors duration-300 hover:bg-brand-700;
+  @apply inline-flex min-h-11 items-center justify-center rounded-lg bg-brand-600 px-5 py-3 text-base font-semibold text-white transition-colors duration-300 hover:bg-brand-700 sm:min-h-12 sm:px-7 sm:py-3.5 sm:text-lg;
 }
 
 .btn-cta-hint {
@@ -624,11 +630,11 @@ footer {
 }
 
 .btn-outline {
-  @apply inline-flex min-h-12 items-center justify-center rounded-lg border-2 border-brand-600 bg-surface px-7 py-3.5 text-lg font-semibold text-brand-700 transition-colors duration-300 hover:bg-brand-50;
+  @apply inline-flex min-h-11 items-center justify-center rounded-lg border-2 border-brand-600 bg-surface px-5 py-3 text-base font-semibold text-brand-700 transition-colors duration-300 hover:bg-brand-50 sm:min-h-12 sm:px-7 sm:py-3.5 sm:text-lg;
 }
 
 .btn-muted {
-  @apply inline-flex min-h-12 items-center justify-center rounded-lg border border-gray-300 bg-surface px-7 py-3.5 text-lg font-semibold text-gray-800 transition-colors duration-300 hover:bg-gray-100;
+  @apply inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 bg-surface px-5 py-3 text-base font-semibold text-gray-800 transition-colors duration-300 hover:bg-gray-100 sm:min-h-12 sm:px-7 sm:py-3.5 sm:text-lg;
 }
 
 .faq-body {

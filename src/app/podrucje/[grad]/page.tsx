@@ -45,7 +45,7 @@ export default async function AreaCleaningPage({ params }: PageProps) {
         {
           title: `Redovito čišćenje u ${area.nameLocative}`,
           content: (
-            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+            <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl">
               Dolazimo isti dan svaki tjedan ili svaka dva tjedna. Brišemo
               prašinu, peremo podove te čistimo kuhinju i kupaonicu. Ne nudimo
               jednokratne poslove jednom godišnje.
@@ -55,7 +55,7 @@ export default async function AreaCleaningPage({ params }: PageProps) {
         {
           title: "Redovita košnja uz čišćenje",
           content: (
-            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+            <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl">
               Uz redovito čišćenje možemo dogovoriti i redovitu košnju u istom
               tjednu. Jedan dogovor, isti ritam kroz sezonu.
             </p>

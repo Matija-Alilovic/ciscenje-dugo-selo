@@ -23,7 +23,7 @@ export default function GeneralnoCiscenjePage() {
         {
           title: "Što preporučujemo umjesto toga",
           content: (
-            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+            <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl">
               Redovito čišćenje po 13 €/h, tjedno ili svaka dva tjedna. Tako
               stan ostaje uredan cijelu godinu, bez jednokratnog posla jednom
               godišnje. Pogledajte{" "}

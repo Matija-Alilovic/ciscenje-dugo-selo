@@ -954,7 +954,7 @@ export default function PriceCalculator({
                 </span>
                 <span
                   className={cn(
-                    'block text-lg font-semibold',
+                    'block text-base font-semibold sm:text-lg',
                     selected
                       ? 'text-brand-800'
                       : 'text-gray-900 group-hover:text-brand-800',

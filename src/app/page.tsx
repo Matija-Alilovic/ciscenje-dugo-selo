@@ -34,7 +34,7 @@ export default function HomePage() {
         />
         <Section title="Ukratko">
           <Reveal>
-            <p className="max-w-3xl text-xl leading-relaxed text-gray-700 sm:text-2xl">
+            <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl md:text-2xl">
               {INTRO_TEXT}
             </p>
           </Reveal>

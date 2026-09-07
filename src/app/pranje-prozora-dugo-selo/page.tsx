@@ -36,7 +36,7 @@ export default function PranjeProzoraPage() {
         {
           title: "Cijena",
           content: (
-            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+            <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl">
               Do šest prozora unutra: 30–45 €. Unutra i vani: 65–90 €. Ako ste
               malo dalje, pošaljite ulicu — potvrdit ćemo možemo li doći i kada.
             </p>

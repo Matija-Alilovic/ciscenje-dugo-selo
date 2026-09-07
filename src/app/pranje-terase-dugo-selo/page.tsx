@@ -37,7 +37,7 @@ export default function PranjeTerasePage() {
         {
           title: "Cijena pranja terase",
           content: (
-            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+            <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl">
               Visokotlačno pranje je 2–3 €/m², od 40 €. Za redovitu košnju
               pogledajte{" "}
               <a

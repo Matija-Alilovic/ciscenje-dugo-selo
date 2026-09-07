@@ -17,7 +17,7 @@ export default function CiscenjeNakonSelidbePage() {
         {
           title: "Što preporučujemo",
           content: (
-            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+            <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl">
               Dogovorite redovito čišćenje odmah nakon useljenja. Tako ne
               trebate jednokratni posao svake godine. Pogledajte{" "}
               <a

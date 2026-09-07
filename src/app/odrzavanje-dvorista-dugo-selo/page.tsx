@@ -23,7 +23,7 @@ export default function OdrzavanjeDvoristaPage() {
         {
           title: "Cijena",
           content: (
-            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+            <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl">
               Košnja je 0,15–0,30 €/m², najmanje 35 € po dolasku. Ostale stavke
               (živica, gredice, pranje, snijeg…) dogovaramo prema poslu. Za
               točnu ponudu pošaljite okvirnu veličinu ili slike.

@@ -18,7 +18,7 @@ export default function KosnjaTravePage() {
         {
           title: "Kako naručiti redovitu košnju",
           content: (
-            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+            <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl">
               Cijena ovisi o veličini i stanju površine. Košnja je 0,15–0,30
               €/m², od 35 €. Pošaljite nam upit — dogovorimo ritam i okvirnu
               cijenu prije prvog dolaska.
@@ -28,7 +28,7 @@ export default function KosnjaTravePage() {
         {
           title: "Gdje kosimo",
           content: (
-            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+            <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl">
               Dolazimo u Dugo Selo, Božjakovinu, Rugvicu, Brckovljane, Sesvete i
               Vrbovec.
             </p>

@@ -71,10 +71,10 @@ export function LandingPage({
             <Breadcrumbs
               items={[{ label: 'Početna', href: '/' }, { label: title }]}
             />
-            <h1 className="hero-fade hero-delay-1 max-w-4xl text-4xl font-bold leading-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            <h1 className="hero-fade hero-delay-1 max-w-4xl text-3xl font-bold leading-tight text-gray-900 sm:text-5xl lg:text-6xl">
               {title}
             </h1>
-            <p className="hero-fade hero-delay-2 mt-5 max-w-3xl text-xl leading-relaxed text-gray-600 sm:mt-6 sm:text-2xl">
+            <p className="hero-fade hero-delay-2 mt-4 max-w-3xl text-base leading-relaxed text-gray-600 sm:mt-6 sm:text-2xl">
               {subtitle}
             </p>
             {showPricing && (
@@ -88,7 +88,7 @@ export function LandingPage({
         </section>
 
         <Section title="O usluzi">
-          <div className="max-w-3xl space-y-5 text-xl leading-relaxed text-gray-700">
+          <div className="max-w-3xl space-y-4 text-base leading-relaxed text-gray-700 sm:space-y-5 sm:text-xl">
             {intro.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
             ))}

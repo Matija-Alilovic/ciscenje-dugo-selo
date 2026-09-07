@@ -23,7 +23,7 @@ export default function CiscenjeKucaPage() {
         {
           title: "Cijena redovitog čišćenja kuće",
           content: (
-            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+            <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl">
               Redovito čišćenje je 13 €/h. Cijena ovisi o veličini i stanju
               kuće. Za točnu ponudu pošaljite kvadraturu ili slike — odgovaramo
               u kratkom roku.

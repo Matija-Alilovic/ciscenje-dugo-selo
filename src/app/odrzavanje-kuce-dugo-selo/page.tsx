@@ -41,7 +41,7 @@ export default function OdrzavanjeKucePage() {
         {
           title: "Kako se dogovara cijena",
           content: (
-            <p className="max-w-3xl text-xl leading-relaxed text-gray-700">
+            <p className="max-w-3xl text-base leading-relaxed text-gray-700 sm:text-xl">
               Montaža police obično je 30–50 €, zamjena slavine 45–75 €,
               sastavljanje IKEA ormara 40–85 €, a bojanje jedne sobe 120–190 €.
               Ako je posao veći nego što ste opisali, javimo prije početka rada.
