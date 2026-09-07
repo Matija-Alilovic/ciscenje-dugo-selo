@@ -35,8 +35,8 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero
-          title="Održavanje kuće i okućnice"
-          subtitle="Čišćenje i održavanje dvorišta po dogovorenom rasporedu"
+          title="Čišćenje i održavanje okućnice"
+          subtitle="Redovito čišćenje i košnja trave u Dugom Selu i Sesvetama — po dogovorenom rasporedu"
           highlightCalculator
         />
         <Section title="Ukratko">

@@ -23,12 +23,12 @@ function getBusinessSameAs(): string[] {
 export function getLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "HousekeepingService"],
+    "@type": ["LocalBusiness", "HousekeepingService", "LandscapingBusiness"],
     "@id": businessId(),
     name: COMPANY.name,
     legalName: COMPANY.legalName,
     description:
-      "Redovito čišćenje i redovito održavanje okućnice u Dugom Selu i okolici. Isti dan svaki tjedan ili svaka dva tjedna.",
+      "Redovito čišćenje i redovito održavanje dvorišta / okućnice u Dugom Selu i Sesvetama. Košnja trave, živica i čišćenje — isti dan tjedno ili svaka dva tjedna.",
     url: getSiteUrl(),
     image: absoluteUrl("/opengraph-image"),
     telephone: getPhoneNumber(),
@@ -81,7 +81,7 @@ export function getLocalBusinessSchema() {
             name: item.service,
             description: item.note,
             provider: { "@id": businessId() },
-            areaServed: "Dugo Selo i okolica",
+            areaServed: ["Dugo Selo", "Sesvete"],
           },
         })),
       ],
@@ -89,7 +89,11 @@ export function getLocalBusinessSchema() {
     knowsAbout: [
       "Redovito čišćenje",
       "Redovito održavanje okućnice",
+      "Održavanje dvorišta",
       "Redovita košnja trave",
+      "Orezivanje živice",
+      "Održavanje travnjaka",
+      "Pranje terase",
       "Održavanje kuće",
       ...SERVICE_TYPES.map((service) => service.title),
     ],
@@ -105,7 +109,7 @@ export function getWebSiteSchema() {
     url: getSiteUrl(),
     inLanguage: "hr-HR",
     description:
-      "Održavanje kuće i okućnice u Dugom Selu i okolici. Kalkulator cijene i kontakt na jednom mjestu.",
+      "Čišćenje i održavanje okućnice u Dugom Selu i Sesvetama. Kalkulator cijene i kontakt na jednom mjestu.",
     publisher: { "@id": businessId() },
   };
 }

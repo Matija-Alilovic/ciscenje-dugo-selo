@@ -80,7 +80,7 @@ export const SERVICE_PILLARS = [
     title: 'Redovito održavanje okućnice',
     tagline: 'Kosimo travu i održavamo živicu',
     description:
-      'Košnja i održavanje travnjaka, trimanje rubova, živica, cvjetnjaci, gredice, lišće, terase i sezonski poslovi. Dogovaramo ritam i držimo ga kroz sezonu.',
+      'Košnja i održavanje travnjaka, trimanje rubova, živica, cvjetnjaci, gredice, lišće, terase i sezonski poslovi u Dugom Selu i Sesvetama. Dogovaramo ritam i držimo ga kroz sezonu.',
     href: '/odrzavanje-dvorista-dugo-selo',
     calculatorType: 'dvoriste',
   },
@@ -156,9 +156,9 @@ export const SERVICE_PAGES = [
   { href: '/ciscenje-kuca-dugo-selo', label: 'Redovito čišćenje kuća' },
   {
     href: '/odrzavanje-dvorista-dugo-selo',
-    label: 'Redovito održavanje okućnice',
+    label: 'Održavanje dvorišta / okućnice',
   },
-  { href: '/kosnja-trave-dugo-selo', label: 'Redovita košnja trave' },
+  { href: '/kosnja-trave-dugo-selo', label: 'Košnja trave Dugo Selo' },
   {
     href: '/odrzavanje-kuce-dugo-selo',
     label: 'Održavanje kuće (uz redovito)',

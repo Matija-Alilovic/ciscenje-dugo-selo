@@ -67,11 +67,11 @@ export const viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Održavanje kuće i okućnice Dugo Selo",
+    default: "Čišćenje i održavanje okućnice Dugo Selo",
     template: "%s | Održavanje Dugo Selo",
   },
   description:
-    "Redovito čišćenje i redovita košnja u Dugom Selu i Sesvetama. Dolazimo isti dan svaki tjedan ili svaka dva tjedna.",
+    "Redovito čišćenje i redovita košnja / održavanje dvorišta u Dugom Selu i Sesvetama. Dolazimo isti dan svaki tjedan ili svaka dva tjedna.",
   keywords: [...SEO_KEYWORDS],
   authors: [{ name: SITE.name, url: getSiteUrl() }],
   creator: SITE.name,
@@ -92,15 +92,15 @@ export const metadata: Metadata = {
     locale: SITE.locale,
     siteName: SITE.name,
     url: getSiteUrl(),
-    title: "Održavanje kuće i okućnice Dugo Selo",
+    title: "Čišćenje i održavanje okućnice Dugo Selo",
     description:
-      "Redovito čišćenje i redovita košnja u Dugom Selu i Sesvetama. Dolazimo isti dan svaki tjedan ili svaka dva tjedna.",
+      "Redovito čišćenje i redovita košnja / održavanje dvorišta u Dugom Selu i Sesvetama. Dolazimo isti dan svaki tjedan ili svaka dva tjedna.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Održavanje kuće i okućnice Dugo Selo",
+    title: "Čišćenje i održavanje okućnice Dugo Selo",
     description:
-      "Redovito čišćenje i redovita košnja u Dugom Selu. Isti dan svaki tjedan — dugoročna suradnja.",
+      "Redovito čišćenje i košnja trave u Dugom Selu i Sesvetama. Isti dan svaki tjedan — dugoročna suradnja.",
   },
   robots: {
     index: true,

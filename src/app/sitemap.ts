@@ -14,8 +14,8 @@ const ROUTES: {
   { path: "/pranje-prozora-dugo-selo", changeFrequency: "monthly", priority: 0.85 },
   { path: "/ciscenje-nakon-selidbe-dugo-selo", changeFrequency: "monthly", priority: 0.85 },
   { path: "/odrzavanje-kuce-dugo-selo", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/odrzavanje-dvorista-dugo-selo", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/kosnja-trave-dugo-selo", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/odrzavanje-dvorista-dugo-selo", changeFrequency: "monthly", priority: 0.95 },
+  { path: "/kosnja-trave-dugo-selo", changeFrequency: "monthly", priority: 0.95 },
   { path: "/pranje-terase-dugo-selo", changeFrequency: "monthly", priority: 0.85 },
   ...getAllAreaSlugs().map((slug) => ({
     path: getAreaPagePath(slug),

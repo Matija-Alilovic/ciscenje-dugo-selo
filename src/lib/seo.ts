@@ -8,16 +8,44 @@ export const SEO_KEYWORDS = [
   "održavanje Dugo Selo",
   "održavanje kuće Dugo Selo",
   "održavanje dvorišta Dugo Selo",
+  "održavanje okućnice Dugo Selo",
   "redovita košnja trave Dugo Selo",
   "košnja trave Dugo Selo",
+  "košnja travnjaka Dugo Selo",
+  "održavanje travnjaka Dugo Selo",
+  "šišanje živice Dugo Selo",
+  "orezivanje živice Dugo Selo",
   "čišćenje stanova Dugo Selo",
   "čišćenje kuća Dugo Selo",
   "čišćenje stanova i kuća Dugo Selo",
   "čišćenje Dugo Selo",
-  "čišćenje Dugo Selo i okolica",
+  "čišćenje Dugo Selo i Sesvete",
   "redovito čišćenje stanova Dugo Selo",
   "čišćenje stanova Sesvete",
+  "košnja trave Sesvete",
+  "održavanje dvorišta Sesvete",
   "usluga čišćenja Dugo Selo",
+] as const;
+
+/** Keywords focused on yard / lawn — use on yard landing pages. */
+export const YARD_SEO_KEYWORDS = [
+  "održavanje dvorišta Dugo Selo",
+  "održavanje okućnice Dugo Selo",
+  "redovito održavanje dvorišta Dugo Selo",
+  "redovito održavanje okućnice Dugo Selo",
+  "košnja trave Dugo Selo",
+  "redovita košnja trave Dugo Selo",
+  "košnja travnjaka Dugo Selo",
+  "održavanje travnjaka Dugo Selo",
+  "košnja trave cijena Dugo Selo",
+  "šišanje živice Dugo Selo",
+  "orezivanje živice Dugo Selo",
+  "grabljanje lišća Dugo Selo",
+  "pranje terase Dugo Selo",
+  "košnja trave Sesvete",
+  "održavanje dvorišta Sesvete",
+  "održavanje okućnice Sesvete",
+  ...SEO_KEYWORDS,
 ] as const;
 
 type PageMetadataOptions = {
@@ -81,11 +109,18 @@ export function createPageMetadata({
 
 export const HOME_METADATA = createPageMetadata({
   absoluteTitle:
-    "Održavanje kuće i okućnice Dugo Selo | Održavanje Dugo Selo",
-  title: "Održavanje kuće i okućnice Dugo Selo",
+    "Čišćenje i održavanje okućnice Dugo Selo | Održavanje Dugo Selo",
+  title: "Čišćenje i održavanje okućnice Dugo Selo",
   description:
-    "Obrt iz Dugog Sela za redovito čišćenje i redovitu košnju. Dolazimo isti dan svaki tjedan ili svaka dva tjedna — Dugo Selo i Sesvete.",
+    "Redovito čišćenje i redovita košnja / održavanje dvorišta u Dugom Selu i Sesvetama. Isti dan tjedno ili svaka 2 tjedna — cijena prije početka suradnje.",
   path: "/",
+  keywords: [
+    "čišćenje Dugo Selo",
+    "održavanje okućnice Dugo Selo",
+    "održavanje dvorišta Dugo Selo",
+    "košnja trave Dugo Selo",
+    ...SEO_KEYWORDS,
+  ],
 });
 
 export function createAreaPageMetadata({
@@ -101,12 +136,14 @@ export function createAreaPageMetadata({
   return createPageMetadata({
     title: `Redovito čišćenje stanova ${name}`,
     absoluteTitle: `Redovito čišćenje stanova i kuća ${name} | ${SITE.name}`,
-    description: `${tagline}. Dolazimo isti dan svaki tjedan. Besplatna procjena u kalkulatoru — dolazimo iz Dugog Sela.`,
+    description: `${tagline}. Redovito čišćenje i, po dogovoru, održavanje okućnice. Dolazimo iz Dugog Sela — besplatna procjena u kalkulatoru.`,
     path,
     keywords: [
       `redovito čišćenje stanova ${name}`,
       `čišćenje stanova ${name}`,
       `čišćenje kuća ${name}`,
+      `održavanje okućnice ${name}`,
+      `košnja trave ${name}`,
       `usluga čišćenja ${name}`,
       ...SEO_KEYWORDS,
     ],
@@ -183,39 +220,39 @@ export const PAGE_SEO = {
     ],
   }),
   dvoriste: createPageMetadata({
-    title: "Redovito održavanje okućnice Dugo Selo",
+    title: "Održavanje dvorišta Dugo Selo",
+    absoluteTitle:
+      "Održavanje dvorišta i okućnice Dugo Selo | Košnja trave",
     description:
-      "Redovito održavanje okućnice u Dugom Selu: košnja i živica kroz sezonu. Dogovaramo ritam i držimo ga — ne jednokratno jednom godišnje.",
+      "Redovito održavanje dvorišta i okućnice u Dugom Selu i Sesvetama: košnja trave, živica, lišće i terasa. Dogovaramo ritam kroz sezonu — ne jednokratno.",
     path: "/odrzavanje-dvorista-dugo-selo",
-    keywords: [
-      "redovito održavanje dvorišta Dugo Selo",
-      "održavanje dvorišta Dugo Selo",
-      "košnja trave Dugo Selo",
-      "šišanje živice Dugo Selo",
-      ...SEO_KEYWORDS,
-    ],
+    keywords: [...YARD_SEO_KEYWORDS],
   }),
   kosnja: createPageMetadata({
-    title: "Redovita košnja trave Dugo Selo",
+    title: "Košnja trave Dugo Selo",
+    absoluteTitle: "Košnja trave Dugo Selo | Redovita košnja travnjaka",
     description:
-      "Redovita košnja trave u Dugom Selu od ožujka do studenoga. Otprilike svaka dva tjedna — dogovorimo ritam i držimo ga kroz sezonu.",
+      "Redovita košnja trave u Dugom Selu i Sesvetama od ožujka do studenoga. Otprilike svaka 2 tjedna — od 35 € po dolasku. Dogovorimo ritam i cijenu unaprijed.",
     path: "/kosnja-trave-dugo-selo",
     keywords: [
-      "redovita košnja trave Dugo Selo",
       "košnja trave Dugo Selo",
-      "održavanje travnjaka Dugo Selo",
-      ...SEO_KEYWORDS,
+      "redovita košnja trave Dugo Selo",
+      "košnja travnjaka Dugo Selo",
+      "košnja trave Sesvete",
+      "košnja trave cijena Dugo Selo",
+      ...YARD_SEO_KEYWORDS,
     ],
   }),
   terasa: createPageMetadata({
     title: "Pranje terase Dugo Selo",
+    absoluteTitle: "Pranje terase Dugo Selo | Uz održavanje okućnice",
     description:
-      "Pranje terase po dogovoru uz redovito održavanje okućnice u Dugom Selu. Fokus nam je redovita košnja kroz sezonu.",
+      "Pranje terase i opločnika u Dugom Selu uz redovito održavanje okućnice. Osnovica je redovita košnja trave kroz sezonu.",
     path: "/pranje-terase-dugo-selo",
     keywords: [
       "pranje terase Dugo Selo",
-      "redovito održavanje dvorišta Dugo Selo",
-      ...SEO_KEYWORDS,
+      "pranje opločnika Dugo Selo",
+      ...YARD_SEO_KEYWORDS,
     ],
   }),
 } as const;
