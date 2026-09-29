@@ -76,7 +76,7 @@ export const metadata: Metadata = {
   authors: [{ name: SITE.name, url: getSiteUrl() }],
   creator: SITE.name,
   publisher: SITE.name,
-  category: "Održavanje kuće i okućnice",
+  category: "Održavanje poslovnih prostora i kuća",
   formatDetection: {
     telephone: true,
     address: true,

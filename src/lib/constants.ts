@@ -1,6 +1,6 @@
 export const SITE = {
   name: 'Održavanje Dugo Selo',
-  serviceHeadline: 'Održavanje kuće i okućnice',
+  serviceHeadline: 'Održavanje poslovnih prostora i kuća',
   url: 'https://www.ciscenje-dugo-selo.com',
   locale: 'hr_HR',
   phone: '+385976083278',
@@ -63,7 +63,7 @@ export const BOOKING_TIME_SLOTS = [
 ] as const;
 
 export const HERO_STATS = [
-  'Dugoročna suradnja',
+  'Dugoročna suradnja te kvaliteta prije svega',
   'Dugo Selo i Sesvete',
 ] as const;
 
